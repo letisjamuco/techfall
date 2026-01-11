@@ -38,7 +38,7 @@ If the player chooses to quit, they leave the tech world behind.
 The game transitions to a **quiet farm**, symbolizing a return to a slower, human-scale life.
 
 ### 2. Failure - A World Without Technology
-If the player loses and the system collapses, the game moves to a **post-technology world**.  
+If the player loses and the system collapses, the game moves to a **pre-technology world**.  
 Technology is gone. What remains is emptiness, silence, and a reset.
 
 ### 3. Success - AI Takeover
