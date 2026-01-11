@@ -8,6 +8,7 @@ Their first task seems simple: **build and maintain a tower** that represents th
 Under constant pressure from a **toxic and demanding employer**, the player is pushed to work faster, optimize more, and never stop. Mistakes are punished, hesitation is criticized, and success is never enough.
 
 Through a symbolic **Jenga-style gameplay**, the player physically interacts with different layers of modern technology, trying to keep the system stable while external pressure keeps increasing.
+The experience is designed to be immersive, with the player using their hands and body to interact directly with the structure.
 
 ## What is the Game About?
 
@@ -38,7 +39,7 @@ The game transitions to a **quiet farm**, symbolizing a return to a slower, huma
 
 ### 2. Failure - A World Without Technology
 If the player loses and the system collapses, the game moves to a **post-technology world**.  
-Technology is gone. What remains is emptiness, silence, and reset.
+Technology is gone. What remains is emptiness, silence, and a reset.
 
 ### 3. Success - AI Takeover
 If the player performs perfectly and maintains full control, **AI takes over**.  
