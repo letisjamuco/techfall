@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.unity.cloud.gltfast": "6.15.1",
     "com.unity.ai.navigation": "2.0.9",
     "com.unity.burst": "1.8.25",
     "com.unity.cinemachine": "2.10.4",
@@ -17,6 +18,7 @@
     "com.unity.package-validation-suite": "0.22.0-preview",
     "com.unity.render-pipelines.core": "17.2.0",
     "com.unity.render-pipelines.universal": "17.2.0",
+    "com.unity.terrain-tools": "5.3.1",
     "com.unity.render-pipelines.universal-config": "17.0.3",
     "com.unity.rendering.light-transport": "1.0.1",
     "com.unity.searcher": "4.9.2",
