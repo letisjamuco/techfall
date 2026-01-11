@@ -32,18 +32,18 @@ The gameplay is simple, but the consequences are not.
 
 The game has **three main outcomes**, based on the player’s actions:
 
-### 1. Resignation – The Farm
+### 1. Resignation - The Farm
 If the player chooses to quit, they leave the tech world behind.  
 The game transitions to a **quiet farm**, symbolizing a return to a slower, human-scale life.
 
-### 2. Failure – A World Without Technology
+### 2. Failure - A World Without Technology
 If the player loses and the system collapses, the game moves to a **post-technology world**.  
 Technology is gone. What remains is emptiness, silence, and reset.
 
-### 3. Success – AI Takeover
+### 3. Success - AI Takeover
 If the player performs perfectly and maintains full control, **AI takes over**.  
 Human input is no longer needed.  
-Efficiency wins — but at a cost.
+Efficiency wins - but at a cost.
 
 Each ending reflects a different relationship between humans and technology.
 
