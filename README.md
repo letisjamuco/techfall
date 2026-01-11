@@ -2,8 +2,12 @@
 
 **Techfall** is a narrative-driven Unity game about technology, control, and choice.
 
-The player takes the role of an intern in a tech company.  
-Through a symbolic **Jenga-style gameplay**, the player interacts with different layers of modern technology, trying to keep the system stable.
+The player takes the role of an intern in a tech company on their first day at work.  
+Their first task seems simple: **build and maintain a tower** that represents the company’s technology stack.
+
+Under constant pressure from a **toxic and demanding employer**, the player is pushed to work faster, optimize more, and never stop. Mistakes are punished, hesitation is criticized, and success is never enough.
+
+Through a symbolic **Jenga-style gameplay**, the player physically interacts with different layers of modern technology, trying to keep the system stable while external pressure keeps increasing.
 
 ## What is the Game About?
 
@@ -62,7 +66,7 @@ Technology is not shown as code or machines, but as fragile structures that rely
 
 The game invites the player to question:
 
-> *Is technological progress about building higher — or knowing when to stop?*
+> *Is technological progress about building higher - or knowing when to stop?*
 
 ## Status
 
