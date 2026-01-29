@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Anchor
+  - Level0
+  - Level1
+  - Level2
   layers:
   - Default
   - TransparentFX
