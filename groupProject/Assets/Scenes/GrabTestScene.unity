@@ -4703,6 +4703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb567fe5cb5ac224abdcd59f8ea6c27b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetector
+  tagField: Level2
 --- !u!1001 &307924348
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11548,7 +11549,7 @@ GameObject:
   - component: {fileID: 745598016}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Level1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12576,7 +12577,7 @@ GameObject:
   - component: {fileID: 872752518}
   m_Layer: 0
   m_Name: Green Instantaneous Interactable
-  m_TagString: Level0
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13122,7 +13123,7 @@ GameObject:
   - component: {fileID: 887456022}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Level2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16095,7 +16096,7 @@ GameObject:
   - component: {fileID: 1139247783}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Level0
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17815,7 +17816,7 @@ GameObject:
   - component: {fileID: 1246715789}
   m_Layer: 0
   m_Name: 'Red Kinematic Interactable '
-  m_TagString: Level1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19823,7 +19824,7 @@ GameObject:
   - component: {fileID: 1354874170}
   m_Layer: 0
   m_Name: 'Yellow Velocity Tracking Interactable '
-  m_TagString: Level2
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24415,6 +24416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb567fe5cb5ac224abdcd59f8ea6c27b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetector
+  tagField: Level1
 --- !u!1 &1675800009
 GameObject:
   m_ObjectHideFlags: 0
@@ -31328,6 +31330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb567fe5cb5ac224abdcd59f8ea6c27b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetector
+  tagField: Level0
 --- !u!1 &2117191753
 GameObject:
   m_ObjectHideFlags: 0
