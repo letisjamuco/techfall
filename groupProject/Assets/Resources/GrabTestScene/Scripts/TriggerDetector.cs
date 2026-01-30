@@ -9,10 +9,17 @@ public class TriggerDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //get score only if level of object is the correct one
         if (other.gameObject.CompareTag(tagField))
         {
-            Debug.Log(tagField + " collision happened");
+            Debug.Log(tagField + " object inserted!");
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        //if object falls out of level, then lose points anyway
+        Debug.Log("Object fell!");
     }
 
 }
