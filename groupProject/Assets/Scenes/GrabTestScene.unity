@@ -980,8 +980,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 3931131268276694408, guid: e192835d38cad96419fc527db5f653f5, type: 3}
-  - {fileID: -876546973899608171, guid: 0927d29e476ce5843b1f7d2a96943c51, type: 3}
+  - {fileID: 2100000, guid: ef21c57a5c891194aaa8c4b62f0a4afc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4782,7 +4781,7 @@ PrefabInstance:
       objectReference: {fileID: 584262727}
     - target: {fileID: 7396278978564332023, guid: 6b12f432fa58c224baf0d659706362be, type: 3}
       propertyPath: m_MaterialIndex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8634317094661461186, guid: 6b12f432fa58c224baf0d659706362be, type: 3}
       propertyPath: m_InteractableSource
@@ -6469,8 +6468,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2764040821158719600, guid: 798b57a563f10664da6a16e1e72068aa, type: 3}
-  - {fileID: -876546973899608171, guid: 0927d29e476ce5843b1f7d2a96943c51, type: 3}
+  - {fileID: 2100000, guid: 005e4e524ba64d5418d16534bce72b54, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8454,7 +8452,7 @@ PrefabInstance:
       objectReference: {fileID: 398070658}
     - target: {fileID: 7396278978564332023, guid: 6b12f432fa58c224baf0d659706362be, type: 3}
       propertyPath: m_MaterialIndex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8634317094661461186, guid: 6b12f432fa58c224baf0d659706362be, type: 3}
       propertyPath: m_InteractableSource
@@ -8861,8 +8859,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5009200260318101400, guid: 798b57a563f10664da6a16e1e72068aa, type: 3}
-  - {fileID: -876546973899608171, guid: 0927d29e476ce5843b1f7d2a96943c51, type: 3}
+  - {fileID: 2100000, guid: 5a4a2af4c76c7bb4695efd07126c98ca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -24216,7 +24213,7 @@ PrefabInstance:
       objectReference: {fileID: 67551160}
     - target: {fileID: 7396278978564332023, guid: 6b12f432fa58c224baf0d659706362be, type: 3}
       propertyPath: m_MaterialIndex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8634317094661461186, guid: 6b12f432fa58c224baf0d659706362be, type: 3}
       propertyPath: m_InteractableSource
