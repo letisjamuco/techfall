@@ -3071,6 +3071,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1542655968354415927, guid: 906df009be950e44fac11639cea5a092, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3261077739421167284, guid: 906df009be950e44fac11639cea5a092, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -3382,6 +3386,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 5786590330994609213}
+  - {fileID: 306125124}
   - {fileID: 1648535870}
   - {fileID: 464144694}
   - {fileID: 6796077557056451178}
@@ -3395,4 +3400,3 @@ SceneRoots:
   - {fileID: 2104630341}
   - {fileID: 992619864}
   - {fileID: 787911248}
-  - {fileID: 306125124}
