@@ -2,52 +2,57 @@ using UnityEngine;
 
 public class BeltPathMover : MonoBehaviour
 {
-	public bool wasGrabbed = false;
+    // Set true by grab system (so belt stops controlling this object)
+    public bool wasGrabbed = false;
 
-	Transform[] _path;
-	float _travelTime;
-	float _elapsed;
-	TechfallConveyorController _controller;
+    // Used when we pause the belt (stop motion without destroying)
+    public bool paused = false;
 
-	public void Init(Transform[] path, float travelTimeSeconds, TechfallConveyorController controller)
-	{
-		_path = path;
-		_travelTime = Mathf.Max(0.1f, travelTimeSeconds);
-		_controller = controller;
+    Transform[] _wps;
+    float _travelTime;
+    float _elapsed;
+    TechfallConveyorController _controller;
 
-		_elapsed = 0f;
-		transform.position = _path[0].position;
-	}
+    // Called by TechfallConveyorController right after spawn
+    public void Init(Transform[] waypoints, float travelTimeSeconds, TechfallConveyorController controller)
+    {
+        _wps = waypoints;
+        _travelTime = Mathf.Max(0.1f, travelTimeSeconds);
+        _controller = controller;
+        _elapsed = 0f;
 
-	void Update()
-	{
-		if (_path == null || _path.Length < 2) return;
-		if (wasGrabbed) return; // once grabbed, stop moving it
+        transform.position = _wps[0].position;
+        transform.rotation = _wps[0].rotation;
+    }
 
-		_elapsed += Time.deltaTime;
+    void Update()
+    {
+        if (_wps == null || _wps.Length < 2) return;
+        if (wasGrabbed || paused) return;
 
-		// normalized progress 0..1 across full path time
-		float t = Mathf.Clamp01(_elapsed / _travelTime);
+        _elapsed += Time.deltaTime;
+        float t = Mathf.Clamp01(_elapsed / _travelTime);
 
-		// move along segments
-		float scaled = t * (_path.Length - 1);
-		int seg = Mathf.Min(_path.Length - 2, Mathf.FloorToInt(scaled));
-		float localT = scaled - seg;
+        // Move along waypoint segments
+        float scaled = t * (_wps.Length - 1);
+        int seg = Mathf.Min(_wps.Length - 2, Mathf.FloorToInt(scaled));
+        float localT = scaled - seg;
 
-		Vector3 a = _path[seg].position;
-		Vector3 b = _path[seg + 1].position;
-		transform.position = Vector3.Lerp(a, b, localT);
+        Vector3 a = _wps[seg].position;
+        Vector3 b = _wps[seg + 1].position;
 
-		// Optional: face direction
-		Vector3 dir = (b - a);
-		if (dir.sqrMagnitude > 0.0001f)
-			transform.rotation = Quaternion.LookRotation(dir.normalized, Vector3.up);
-	}
+        transform.position = Vector3.Lerp(a, b, localT);
 
-	// Call this from grab event (XR/OVR) or manually
-	public void MarkGrabbed()
-	{
-		wasGrabbed = true;
-		_controller?.RegisterGrabbed(gameObject);
-	}
+        // Face forward along the path (optional, helps realism)
+        Vector3 dir = (b - a);
+        if (dir.sqrMagnitude > 0.0001f)
+            transform.rotation = Quaternion.LookRotation(dir.normalized, Vector3.up);
+    }
+
+    // Call this from the grab script when the user grabs the object
+    public void MarkGrabbed()
+    {
+        wasGrabbed = true;
+        _controller?.RegisterGrabbed(gameObject);
+    }
 }
