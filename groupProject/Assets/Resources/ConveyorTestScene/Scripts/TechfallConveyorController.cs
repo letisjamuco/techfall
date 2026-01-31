@@ -4,132 +4,157 @@ using UnityEngine.SceneManagement;
 
 public class TechfallConveyorController : MonoBehaviour
 {
-	[Header("Spawn Prefabs (set from Inspector)")]
-	public List<GameObject> prefabs = new List<GameObject>();
+    [Header("Prefabs to spawn (drag up to 20 here)")]
+    public List<GameObject> spawnPrefabs = new List<GameObject>();
 
-	public enum SpawnMode { InOrder, Random, ShuffleBag }
-	public SpawnMode spawnMode = SpawnMode.ShuffleBag;
+    public enum SpawnMode { InOrder, ShuffleNoRepeat, Random }
+    public SpawnMode spawnMode = SpawnMode.ShuffleNoRepeat;
 
-	[Header("Spawn")]
-	public Transform spawnPoint;
-	public float spawnIntervalSeconds = 20f;
-	public int maxActiveOnBelt = 1;
+    [Header("Spawn timing")]
+    [Tooltip("How often a new item appears, regardless of what happened to the previous one.")]
+    public float spawnIntervalSeconds = 20f;
 
-	[Header("Path")]
-	public Transform[] pathWaypoints; // set in inspector
-	public float travelTimeSeconds = 20f; // time to go from first to last waypoint
+    [Tooltip("Maximum items allowed on the belt at the same time.")]
+    public int maxActiveOnBelt = 1;
 
-	[Header("Miss / Employer")]
-	public int strikes = 0;
-	public int strikesToFail = 3;
-	public AudioSource audioSource;
-	public AudioClip[] reprimands; // size 3: 1st,2nd,3rd (or more)
-	public string failSceneName = "PreTechnologyWorldScene";
+    [Tooltip("Stop spawning after this many total spawns. Set 0 to mean 'no limit'.")]
+    public int maxTotalSpawns = 20;
 
-	// internal
-	float _t;
-	int _orderIndex;
-	readonly List<int> _bag = new();
-	readonly HashSet<GameObject> _active = new();
+    [Header("Path (visible belt path)")]
+    [Tooltip("Waypoints the item will follow (WP_0 ... WP_last). Use 8-15 for smooth curve.")]
+    public Transform[] pathWaypoints;
 
-	void Awake()
-	{
-		if (!audioSource) audioSource = GetComponent<AudioSource>();
-	}
+    [Tooltip("Time to travel from first to last waypoint.")]
+    public float travelTimeSeconds = 20f;
 
-	void Update()
-	{
-		_t += Time.deltaTime;
-		if (_t >= spawnIntervalSeconds)
-		{
-			_t = 0f;
-			TrySpawn();
-		}
-	}
+    [Header("Boss reprimands (misses)")]
+    public int strikes = 0;
 
-	void TrySpawn()
-	{
-		if (prefabs == null || prefabs.Count == 0 || spawnPoint == null) return;
-		if (pathWaypoints == null || pathWaypoints.Length < 2) return;
+    [Tooltip("On this strike, the game loads the fail scene. Example: 4 means fail on the 4th miss.")]
+    public int strikesToFail = 4;
 
-		// limit active
-		CleanupNulls();
-		if (_active.Count >= maxActiveOnBelt) return;
+    [Tooltip("Boss voice clips for 1st, 2nd, 3rd miss (calm -> harsh -> toxic).")]
+    public AudioClip[] bossReprimandClips;
 
-		GameObject prefab = PickPrefab();
-		if (!prefab) return;
+    [Tooltip("Scene name to load on failure.")]
+    public string failSceneName = "PreTechnologyWorldScene";
 
-		GameObject go = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
+    [Header("Audio Sources")]
+    [Tooltip("Looping conveyor machine sound.")]
+    public AudioSource machineLoopAudio;
 
-		// add belt mover
-		var mover = go.GetComponent<BeltPathMover>();
-		if (!mover) mover = go.AddComponent<BeltPathMover>();
+    [Tooltip("Boss voice-over audio source.")]
+    public AudioSource bossVoiceAudio;
 
-		mover.Init(pathWaypoints, travelTimeSeconds, this);
+    [Header("Optional: Pause belt when an item is grabbed")]
+    public bool pauseBeltOnGrab = false;
 
-		_active.Add(go);
-	}
+    float _timer;
+    int _orderIndex;
+    int _totalSpawned;
+    readonly HashSet<GameObject> _active = new();
+    readonly List<int> _bag = new();
 
-	void CleanupNulls()
-	{
-		_active.RemoveWhere(x => x == null);
-	}
+    bool _beltPaused = false;
 
-	GameObject PickPrefab()
-	{
-		switch (spawnMode)
-		{
-			case SpawnMode.InOrder:
-				var p = prefabs[_orderIndex % prefabs.Count];
-				_orderIndex++;
-				return p;
+    void Update()
+    {
+        if (_beltPaused) return;
 
-			case SpawnMode.Random:
-				return prefabs[Random.Range(0, prefabs.Count)];
+        _timer += Time.deltaTime;
+        if (_timer >= spawnIntervalSeconds)
+        {
+            _timer = 0f;
+            TrySpawn();
+        }
+    }
 
-			case SpawnMode.ShuffleBag:
-			default:
-				if (_bag.Count == 0)
-				{
-					for (int i = 0; i < prefabs.Count; i++) _bag.Add(i);
-					// shuffle
-					for (int i = 0; i < _bag.Count; i++)
-					{
-						int j = Random.Range(i, _bag.Count);
-						(_bag[i], _bag[j]) = (_bag[j], _bag[i]);
-					}
-				}
-				int idx = _bag[0];
-				_bag.RemoveAt(0);
-				return prefabs[idx];
-		}
-	}
+    void TrySpawn()
+    {
+        CleanupNulls();
 
-	public void RegisterMiss(GameObject obj)
-	{
-		if (obj != null) _active.Remove(obj);
+        if (spawnPrefabs == null || spawnPrefabs.Count == 0) return;
+        if (pathWaypoints == null || pathWaypoints.Length < 2) return;
 
-		strikes++;
+        if (maxTotalSpawns > 0 && _totalSpawned >= maxTotalSpawns) return;
+        if (_active.Count >= maxActiveOnBelt) return;
 
-		// play reprimand
-		if (reprimands != null && reprimands.Length > 0 && audioSource)
-		{
-			int clipIndex = Mathf.Clamp(strikes - 1, 0, reprimands.Length - 1);
-			if (reprimands[clipIndex])
-				audioSource.PlayOneShot(reprimands[clipIndex]);
-		}
+        GameObject prefab = PickPrefab();
+        if (!prefab) return;
 
-		Debug.Log($"MISS: strikes {strikes}/{strikesToFail}");
+        var go = Instantiate(prefab, pathWaypoints[0].position, pathWaypoints[0].rotation);
+        _totalSpawned++;
 
-		if (strikes >= strikesToFail)
-		{
-			SceneManager.LoadScene(failSceneName);
-		}
-	}
+        var mover = go.GetComponent<BeltPathMover>();
+        if (!mover) mover = go.AddComponent<BeltPathMover>();
+        mover.Init(pathWaypoints, travelTimeSeconds, this);
 
-	public void RegisterGrabbed(GameObject obj)
-	{
-		// object removed from belt system (player took it)
-		if (obj != null) _active.Remove(obj);
-	}
+        _active.Add(go);
+    }
+
+    GameObject PickPrefab()
+    {
+        switch (spawnMode)
+        {
+            case SpawnMode.InOrder:
+                var p = spawnPrefabs[_orderIndex % spawnPrefabs.Count];
+                _orderIndex++;
+                return p;
+
+            case SpawnMode.Random:
+                return spawnPrefabs[Random.Range(0, spawnPrefabs.Count)];
+
+            case SpawnMode.ShuffleNoRepeat:
+            default:
+                if (_bag.Count == 0)
+                {
+                    for (int i = 0; i < spawnPrefabs.Count; i++) _bag.Add(i);
+                    for (int i = 0; i < _bag.Count; i++)
+                    {
+                        int j = Random.Range(i, _bag.Count);
+                        (_bag[i], _bag[j]) = (_bag[j], _bag[i]);
+                    }
+                }
+                int idx = _bag[0];
+                _bag.RemoveAt(0);
+                return spawnPrefabs[idx];
+        }
+    }
+
+    void CleanupNulls()
+    {
+        _active.RemoveWhere(x => x == null);
+    }
+
+    // Called when an item reaches the "wall eater" trigger without being grabbed
+    public void RegisterMiss(GameObject obj)
+    {
+        if (obj != null) _active.Remove(obj);
+
+        strikes++;
+
+        // Play boss clip for strike 1..3 (if provided)
+        if (bossVoiceAudio && bossReprimandClips != null && bossReprimandClips.Length > 0)
+        {
+            int clipIndex = Mathf.Clamp(strikes - 1, 0, bossReprimandClips.Length - 1);
+            if (clipIndex < bossReprimandClips.Length && bossReprimandClips[clipIndex])
+                bossVoiceAudio.PlayOneShot(bossReprimandClips[clipIndex]);
+        }
+
+        Debug.Log($"MISS -> strikes {strikes}/{strikesToFail}");
+
+        if (strikes >= strikesToFail)
+        {
+            SceneManager.LoadScene(failSceneName);
+        }
+    }
+
+    // Called by grab system when the player grabs the item
+    public void RegisterGrabbed(GameObject obj)
+    {
+        if (obj != null) _active.Remove(obj);
+        if (pauseBeltOnGrab) _beltPaused = true;
+    }
+
+    public void SetBeltPaused(bool paused) => _beltPaused = paused;
 }

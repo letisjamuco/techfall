@@ -1,0 +1,202 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8720361543940649881
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -9032126458382343432, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_Name
+      value: Object3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8994441815950680349, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_DirtyAABB
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8994441815950680349, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_AABB.m_Center.x
+      value: -0.05375719
+      objectReference: {fileID: 0}
+    - target: {fileID: -8994441815950680349, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_AABB.m_Center.y
+      value: -1.4718391
+      objectReference: {fileID: 0}
+    - target: {fileID: -8994441815950680349, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_AABB.m_Center.z
+      value: -1.9557859
+      objectReference: {fileID: 0}
+    - target: {fileID: -8994441815950680349, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_AABB.m_Extent.x
+      value: 2.0537572
+      objectReference: {fileID: 0}
+    - target: {fileID: -8994441815950680349, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_AABB.m_Extent.y
+      value: 1.4718393
+      objectReference: {fileID: 0}
+    - target: {fileID: -8994441815950680349, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_AABB.m_Extent.z
+      value: 1.0442141
+      objectReference: {fileID: 0}
+    - target: {fileID: -5644133064174452605, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d253a2fcc0dee6a42b7880b3e412aeb7, type: 2}
+    - target: {fileID: -3955671535967796017, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_Name
+      value: Object1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3955671535967796017, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1368073287915046860, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_Name
+      value: ConveyorBelt
+      objectReference: {fileID: 0}
+    - target: {fileID: -1368073287915046860, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1287427569929068534, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_Name
+      value: Object4
+      objectReference: {fileID: 0}
+    - target: {fileID: -679491880953713913, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_Name
+      value: Paper
+      objectReference: {fileID: 0}
+    - target: {fileID: -679491880953713913, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 759262111711588039, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_Name
+      value: ConveyorBelt
+      objectReference: {fileID: 0}
+    - target: {fileID: 759262111711588039, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199580340203360154, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_Name
+      value: ConveyorBelt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985173397892501300, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_Name
+      value: Object2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143665130583759315, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_Name
+      value: OutsideBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143665130583759315, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584944639006816169, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_Name
+      value: InsideBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584944639006816169, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7946791703420737762, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7973108417871018313, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_Name
+      value: Objects
+      objectReference: {fileID: 0}
+    - target: {fileID: 7973108417871018313, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8128668236925612103, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_Name
+      value: ConveyorBelt
+      objectReference: {fileID: 0}
+    - target: {fileID: 8522118834112639327, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_Name
+      value: Roll
+      objectReference: {fileID: 0}
+    - target: {fileID: 8522118834112639327, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814313797459801258, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_Name
+      value: ConveyorBelt
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814313797459801258, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897093224900880590, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897093224900880590, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897093224900880590, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897093224900880590, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897093224900880590, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897093224900880590, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897093224900880590, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897093224900880590, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897093224900880590, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897093224900880590, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897093224900880590, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897093224900880590, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897093224900880590, guid: dada45ae67e541843806ff484232c661, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -5644133064174452605, guid: dada45ae67e541843806ff484232c661, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: -6272093360196033265, guid: dada45ae67e541843806ff484232c661, type: 3}
+    - {fileID: -679491880953713913, guid: dada45ae67e541843806ff484232c661, type: 3}
+    - {fileID: -3955671535967796017, guid: dada45ae67e541843806ff484232c661, type: 3}
+    - {fileID: 2985173397892501300, guid: dada45ae67e541843806ff484232c661, type: 3}
+    - {fileID: -9032126458382343432, guid: dada45ae67e541843806ff484232c661, type: 3}
+    - {fileID: 7973108417871018313, guid: dada45ae67e541843806ff484232c661, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: -5645937942226959685, guid: dada45ae67e541843806ff484232c661, type: 3}
