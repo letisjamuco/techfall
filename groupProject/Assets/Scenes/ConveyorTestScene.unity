@@ -3324,6 +3324,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 96578857041276184, guid: 1cd31db74dae53346b474eabdd792c60, type: 3}
+      propertyPath: conveyor
+      value: 
+      objectReference: {fileID: 992619865}
     - target: {fileID: 4249408527644934891, guid: 1cd31db74dae53346b474eabdd792c60, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.54
@@ -3368,10 +3372,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button
       objectReference: {fileID: 0}
-    - target: {fileID: 7092639438974799798, guid: 1cd31db74dae53346b474eabdd792c60, type: 3}
-      propertyPath: conveyor
-      value: 
-      objectReference: {fileID: 992619865}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
