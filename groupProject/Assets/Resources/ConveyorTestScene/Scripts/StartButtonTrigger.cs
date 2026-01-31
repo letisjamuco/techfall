@@ -1,20 +1,13 @@
-using System.Collections;
 using UnityEngine;
 
-public class FadeInOnStart : MonoBehaviour
+public class StartButtonTrigger : MonoBehaviour
 {
-    public ScreenFader fader;
-    public float fadeInSeconds = 1.5f;
+    public TechfallConveyorController conveyor;
 
-    IEnumerator Start()
+    // Triggered when the user's hand touches the button volume
+    void OnTriggerEnter(Collider other)
     {
-        if (!fader) fader = GetComponent<ScreenFader>();
-        if (!fader || !fader.canvasGroup) yield break;
-
-        // start black
-        fader.canvasGroup.alpha = 1f;
-
-        // fade to clear
-        yield return fader.FadeIn(fadeInSeconds);
+        // Simple: any collider from XR hands can start it
+        conveyor?.StartBelt();
     }
 }
