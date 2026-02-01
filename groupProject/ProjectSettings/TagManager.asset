@@ -8,11 +8,12 @@ TagManager:
   - Level1
   - Level2
   - CinemachineTarget
+  - Anchor
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - DirectInteractable
   - Water
   - UI
   - 
