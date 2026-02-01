@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5973341416568041622}
   - component: {fileID: 4721619679333046831}
   - component: {fileID: 8731019491210292804}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Straps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 2166979755486706752}
   - component: {fileID: 1572123946325183584}
   - component: {fileID: 6360244824924461772}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: main body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2881105062119840959}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: straps 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7594561169809913193}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Straps 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 2893668366061491157}
   - component: {fileID: 3065615515760920898}
   - component: {fileID: 5843479982136735768}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ GameObject:
   - component: {fileID: 8253937425052641694}
   - component: {fileID: 1344576016924721787}
   - component: {fileID: 6587215741658456955}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Buckle Tongue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,7 +431,7 @@ GameObject:
   - component: {fileID: 3884716844844049669}
   - component: {fileID: 2465582377117601121}
   - component: {fileID: 2869678355064955760}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Straps With Hole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 6477204889815152123}
   - component: {fileID: 6278865262435839974}
   - component: {fileID: 4331443589841956779}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Loop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -608,7 +608,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3256342687590203854}
   - component: {fileID: 8962430336149684206}
-  m_Layer: 0
+  - component: {fileID: -274764243527430389}
+  m_Layer: 3
   m_Name: SmartWatchInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -660,6 +661,133 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-274764243527430389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5938220040472074791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
+  m_InteractionManager: {fileID: 0}
+  m_Colliders: []
+  m_InteractionLayers:
+    m_Bits: 1
+  m_DistanceCalculationMode: 1
+  m_SelectMode: 0
+  m_FocusMode: 1
+  m_CustomReticle: {fileID: 0}
+  m_AllowGazeInteraction: 0
+  m_AllowGazeSelect: 0
+  m_OverrideGazeTimeToSelect: 0
+  m_GazeTimeToSelect: 0.5
+  m_OverrideTimeToAutoDeselectGaze: 0
+  m_TimeToAutoDeselectGaze: 3
+  m_AllowGazeAssistance: 0
+  m_FirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstFocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastFocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
+  m_StartingInteractionStrengthFilters: []
+  m_AttachTransform: {fileID: 0}
+  m_SecondaryAttachTransform: {fileID: 0}
+  m_UseDynamicAttach: 1
+  m_MatchAttachPosition: 1
+  m_MatchAttachRotation: 1
+  m_SnapToColliderVolume: 1
+  m_ReinitializeDynamicAttachEverySingleGrab: 1
+  m_AttachEaseInTime: 0.15
+  m_MovementType: 0
+  m_PredictedVisualsTransform: {fileID: 7785415734798009788}
+  m_VelocityDamping: 1
+  m_VelocityScale: 1
+  m_AngularVelocityDamping: 1
+  m_AngularVelocityScale: 1
+  m_TrackPosition: 1
+  m_SmoothPosition: 0
+  m_SmoothPositionAmount: 8
+  m_TightenPosition: 0.1
+  m_TrackRotation: 1
+  m_SmoothRotation: 0
+  m_SmoothRotationAmount: 8
+  m_TightenRotation: 0.1
+  m_TrackScale: 1
+  m_SmoothScale: 0
+  m_SmoothScaleAmount: 8
+  m_TightenScale: 0.1
+  m_ThrowOnDetach: 1
+  m_ThrowSmoothingDuration: 0.25
+  m_ThrowSmoothingCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_ThrowVelocityScale: 1.5
+  m_ThrowAngularVelocityScale: 1
+  m_ForceGravityOnDetach: 0
+  m_RetainTransformParent: 1
+  m_StartingSingleGrabTransformers: []
+  m_StartingMultipleGrabTransformers: []
+  m_AddDefaultGrabTransformers: 1
+  m_FarAttachMode: 0
+  m_LimitLinearVelocity: 0
+  m_LimitAngularVelocity: 0
+  m_MaxLinearVelocityDelta: 10
+  m_MaxAngularVelocityDelta: 20
 --- !u!1 &7169538852811734354
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,7 +798,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8319178218341029950}
   - component: {fileID: 2740499552681857708}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -724,7 +852,7 @@ GameObject:
   - component: {fileID: 7019943612783138464}
   - component: {fileID: 3874435280549609640}
   - component: {fileID: 1548907941091497097}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: knob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -813,7 +941,7 @@ GameObject:
   - component: {fileID: 1252394164528934469}
   - component: {fileID: 3831203021543155167}
   - component: {fileID: 7146747060682777712}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Buckle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -903,7 +1031,7 @@ GameObject:
   - component: {fileID: 879237404168134353}
   - component: {fileID: 3497941686406458657}
   - component: {fileID: 6810925564473250464}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Strab Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -990,7 +1118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7785415734798009788}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1032,7 +1160,7 @@ GameObject:
   - component: {fileID: 2253220968464777302}
   - component: {fileID: 7965473791834177376}
   - component: {fileID: 4819920441801877664}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: back side
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1121,6 +1249,14 @@ PrefabInstance:
     - target: {fileID: 3221867569475832344, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Name
       value: AudioInteractionAffordance
+      objectReference: {fileID: 0}
+    - target: {fileID: 3221867569475832344, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5727059444422855254, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8010795103005149843, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_LocalPosition.x

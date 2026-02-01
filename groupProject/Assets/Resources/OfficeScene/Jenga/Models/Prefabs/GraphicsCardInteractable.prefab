@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 852883303970996177}
   - component: {fileID: 3770375326208449590}
   - component: {fileID: 4577382026398544741}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fan_2_gpu2_Red.001_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 80452450374202389}
   - component: {fileID: 889527592759328606}
   - component: {fileID: 1673419366481317218}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Card_gpu2_Card_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 4467840868785940639}
   - component: {fileID: 2101198316989576900}
   - component: {fileID: 3412169106130485597}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Chips_gpu2_Grey1_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 3676663166154218389}
   - component: {fileID: 5612304271785469814}
   - component: {fileID: 8730028597969213507}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Port's_gpu2_Metal S_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 6984596594004268639}
   - component: {fileID: 8911457764794218098}
   - component: {fileID: 6315447188202498180}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fan_1_gpu2_Base_gpu2_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -456,7 +456,7 @@ GameObject:
   - component: {fileID: 2699841161609929625}
   - component: {fileID: 8792917979362382955}
   - component: {fileID: 2377678685190994311}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Base_gpu2_Base_gpu2_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -545,7 +545,7 @@ GameObject:
   - component: {fileID: 4734758386091319972}
   - component: {fileID: 6942692000753058529}
   - component: {fileID: 5865146988526386134}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CoolingParts_gpu2_Bronze_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,7 +634,7 @@ GameObject:
   - component: {fileID: 8249881232103447031}
   - component: {fileID: 6622574478861388806}
   - component: {fileID: 1605328756936710497}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VGA's_gpu2_Black_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -723,7 +723,7 @@ GameObject:
   - component: {fileID: 4888169621660333731}
   - component: {fileID: 2723913101901657606}
   - component: {fileID: 3811213348954771464}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Card_gpu2.001_Metal S_Black_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -810,7 +810,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1036731983297880}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 5719729c0999426d9e74e360287d4240.fbx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -844,7 +844,7 @@ GameObject:
   - component: {fileID: 5875775079348067928}
   - component: {fileID: 2966949932710043386}
   - component: {fileID: 221675411029967416}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CoolingParts_Metal_gpu2_Metal_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -933,7 +933,7 @@ GameObject:
   - component: {fileID: 2777861782262453726}
   - component: {fileID: 470065634820051089}
   - component: {fileID: 1281309775352793713}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fan_2_gpu2_Black_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1020,7 +1020,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5590605396343990235}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CoolingParts_Metal_gpu2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1054,7 +1054,7 @@ GameObject:
   - component: {fileID: 7782563676616409747}
   - component: {fileID: 1913114544802930405}
   - component: {fileID: 4340080189435494974}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Side Metal Part_gpu2_Metal S_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1141,7 +1141,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4526849176497905256}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RootNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1173,7 +1173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2215993131047373229}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Base_gpu2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1217,7 +1217,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 551373209277180276}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VGA's_gpu2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1251,7 +1251,7 @@ GameObject:
   - component: {fileID: 8177908040561519158}
   - component: {fileID: 47642927960087429}
   - component: {fileID: 746489962957074573}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Base_gpu2_Red.001_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1338,7 +1338,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 736126713113125165}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Chips_gpu2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1371,7 +1371,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2040262944066246805}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fan_1_gpu2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1405,7 +1405,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 418552801088355840}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1439,7 +1439,7 @@ GameObject:
   - component: {fileID: 4093028249136620262}
   - component: {fileID: 8218144316196596803}
   - component: {fileID: 1551620261804264557}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fan_2_gpu2_Base_gpu2_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1526,7 +1526,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3927981826858245257}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fan_2_gpu2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1562,7 +1562,7 @@ GameObject:
   - component: {fileID: 3783430797465333902}
   - component: {fileID: 7653130119832645295}
   - component: {fileID: 8888925925994439981}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CoolingParts_gpu2_Metal_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1651,7 +1651,7 @@ GameObject:
   - component: {fileID: 2145202336193925492}
   - component: {fileID: 7674467301984685804}
   - component: {fileID: 2884066463180525999}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Chips_gpu2_Grey_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1740,7 +1740,7 @@ GameObject:
   - component: {fileID: 6021242843658535937}
   - component: {fileID: 4853609191312789995}
   - component: {fileID: 2586451799662474500}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Base_gpu2_Metal.1_gpu2_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1827,7 +1827,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8301303300208784076}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Port's_gpu2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1861,7 +1861,7 @@ GameObject:
   - component: {fileID: 4872320286659087668}
   - component: {fileID: 7550040638518359882}
   - component: {fileID: 6213942153814555561}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fan_1_gpu2_Red.001_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1949,7 +1949,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5066539379643939605}
   - component: {fileID: 3166193027062412196}
-  m_Layer: 0
+  - component: {fileID: -7424632068793304158}
+  m_Layer: 3
   m_Name: GraphicsCardInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2001,6 +2002,133 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-7424632068793304158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7742699429706212687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
+  m_InteractionManager: {fileID: 0}
+  m_Colliders: []
+  m_InteractionLayers:
+    m_Bits: 1
+  m_DistanceCalculationMode: 1
+  m_SelectMode: 0
+  m_FocusMode: 1
+  m_CustomReticle: {fileID: 0}
+  m_AllowGazeInteraction: 0
+  m_AllowGazeSelect: 0
+  m_OverrideGazeTimeToSelect: 0
+  m_GazeTimeToSelect: 0.5
+  m_OverrideTimeToAutoDeselectGaze: 0
+  m_TimeToAutoDeselectGaze: 3
+  m_AllowGazeAssistance: 0
+  m_FirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstFocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastFocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
+  m_StartingInteractionStrengthFilters: []
+  m_AttachTransform: {fileID: 0}
+  m_SecondaryAttachTransform: {fileID: 0}
+  m_UseDynamicAttach: 1
+  m_MatchAttachPosition: 1
+  m_MatchAttachRotation: 1
+  m_SnapToColliderVolume: 1
+  m_ReinitializeDynamicAttachEverySingleGrab: 1
+  m_AttachEaseInTime: 0.15
+  m_MovementType: 0
+  m_PredictedVisualsTransform: {fileID: 418552801088355840}
+  m_VelocityDamping: 1
+  m_VelocityScale: 1
+  m_AngularVelocityDamping: 1
+  m_AngularVelocityScale: 1
+  m_TrackPosition: 1
+  m_SmoothPosition: 0
+  m_SmoothPositionAmount: 8
+  m_TightenPosition: 0.1
+  m_TrackRotation: 1
+  m_SmoothRotation: 0
+  m_SmoothRotationAmount: 8
+  m_TightenRotation: 0.1
+  m_TrackScale: 1
+  m_SmoothScale: 0
+  m_SmoothScaleAmount: 8
+  m_TightenScale: 0.1
+  m_ThrowOnDetach: 1
+  m_ThrowSmoothingDuration: 0.25
+  m_ThrowSmoothingCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_ThrowVelocityScale: 1.5
+  m_ThrowAngularVelocityScale: 1
+  m_ForceGravityOnDetach: 0
+  m_RetainTransformParent: 1
+  m_StartingSingleGrabTransformers: []
+  m_StartingMultipleGrabTransformers: []
+  m_AddDefaultGrabTransformers: 1
+  m_FarAttachMode: 0
+  m_LimitLinearVelocity: 0
+  m_LimitAngularVelocity: 0
+  m_MaxLinearVelocityDelta: 10
+  m_MaxAngularVelocityDelta: 20
 --- !u!1 &7812502895197458224
 GameObject:
   m_ObjectHideFlags: 0
@@ -2011,7 +2139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3978828952441571431}
   - component: {fileID: 5522941935862347206}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2063,7 +2191,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2285374525261232457}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CoolingParts_gpu2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2096,7 +2224,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9179324541531643113}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Side Metal Part_gpu2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2128,7 +2256,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2520551644441507982}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Card_gpu2.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2160,7 +2288,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2354189889891900366}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Card_gpu2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2195,7 +2323,7 @@ GameObject:
   - component: {fileID: 4670627379573325028}
   - component: {fileID: 6952494716615365485}
   - component: {fileID: 1517662346216527557}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fan_1_gpu2_Black_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2284,7 +2412,7 @@ GameObject:
   - component: {fileID: 5172928919698350391}
   - component: {fileID: 1049093972525780362}
   - component: {fileID: 7520383076135382581}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Card_gpu2_Slot_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2373,6 +2501,14 @@ PrefabInstance:
     - target: {fileID: 3221867569475832344, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Name
       value: AudioInteractionAffordance
+      objectReference: {fileID: 0}
+    - target: {fileID: 3221867569475832344, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5727059444422855254, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8010795103005149843, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_LocalPosition.x
