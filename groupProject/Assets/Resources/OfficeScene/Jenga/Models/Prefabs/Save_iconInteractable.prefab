@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 982797401026727055}
   - component: {fileID: 3249689469437879982}
   - component: {fileID: -7013749784066586612}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Save_iconInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3269502874605240808}
   - component: {fileID: 4057684003606342240}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 6621361849927702785}
   - component: {fileID: 2077114747175193443}
   - component: {fileID: 4778374043799987002}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,11 +348,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3221867569475832344, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5727059444422855254, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8010795103005149843, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_LocalPosition.x

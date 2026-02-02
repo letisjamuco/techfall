@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5166829352113593606}
   - component: {fileID: 1002369629045112490}
   - component: {fileID: 977583767907917080}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: RAM_Silver_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3504805895910596647}
   - component: {fileID: 7045482492087137125}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 6523526448966895227}
   - component: {fileID: 5433393946515928472}
   - component: {fileID: 5872810138531239841}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: RAM_Sticker_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 7947045649982785274}
   - component: {fileID: 3200901683109448013}
   - component: {fileID: 343470566673692829}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: RAM_Side_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 4378687134494919714}
   - component: {fileID: 7035268847489661961}
   - component: {fileID: 1469013820329506683}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: RAM_Bronze_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -418,7 +418,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2534982736928295451}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: RAM.fbx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,7 +450,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1517377895202407552}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: RootNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 1720286200168883878}
   - component: {fileID: 1815594115723448110}
   - component: {fileID: -8203944815722551103}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: RamInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -671,7 +671,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 404297426508594089}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: RAM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -710,7 +710,7 @@ GameObject:
   - component: {fileID: 4765296715132297575}
   - component: {fileID: 4617183315195818036}
   - component: {fileID: 7680293084615734578}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: RAM_Storage_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -799,7 +799,7 @@ GameObject:
   - component: {fileID: 7843675657329000357}
   - component: {fileID: 2087316605326331074}
   - component: {fileID: 292636345361900551}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: RAM_Front_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -886,7 +886,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2752655555922742131}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5354379234837958262}
   - component: {fileID: 1845300226136009037}
   - component: {fileID: 6639709189247632536}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 7703987391608048560}
   - component: {fileID: 5904572253021899527}
   - component: {fileID: 3910180325634214794}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: GPUInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3229354048147000611}
   - component: {fileID: 4361368192632973099}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,11 +346,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3221867569475832344, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5727059444422855254, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8010795103005149843, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_LocalPosition.x

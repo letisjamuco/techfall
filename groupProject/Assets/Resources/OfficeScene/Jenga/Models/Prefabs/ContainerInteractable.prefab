@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3142429194617235932}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: VRayPlane001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5302954482306067027}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 5222384939861365761}
   - component: {fileID: 2094127117102429798}
   - component: {fileID: 2829656666062400589}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: ContainerInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5699954703887152290}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: VRaySun001.Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +298,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8438820843307255150}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: VRaySun001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3411082529236948136}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: VRayCam001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5276351808427754328}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: VRayCam001.Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 1219460023398002066}
   - component: {fileID: 8991609482080504798}
   - component: {fileID: 4741611914500465340}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Group_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -484,7 +484,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4200336746203417675}
   - component: {fileID: 3947629751089905709}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,11 +541,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3221867569475832344, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5727059444422855254, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8010795103005149843, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_LocalPosition.x

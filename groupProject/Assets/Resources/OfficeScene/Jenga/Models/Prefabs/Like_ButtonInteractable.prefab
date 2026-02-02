@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6706743680433443730}
   - component: {fileID: 1308859615270867187}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 432701952876116341}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 2092862306701484218}
   - component: {fileID: 2051127559652596819}
   - component: {fileID: -3976115412610702774}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Like_ButtonInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 4587951453338692824}
   - component: {fileID: 5660912911124127653}
   - component: {fileID: 2440077668583134969}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: like
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,11 +378,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3221867569475832344, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5727059444422855254, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8010795103005149843, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_LocalPosition.x

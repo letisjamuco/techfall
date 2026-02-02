@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2248745858182381606}
   - component: {fileID: 4931584105595246097}
   - component: {fileID: 4559665855851302542}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: AWS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 2583553850210334402}
   - component: {fileID: 4323698371117093610}
   - component: {fileID: 4681124850955443130}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: ArrowHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 3185752639198033120}
   - component: {fileID: 8436653412756147590}
   - component: {fileID: 6802794231788699699}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: AWSInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +378,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7137732119150766490}
   - component: {fileID: 4840526420581884015}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 1432669885227171107}
   - component: {fileID: 4432311143490851387}
   - component: {fileID: 8419081673870428657}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: ArrowBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7735370433207822460}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -558,11 +558,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3221867569475832344, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5727059444422855254, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8010795103005149843, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_LocalPosition.x

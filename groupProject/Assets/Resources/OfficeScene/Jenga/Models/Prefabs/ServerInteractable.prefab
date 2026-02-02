@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5121151935880578988}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: low.obj.cleaner.materialmerger.gles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 1499664691260366341}
   - component: {fileID: 878355445655711490}
   - component: {fileID: 3457121664464269082}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Object_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6803605920366829095}
   - component: {fileID: 6160785820790031816}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4835344054182617147}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 6071424357782201892}
   - component: {fileID: 8980771765169099165}
   - component: {fileID: 5982824762537295150}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Object_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 6412702692333611623}
   - component: {fileID: 3748868440084570324}
   - component: {fileID: 84266869982894989}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: ServerInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,11 +500,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3221867569475832344, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5727059444422855254, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8010795103005149843, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_LocalPosition.x

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3612176443637543828}
   - component: {fileID: 4015418173270446011}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 8989849119528293588}
   - component: {fileID: 688541037757010230}
   - component: {fileID: 7635869280065522516}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: PythonInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8351171244987366891}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 2689512480497459965}
   - component: {fileID: 3552057565216853293}
   - component: {fileID: 691666630488707302}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Python Logo Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -379,11 +379,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3221867569475832344, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5727059444422855254, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8010795103005149843, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_LocalPosition.x

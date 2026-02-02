@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8467038381293219918}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: five_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 9029409492446818608}
   - component: {fileID: 4736091234574245138}
   - component: {fileID: 479583615460716436}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Object_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 4782570233674765133}
   - component: {fileID: 6710527747790604297}
   - component: {fileID: 8953666082214128610}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Object_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2776806039260660841}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: ramka_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3079301730151208330}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: ramka2_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 7591379507745108776}
   - component: {fileID: 5693293007999901847}
   - component: {fileID: 2170534584263983610}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: HTMLInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +474,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8294340000613819557}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -507,7 +507,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8757271964803422814}
   - component: {fileID: 3683150877539441814}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -561,7 +561,7 @@ GameObject:
   - component: {fileID: 5424156919244376789}
   - component: {fileID: 6964178899587238793}
   - component: {fileID: 5681921084467878259}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Object_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -648,7 +648,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4942217388961041562}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: GLTF_SceneRootNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -684,7 +684,7 @@ GameObject:
   - component: {fileID: 8546369357059155664}
   - component: {fileID: 5958297146516009687}
   - component: {fileID: 1448028247986042800}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Object_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -771,7 +771,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1773368271881030134}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -808,11 +808,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3221867569475832344, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5727059444422855254, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8010795103005149843, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_LocalPosition.x
