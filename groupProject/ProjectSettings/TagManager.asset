@@ -9,6 +9,7 @@ TagManager:
   - Level2
   - CinemachineTarget
   - Anchor
+  - JengaPiece
   layers:
   - Default
   - TransparentFX

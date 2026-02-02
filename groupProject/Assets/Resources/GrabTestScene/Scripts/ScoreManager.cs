@@ -1,16 +1,27 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Text scoreText;
+
+    int score = 0;
+
+    // Start is called before the first frame update
     void Start()
     {
-        
+        scoreText.text = score.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        StackHeightCalculator.instance.UpdateMaxHeight();
+        score = (int)StackHeightCalculator.instance.maxHeight * 100;
+        Debug.Log("Score is " + score);
+        if (score > 100)
+        {
+            Debug.Log("HIGH SCORE");
+        }
     }
 }
