@@ -1778,8 +1778,8 @@ MonoBehaviour:
   - {fileID: 1958591038348209367, guid: e732e6d6bc8c9434f98f6d6fb2058a33, type: 3}
   - {fileID: 7737548891533559169, guid: 22c924541a555374781fd89a9cccfff6, type: 3}
   - {fileID: 1419547521084205457, guid: d00416df246582244873ba5bc924bc93, type: 3}
-  - {fileID: 3176221103036714407, guid: 603ba057e99e5004bbdbdb0e0fc105c8, type: 3}
   - {fileID: 842861466378398962, guid: e0ad41ef0f834da449e6f1db2a3b59d2, type: 3}
+  - {fileID: 3176221103036714407, guid: 603ba057e99e5004bbdbdb0e0fc105c8, type: 3}
   - {fileID: 7112498957834894387, guid: 38c8bc26cd6cbaf4cbba4c598244fa01, type: 3}
   - {fileID: 7742699429706212687, guid: ca059bed347dc8349a509e21a396f803, type: 3}
   - {fileID: 2791497557980623855, guid: 6b859617afd9f8147ad7008b34aeeff1, type: 3}
@@ -1799,6 +1799,7 @@ MonoBehaviour:
   maxTotalSpawns: 23
   generatedPathParent: {fileID: 1397175757}
   travelTimeSeconds: 14
+  pathCenter: {fileID: 2023365092}
   strikes: 0
   strikesToFail: 4
   bossReprimandClips:
@@ -1811,7 +1812,8 @@ MonoBehaviour:
   failSceneName: FarmScene
   fader: {fileID: 1379317850}
   fadeOutSeconds: 3
-  pauseBeltOnGrab: 0
+  pauseBeltOnGrab: 1
+  pauseOnGrabSeconds: 0.6
 --- !u!82 &992619866
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2363,8 +2365,6 @@ MonoBehaviour:
   waypointCount: 60
   clockwise: 0
   yOffset: 0
-  useStartRadius: 1
-  snapEndToStartRadius: 1
   rebuildNow: 0
 --- !u!4 &1397175757
 Transform:

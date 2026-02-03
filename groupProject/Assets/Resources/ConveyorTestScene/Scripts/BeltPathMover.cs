@@ -2,27 +2,28 @@ using UnityEngine;
 
 public class BeltPathMover : MonoBehaviour
 {
-    // Set true by grab system (so belt stops controlling this object)
     public bool wasGrabbed = false;
-
-    // Used when we pause the belt (stop motion without destroying)
     public bool paused = false;
 
     Transform[] _wps;
     float _travelTime;
     float _elapsed;
+    Transform _pathCenter;
     TechfallConveyorController _controller;
+    ConveyorItemSettings _settings;
 
-    // Called by TechfallConveyorController right after spawn
-    public void Init(Transform[] waypoints, float travelTimeSeconds, TechfallConveyorController controller)
+    public void Init(Transform[] waypoints, float travelTimeSeconds, TechfallConveyorController controller, Transform pathCenter)
     {
         _wps = waypoints;
         _travelTime = Mathf.Max(0.1f, travelTimeSeconds);
         _controller = controller;
+        _pathCenter = pathCenter;
         _elapsed = 0f;
 
-        transform.position = _wps[0].position;
-        transform.rotation = _wps[0].rotation;
+        _settings = GetComponent<ConveyorItemSettings>();
+        if (_settings) _settings.AutoCompute();
+
+        ApplyPoseAt(0, 0f);
     }
 
     void Update()
@@ -33,23 +34,41 @@ public class BeltPathMover : MonoBehaviour
         _elapsed += Time.deltaTime;
         float t = Mathf.Clamp01(_elapsed / _travelTime);
 
-        // Move along waypoint segments
         float scaled = t * (_wps.Length - 1);
         int seg = Mathf.Min(_wps.Length - 2, Mathf.FloorToInt(scaled));
         float localT = scaled - seg;
 
+        ApplyPoseAt(seg, localT);
+    }
+
+    void ApplyPoseAt(int seg, float localT)
+    {
         Vector3 a = _wps[seg].position;
         Vector3 b = _wps[seg + 1].position;
 
-        transform.position = Vector3.Lerp(a, b, localT);
+        Vector3 p = Vector3.Lerp(a, b, localT);
 
-        // Face forward along the path (optional, helps realism)
+        // Apply per-item offsets (up + outward from center)
+        float yOff = _settings ? _settings.yOffset : 0f;
+        float rOff = _settings ? _settings.radialOffset : 0f;
+
+        if (_pathCenter && rOff != 0f)
+        {
+            Vector3 outward = (p - _pathCenter.position);
+            outward.y = 0f;
+            if (outward.sqrMagnitude > 0.0001f)
+                p += outward.normalized * rOff;
+        }
+
+        p += Vector3.up * yOff;
+        transform.position = p;
+
+        // Face along the path
         Vector3 dir = (b - a);
         if (dir.sqrMagnitude > 0.0001f)
             transform.rotation = Quaternion.LookRotation(dir.normalized, Vector3.up);
     }
 
-    // Call this from the grab script when the user grabs the object
     public void MarkGrabbed()
     {
         wasGrabbed = true;

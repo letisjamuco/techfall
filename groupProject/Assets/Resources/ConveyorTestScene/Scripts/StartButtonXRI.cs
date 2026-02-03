@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
-[RequireComponent(typeof(UnityEngine.XR.Interaction.Toolkit.Interactables.XRSimpleInteractable))]
+[RequireComponent(typeof(XRSimpleInteractable))]
 public class StartButtonXRI : MonoBehaviour
 {
     [Header("Assign in Inspector")]
@@ -11,21 +12,21 @@ public class StartButtonXRI : MonoBehaviour
     public bool oneShot = true;
 
     bool _started;
-    UnityEngine.XR.Interaction.Toolkit.Interactables.XRSimpleInteractable _interactable;
+    XRSimpleInteractable _interactable;
 
     void Awake()
     {
-        _interactable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRSimpleInteractable>();
+        _interactable = GetComponent<XRSimpleInteractable>();
     }
 
     void OnEnable()
     {
-        _interactable.selectEntered.AddListener(OnSelectEntered);
+        if (_interactable) _interactable.selectEntered.AddListener(OnSelectEntered);
     }
 
     void OnDisable()
     {
-        _interactable.selectEntered.RemoveListener(OnSelectEntered);
+        if (_interactable) _interactable.selectEntered.RemoveListener(OnSelectEntered);
     }
 
     void OnSelectEntered(SelectEnterEventArgs args)
