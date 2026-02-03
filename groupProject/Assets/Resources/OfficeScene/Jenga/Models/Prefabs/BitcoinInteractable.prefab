@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: -2456822101626759092}
   - component: {fileID: -6592487413540883307}
   - component: {fileID: -7177792752594984097}
+  - component: {fileID: -2077026941937522658}
   m_Layer: 0
   m_Name: BitcoinInteractable
   m_TagString: Untagged
@@ -439,6 +440,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d162ab0bda999a45abaf0af40279645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConveyorGrabPhysics
+  gravityWhileOnBelt: 0
+  gravityAfterRelease: 1
+  dragOnBelt: 0.05
+  dragWhileHeld: 0
+  dragAfterRelease: 0.05
+  angularDampingAfterRelease: 0.1
+--- !u!114 &-2077026941937522658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7831339570591155091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecb6d4097d6412141b55d4e036cce847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HeightDetector
 --- !u!1 &8489267721969189788
 GameObject:
   m_ObjectHideFlags: 0

@@ -487,6 +487,7 @@ GameObject:
   - component: {fileID: 2872845118087747289}
   - component: {fileID: -5242989999621324319}
   - component: {fileID: 1998032523352884902}
+  - component: {fileID: 7541482320803776181}
   m_Layer: 0
   m_Name: RamInteractable
   m_TagString: Untagged
@@ -705,6 +706,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d162ab0bda999a45abaf0af40279645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConveyorGrabPhysics
+  gravityWhileOnBelt: 0
+  gravityAfterRelease: 1
+  dragOnBelt: 0.05
+  dragWhileHeld: 0
+  dragAfterRelease: 0.05
+  angularDampingAfterRelease: 0.1
+--- !u!114 &7541482320803776181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6107328741783886195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecb6d4097d6412141b55d4e036cce847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HeightDetector
 --- !u!1 &7847973972511075896
 GameObject:
   m_ObjectHideFlags: 0

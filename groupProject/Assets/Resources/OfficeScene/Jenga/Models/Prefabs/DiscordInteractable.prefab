@@ -284,6 +284,7 @@ GameObject:
   - component: {fileID: -6566549662644947881}
   - component: {fileID: 3413291793557915776}
   - component: {fileID: 8825071292386477099}
+  - component: {fileID: 6683366416150601223}
   m_Layer: 0
   m_Name: DiscordInteractable
   m_TagString: Untagged
@@ -503,6 +504,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d162ab0bda999a45abaf0af40279645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConveyorGrabPhysics
+  gravityWhileOnBelt: 0
+  gravityAfterRelease: 1
+  dragOnBelt: 0.05
+  dragWhileHeld: 0
+  dragAfterRelease: 0.05
+  angularDampingAfterRelease: 0.1
+--- !u!114 &6683366416150601223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7737548891533559169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecb6d4097d6412141b55d4e036cce847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HeightDetector
 --- !u!1 &8494059443129400634
 GameObject:
   m_ObjectHideFlags: 0

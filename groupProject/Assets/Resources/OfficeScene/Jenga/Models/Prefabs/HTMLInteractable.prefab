@@ -289,6 +289,7 @@ GameObject:
   - component: {fileID: 5700288174542552374}
   - component: {fileID: 7342389371816047378}
   - component: {fileID: -68370850724399707}
+  - component: {fileID: 5099596121065555781}
   m_Layer: 0
   m_Name: HTMLInteractable
   m_TagString: Untagged
@@ -508,6 +509,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d162ab0bda999a45abaf0af40279645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConveyorGrabPhysics
+  gravityWhileOnBelt: 0
+  gravityAfterRelease: 1
+  dragOnBelt: 0.05
+  dragWhileHeld: 0
+  dragAfterRelease: 0.05
+  angularDampingAfterRelease: 0.1
+--- !u!114 &5099596121065555781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2791497557980623855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecb6d4097d6412141b55d4e036cce847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HeightDetector
 --- !u!1 &3929504543756077210
 GameObject:
   m_ObjectHideFlags: 0
