@@ -66,6 +66,7 @@ GameObject:
   - component: {fileID: 8778270253590216514}
   - component: {fileID: 5581368898358411371}
   - component: {fileID: -4292057332673500938}
+  - component: {fileID: -5576159508879444197}
   m_Layer: 0
   m_Name: MessageInteractable
   m_TagString: Untagged
@@ -100,8 +101,8 @@ Rigidbody:
   m_GameObject: {fileID: 6039681130680003205}
   serializedVersion: 5
   m_Mass: 1
-  m_LinearDamping: 0.5
-  m_AngularDamping: 0.5
+  m_LinearDamping: 0.2
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -115,7 +116,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!114 &8778270253590216514
@@ -218,7 +219,7 @@ MonoBehaviour:
   m_SmoothScaleAmount: 8
   m_TightenScale: 0.1
   m_ThrowOnDetach: 1
-  m_ThrowSmoothingDuration: 0.25
+  m_ThrowSmoothingDuration: 0.05
   m_ThrowSmoothingCurve:
     serializedVersion: 2
     m_Curve:
@@ -273,6 +274,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 145e6a964b0ba704a9832542362087f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrabHook
+--- !u!114 &-5576159508879444197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6039681130680003205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d162ab0bda999a45abaf0af40279645, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ConveyorGrabPhysics
 --- !u!1 &8637927264125333413
 GameObject:
   m_ObjectHideFlags: 0
