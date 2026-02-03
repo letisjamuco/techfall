@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 4561915343725566871}
   m_Layer: 0
   m_Name: JavaInteractable
-  m_TagString: Untagged
+  m_TagString: JengaPiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
