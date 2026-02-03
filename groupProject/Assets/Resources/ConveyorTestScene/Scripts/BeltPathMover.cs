@@ -34,6 +34,12 @@ public class BeltPathMover : MonoBehaviour
         _elapsed += Time.deltaTime;
         float t = Mathf.Clamp01(_elapsed / _travelTime);
 
+        if (t >= 1f && !wasGrabbed)
+        {
+            _controller?.RegisterMiss(gameObject);
+            Destroy(gameObject);
+        }
+
         float scaled = t * (_wps.Length - 1);
         int seg = Mathf.Min(_wps.Length - 2, Mathf.FloorToInt(scaled));
         float localT = scaled - seg;
