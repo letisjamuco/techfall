@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5832229712577483179}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: JengaPiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 2421702823221491419}
   m_Layer: 0
   m_Name: MessageInteractable
-  m_TagString: JengaPiece
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

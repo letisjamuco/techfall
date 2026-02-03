@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 6016089017783082606}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: JengaPiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 4002752499081211730}
   m_Layer: 0
   m_Name: CDDiskInteractable
-  m_TagString: JengaPiece
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

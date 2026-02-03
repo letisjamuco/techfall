@@ -1956,7 +1956,7 @@ GameObject:
   - component: {fileID: -7458738819889071473}
   m_Layer: 0
   m_Name: GraphicsCardInteractable
-  m_TagString: JengaPiece
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2203,7 +2203,7 @@ GameObject:
   - component: {fileID: 5522941935862347206}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: JengaPiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 430487503972163022}
   m_Layer: 0
   m_Name: CloudInteractable
-  m_TagString: JengaPiece
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 9157277181942307575}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: JengaPiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
