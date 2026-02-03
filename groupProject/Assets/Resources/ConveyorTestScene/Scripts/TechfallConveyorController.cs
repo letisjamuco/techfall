@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TechfallConveyorController : MonoBehaviour
 {
-    [Header("Spawn Prefabs (put your 20 items here)")]
+    [Header("Spawn Prefabs")]
     public List<GameObject> spawnPrefabs = new List<GameObject>();
 
     public enum SpawnMode { InOrder, ShuffleNoRepeat, Random }
@@ -19,6 +19,9 @@ public class TechfallConveyorController : MonoBehaviour
     [Header("Path")]
     public Transform generatedPathParent; // GeneratedPath (parent of WP_00..)
     public float travelTimeSeconds = 20f; // time to travel from WP_00 to last WP
+
+    [Header("Path Center (for radial offsets)")]
+    public Transform pathCenter;
 
     [Header("Boss Strikes")]
     public int strikes = 0;
@@ -37,6 +40,10 @@ public class TechfallConveyorController : MonoBehaviour
 
     [Header("Option")]
     public bool pauseBeltOnGrab = false;
+
+    [Header("Pause On Grab")]
+    public float pauseOnGrabSeconds = 0.6f;
+    Coroutine _resumeCo;
 
     // Runtime state
     float _timer;
@@ -137,7 +144,7 @@ public class TechfallConveyorController : MonoBehaviour
 
         var mover = go.GetComponent<BeltPathMover>();
         if (!mover) mover = go.AddComponent<BeltPathMover>();
-        mover.Init(_wps, travelTimeSeconds, this);
+        mover.Init(_wps, travelTimeSeconds, this, pathCenter);
 
         _active.Add(go);
     }
@@ -202,7 +209,21 @@ public class TechfallConveyorController : MonoBehaviour
     public void RegisterGrabbed(GameObject obj)
     {
         if (obj != null) _active.Remove(obj);
-        if (pauseBeltOnGrab) PauseBelt(true);
+
+        if (pauseBeltOnGrab)
+        {
+            PauseBelt(true);
+
+            // auto-resume after short delay so spawns continue
+            if (_resumeCo != null) StopCoroutine(_resumeCo);
+            _resumeCo = StartCoroutine(ResumeAfterDelay());
+        }
+    }
+
+    IEnumerator ResumeAfterDelay()
+    {
+        yield return new WaitForSeconds(pauseOnGrabSeconds);
+        PauseBelt(false);
     }
 
     public void PauseBelt(bool pause)
