@@ -27,11 +27,6 @@ public class StackHeightCalculator : MonoBehaviour
             if (!objectsInStack.Contains(other.gameObject))
             {
                 objectsInStack.Add(other.gameObject);
-                Debug.Log("List ");
-                foreach (GameObject obj in objectsInStack)
-                {
-                    Debug.Log(obj.gameObject.name);
-                }
             }
         }
     }
@@ -42,10 +37,6 @@ public class StackHeightCalculator : MonoBehaviour
         {
             //remove points and update score manager
             objectsInStack.Remove(other.gameObject);
-            foreach (GameObject obj in objectsInStack)
-            {
-                Debug.Log(obj.gameObject.name);
-            }
         }
     }
 
@@ -55,9 +46,9 @@ public class StackHeightCalculator : MonoBehaviour
 
         foreach (GameObject gameObject in objectsInStack)
         {
-            if (gameObject.GetComponent<HeightDetector>().height >= maxHeight)
+            if (gameObject.GetComponentInParent<HeightDetector>().height >= maxHeight)
             {
-                maxHeight = gameObject.GetComponent<HeightDetector>().height;
+                maxHeight = gameObject.GetComponentInParent<HeightDetector>().height;
             }
         }
     }
