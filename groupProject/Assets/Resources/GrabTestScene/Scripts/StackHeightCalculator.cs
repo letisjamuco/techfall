@@ -34,18 +34,6 @@ public class StackHeightCalculator : MonoBehaviour
         }
     }
 
-/*    public void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("JengaPiece"))
-        {
-            height calculation script for each piece
-            update score manager
-            if (!objectsInStack.Contains(other.gameObject))
-            {
-                objectsInStack.Add(other.gameObject);
-            }
-        }
-    }*/
 
     public void OnTriggerExit(Collider other)
     {
