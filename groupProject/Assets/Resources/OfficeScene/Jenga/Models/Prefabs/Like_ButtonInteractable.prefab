@@ -293,7 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ConveyorItemSettings
   yOffset: 0
   radialOffset: 0
-  autoFromBounds: 1
+  autoFromBounds: 0
 --- !u!114 &-1896145595792329424
 MonoBehaviour:
   m_ObjectHideFlags: 0

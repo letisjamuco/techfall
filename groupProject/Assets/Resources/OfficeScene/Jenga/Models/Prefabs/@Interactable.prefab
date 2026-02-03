@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 5152132108457031133}
   - component: {fileID: -2326689012879491158}
   - component: {fileID: 276171802246164815}
-  - component: {fileID: -1174698841917067669}
+  - component: {fileID: 4675754426721278345}
   m_Layer: 0
   m_Name: '@Interactable'
   m_TagString: Untagged
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ConveyorItemSettings
   yOffset: 0
   radialOffset: 0
-  autoFromBounds: 1
+  autoFromBounds: 0
 --- !u!114 &276171802246164815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 145e6a964b0ba704a9832542362087f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrabHook
---- !u!114 &-1174698841917067669
+--- !u!114 &4675754426721278345
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d162ab0bda999a45abaf0af40279645, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::ConveyorGrabPhysics
 --- !u!1 &6089161865710912901
 GameObject:
   m_ObjectHideFlags: 0
