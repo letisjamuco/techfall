@@ -7,7 +7,7 @@ public class HeightDetector : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        height = GetComponent<Renderer>().bounds.max.y;
+        height = GetComponentInChildren<Renderer>().bounds.max.y;
     }
 
 

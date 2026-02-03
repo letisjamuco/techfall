@@ -6,8 +6,8 @@ public class StackHeightCalculator : MonoBehaviour
 {
     public static StackHeightCalculator instance;
 
-    //list of stacked objects
-    List<GameObject> objectsInStack = new List<GameObject>();
+    //set of stacked objects
+    HashSet<GameObject> objectsInStack = new HashSet<GameObject>();
     //maxHeight of stack
     public float maxHeight { get; private set; }
 
@@ -18,23 +18,22 @@ public class StackHeightCalculator : MonoBehaviour
         instance = this;
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("JengaPiece"))
         {
-            //height calculation script for each piece
-            //update score manager
-            if (!objectsInStack.Contains(other.gameObject))
+            Rigidbody rigidBody = other.GetComponentInParent<Rigidbody>();
+            if (rigidBody != null)
             {
-                objectsInStack.Add(other.gameObject);
-                Debug.Log("List ");
-                foreach (GameObject obj in objectsInStack)
+                // add to set only if it stopped moving
+                if (rigidBody.linearVelocity.magnitude < 0.05f)
                 {
-                    Debug.Log(obj.gameObject.name);
+                    objectsInStack.Add(other.gameObject);
                 }
             }
         }
     }
+
 
     public void OnTriggerExit(Collider other)
     {
@@ -42,10 +41,6 @@ public class StackHeightCalculator : MonoBehaviour
         {
             //remove points and update score manager
             objectsInStack.Remove(other.gameObject);
-            foreach (GameObject obj in objectsInStack)
-            {
-                Debug.Log(obj.gameObject.name);
-            }
         }
     }
 
@@ -55,9 +50,9 @@ public class StackHeightCalculator : MonoBehaviour
 
         foreach (GameObject gameObject in objectsInStack)
         {
-            if (gameObject.GetComponent<HeightDetector>().height >= maxHeight)
+            if (gameObject.GetComponentInParent<HeightDetector>().height >= maxHeight)
             {
-                maxHeight = gameObject.GetComponent<HeightDetector>().height;
+                maxHeight = gameObject.GetComponentInParent<HeightDetector>().height;
             }
         }
     }
