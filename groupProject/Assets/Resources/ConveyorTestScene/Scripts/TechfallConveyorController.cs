@@ -165,7 +165,11 @@ public class TechfallConveyorController : MonoBehaviour
         if (_wps == null || _wps.Length < 2) return;
         if (spawnPrefabs == null || spawnPrefabs.Count == 0) return;
 
-        if (maxTotalSpawns > 0 && _totalSpawned >= maxTotalSpawns) return;
+        //fail scene if spawn finished
+        if (maxTotalSpawns > 0 && _totalSpawned >= maxTotalSpawns) 
+        {
+            SceneManager.LoadScene(failSceneName);
+        }
         if (_active.Count >= maxActiveOnBelt) return;
 
         GameObject prefab = PickPrefab();
@@ -322,4 +326,5 @@ public class TechfallConveyorController : MonoBehaviour
         // IMPORTANT: make sure the target scene is added to Build Settings
         SceneManager.LoadScene(failSceneName);
     }
+ 
 }
