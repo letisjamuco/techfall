@@ -136,3 +136,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   scoreText: {fileID: 0}
   highScore: 200
+  highscoreEvent:
+    m_PersistentCalls:
+      m_Calls: []

@@ -1,13 +1,13 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 public class ScoreManager : MonoBehaviour
 {
     public TMP_Text scoreText;
     public int highScore;
 
+    [SerializeField] UnityEvent highscoreEvent;
     int score = 0;
     int lastScore = -1;
     // Start is called before the first frame update
@@ -27,9 +27,9 @@ public class ScoreManager : MonoBehaviour
             lastScore = score;
         }
 
-        if (score > highScore)
+        if (score >= highScore)
         {
-            Debug.Log("HIGH SCORE");
+            highscoreEvent.Invoke();
         }
     }
 }
