@@ -493,7 +493,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2623764538668273269, guid: fd817ca76d5195f469664e5429828d01, type: 3}
       propertyPath: Loop
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2623764538668273269, guid: fd817ca76d5195f469664e5429828d01, type: 3}
       propertyPath: m_Resource
@@ -501,7 +501,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 68b57133fa9d0dc4f964ba912167d11d, type: 3}
     - target: {fileID: 2623764538668273269, guid: fd817ca76d5195f469664e5429828d01, type: 3}
       propertyPath: m_PlayOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5948949560037081679, guid: fd817ca76d5195f469664e5429828d01, type: 3}
       propertyPath: m_Name
@@ -559,19 +559,9 @@ PrefabInstance:
       addedObject: {fileID: 1558317585}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd817ca76d5195f469664e5429828d01, type: 3}
---- !u!82 &255844680 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2623764538668273269, guid: fd817ca76d5195f469664e5429828d01, type: 3}
-  m_PrefabInstance: {fileID: 255844679}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &255844681 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6323643250179083891, guid: fd817ca76d5195f469664e5429828d01, type: 3}
-  m_PrefabInstance: {fileID: 255844679}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &255844682 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2943611062775205345, guid: fd817ca76d5195f469664e5429828d01, type: 3}
   m_PrefabInstance: {fileID: 255844679}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &268219913
@@ -906,7 +896,7 @@ PrefabInstance:
       objectReference: {fileID: 2296099328497716658}
     - target: {fileID: 306715188599945786, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
       propertyPath: highscoreEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 306715188599945786, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
       propertyPath: highscoreEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -918,7 +908,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 306715188599945786, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
       propertyPath: highscoreEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 1
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 306715188599945786, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
+      propertyPath: highscoreEvent.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 306715188599945786, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
       propertyPath: highscoreEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -927,11 +921,15 @@ PrefabInstance:
     - target: {fileID: 306715188599945786, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
       propertyPath: highscoreEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 255844680}
+      objectReference: {fileID: 992619865}
     - target: {fileID: 306715188599945786, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
       propertyPath: highscoreEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 255844682}
+      objectReference: {fileID: 1762774528}
+    - target: {fileID: 306715188599945786, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
+      propertyPath: highscoreEvent.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 865035070}
     - target: {fileID: 306715188599945786, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
       propertyPath: highscoreEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -945,16 +943,24 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 306715188599945786, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
+      propertyPath: highscoreEvent.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 306715188599945786, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
       propertyPath: highscoreEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 306715188599945786, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
       propertyPath: highscoreEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Play
+      value: StopBelt
       objectReference: {fileID: 0}
     - target: {fileID: 306715188599945786, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
       propertyPath: highscoreEvent.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: Play
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 306715188599945786, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
+      propertyPath: highscoreEvent.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 306715188599945786, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
       propertyPath: highscoreEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -962,11 +968,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 306715188599945786, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
       propertyPath: highscoreEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.AudioSource, UnityEngine
+      value: TechfallConveyorController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 306715188599945786, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
       propertyPath: highscoreEvent.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: UnityEngine.AudioSource, UnityEngine
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 306715188599945786, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
+      propertyPath: highscoreEvent.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 306715188599945786, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
       propertyPath: highscoreEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
@@ -981,6 +991,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 306715188599945786, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
+      propertyPath: highscoreEvent.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 306715188599945786, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
       propertyPath: highscoreEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -990,6 +1004,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 306715188599945786, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
       propertyPath: highscoreEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 306715188599945786, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
+      propertyPath: highscoreEvent.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4297829448839672102, guid: 837f3fd12d947564a8d4ec2c73daf503, type: 3}
@@ -1618,6 +1636,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1397175757}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &865035070 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2025263804829388526, guid: fd817ca76d5195f469664e5429828d01, type: 3}
+  m_PrefabInstance: {fileID: 255844679}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &910508947
 GameObject:
   m_ObjectHideFlags: 0
@@ -3409,6 +3432,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1397175757}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1762774528 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7005707540054382389, guid: fd817ca76d5195f469664e5429828d01, type: 3}
+  m_PrefabInstance: {fileID: 255844679}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1794903582
 GameObject:
   m_ObjectHideFlags: 0
