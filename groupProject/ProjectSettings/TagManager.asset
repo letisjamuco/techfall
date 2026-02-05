@@ -10,6 +10,7 @@ TagManager:
   - CinemachineTarget
   - Anchor
   - JengaPiece
+  - Trump
   layers:
   - Default
   - TransparentFX
