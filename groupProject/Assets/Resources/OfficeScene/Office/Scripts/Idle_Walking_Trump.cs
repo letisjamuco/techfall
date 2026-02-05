@@ -1,13 +1,16 @@
-using UnityEngine;
 using Cinemachine;
+using UnityEngine;
+using UnityEngine.Audio;
 
 public class NPC_CineMove : MonoBehaviour
 {
     public CinemachineDollyCart cart;
     public Animator anim;
+    public AudioSource audioSource;
+
+    // public AudioClip welcomeClip; // assign in inspector
 
     public float walkSpeed = 2f;
-    public float startDelay = 4f; // time he talks before walking
 
     private bool moving = false;
 
@@ -16,8 +19,19 @@ public class NPC_CineMove : MonoBehaviour
         // start idle talking
         cart.m_Speed = 0f;
         anim.SetBool("isWalking", false);
+    }
 
-        Invoke("StartMoving", startDelay);
+    public void TriggerStartWelcome()
+    {
+        //audioSource.clip =  assign the audio clip for his welcome talk here in the inspector
+        audioSource.Play();
+        Invoke("StartMoving", audioSource.clip.length);
+    }
+
+    public void TriggerWorkplaceClip()
+    {
+        //audioSource.clip =  assign the audio clip for his welcome talk here in the inspector
+        audioSource.Play();
     }
 
     void StartMoving()
