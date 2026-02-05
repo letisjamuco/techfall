@@ -8,7 +8,13 @@ public class NPC_CineMove : MonoBehaviour
     public Animator anim;
     public AudioSource audioSource;
 
-    // public AudioClip welcomeClip; // assign in inspector
+    public AudioClip welcomeClip;
+    public AudioClip workplaceClip;
+
+    public AudioClip CalmClip;
+    public AudioClip HarshClip;
+    public AudioClip ToxicClip;
+    public AudioClip FinalFailClip;
 
     public float walkSpeed = 2f;
 
@@ -23,14 +29,14 @@ public class NPC_CineMove : MonoBehaviour
 
     public void TriggerStartWelcome()
     {
-        //audioSource.clip =  assign the audio clip for his welcome talk here in the inspector
+        audioSource.clip = welcomeClip;
         audioSource.Play();
         Invoke("StartMoving", audioSource.clip.length);
     }
 
     public void TriggerWorkplaceClip()
     {
-        //audioSource.clip =  assign the audio clip for his welcome talk here in the inspector
+        audioSource.clip = workplaceClip;
         audioSource.Play();
     }
 
