@@ -11,11 +11,6 @@ public class NPC_CineMove : MonoBehaviour
     public AudioClip welcomeClip;
     public AudioClip workplaceClip;
 
-    public AudioClip CalmClip;
-    public AudioClip HarshClip;
-    public AudioClip ToxicClip;
-    public AudioClip FinalFailClip;
-
     public float walkSpeed = 2f;
 
     private bool moving = false;
