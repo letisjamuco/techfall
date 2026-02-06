@@ -33207,8 +33207,8 @@ MonoBehaviour:
   cart: {fileID: 8897093225981988873}
   anim: {fileID: 3579238971578316873}
   audioSource: {fileID: 8897093225981988875}
-  welcomeClip: {fileID: 8300000, guid: 0c8f0b7d3c4fa9944889d28a2683ed45, type: 3}
-  workplaceClip: {fileID: 8300000, guid: 0c8f0b7d3c4fa9944889d28a2683ed45, type: 3}
+  welcomeClip: {fileID: 8300000, guid: e9287c6fc3ccd5244a13c357d30c573d, type: 3}
+  workplaceClip: {fileID: 8300000, guid: 0ae3fc8c7fce9484987dd709246abf12, type: 3}
   CalmClip: {fileID: 0}
   HarshClip: {fileID: 0}
   ToxicClip: {fileID: 0}
