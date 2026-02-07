@@ -11,16 +11,42 @@ public class StartButtonXRI : MonoBehaviour
     [Header("Safety")]
     public bool oneShot = true;
 
+    [Header("Testing / Control")]
+    [Tooltip("Enable/disable the start button interaction. Default: enabled.")]
+    public bool buttonEnabled = true;
+
+    [Tooltip("If true, this button will auto-disable itself when the conveyor is set to auto-start without button.")]
+    public bool syncWithConveyorAutoStart = true;
+
     bool _started;
     XRSimpleInteractable _interactable;
 
     void Awake()
     {
         _interactable = GetComponent<XRSimpleInteractable>();
+        ApplyEnabledState();
+    }
+
+    void OnValidate()
+    {
+        // Keeps the button state in sync while editing.
+        if (syncWithConveyorAutoStart && conveyor != null)
+            buttonEnabled = !conveyor.autoStartWithoutButton;
+
+        ApplyEnabledState();
+    }
+
+    void ApplyEnabledState()
+    {
+        if (!_interactable) _interactable = GetComponent<XRSimpleInteractable>();
+        if (_interactable) _interactable.enabled = buttonEnabled;
     }
 
     void OnEnable()
     {
+        if (syncWithConveyorAutoStart && conveyor != null)
+            buttonEnabled = !conveyor.autoStartWithoutButton;
+        ApplyEnabledState();
         if (_interactable) _interactable.selectEntered.AddListener(OnSelectEntered);
     }
 
@@ -31,6 +57,7 @@ public class StartButtonXRI : MonoBehaviour
 
     void OnSelectEntered(SelectEnterEventArgs args)
     {
+        if (!buttonEnabled) return;
         if (oneShot && _started) return;
         _started = true;
 

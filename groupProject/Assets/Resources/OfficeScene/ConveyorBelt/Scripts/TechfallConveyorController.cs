@@ -27,48 +27,42 @@ public class TechfallConveyorController : MonoBehaviour
     public int strikes = 0;
     public int strikesToFail = 4;             // on this strike -> fail sequence
     public AudioClip[] bossReprimandClips;    // size 3: calm, harsh, toxic (strikes 1..3)
-    public AudioClip failFinalClip;           // played ONLY on strike 4 (boss voice)
+    public AudioClip failFinalClip;           // played ONLY on strike 4
 
     [Header("Audio Sources")]
     public AudioSource machineAudio; // looping conveyor sound
     public AudioSource bossAudio;    // voice over (2D recommended)
 
-    [Header("Final Alarm SFX (optional)")]
-    public AudioSource sfxAudio;      // siren / alarms (separate from boss voice)
-    public AudioClip finalAlarmClip;  // played once right before fade (strike 4)
-
-    [Header("Camera Shake (optional)")]
-    public Transform shakeTarget;         // XR Origin or Camera parent (NOT the raw HMD camera if possible)
-    public float shakeDuration = 0.12f;
-    public float shakeMagnitude = 0.02f;
-
     [Header("Fail Transition")]
-    public string failSceneName = "FarmScene"; // later: PreTechnologyWorldScene
+    public string failSceneName = "FarmScene"; // Will later change on PreTechnologyWorldScene
     public ScreenFader fader;
     public float fadeOutSeconds = 1.5f; // fade duration AFTER final voice ends
+
+
+    [Header("Debug / Testing")]
+    [Tooltip("If true, the conveyor belt starts automatically on play (useful for testing without pressing the start button).")]
+    public bool autoStartWithoutButton = false;
+
+    [Tooltip("Optional delay before auto-start (seconds).")]
+    public float autoStartDelaySeconds = 0f;
 
     [Header("Option")]
     public bool pauseBeltOnGrab = false;
 
     [Header("Pause On Grab")]
     public float pauseOnGrabSeconds = 0.6f;
-
     Coroutine _resumeCo;
-    Coroutine _shakeCo;
 
     // Runtime state
     float _timer;
     int _orderIndex;
     int _totalSpawned;
-    readonly HashSet<GameObject> _active = new HashSet<GameObject>();
-    readonly List<int> _bag = new List<int>();
+    readonly HashSet<GameObject> _active = new();
+    readonly List<int> _bag = new();
     bool _paused = false;
     bool _running = false; // belt starts OFF; StartBelt() turns it ON
     bool _failing = false; // prevents double fail sequence
     Transform[] _wps;
-
-    // If your BeltPathMover wants to pause movement, it can query this.
-    public bool IsPaused => _paused || !_running || _failing;
 
     void Start()
     {
@@ -77,6 +71,9 @@ public class TechfallConveyorController : MonoBehaviour
         // IMPORTANT: do NOT auto-start.
         // Belt starts only when StartBelt() is called by the StartButton trigger.
         StopMachineAudio();
+
+        if (autoStartWithoutButton)
+            StartCoroutine(AutoStartRoutine());
     }
 
     void CacheWaypoints()
@@ -121,24 +118,9 @@ public class TechfallConveyorController : MonoBehaviour
         _running = false;
         PauseBelt(true);
         StopMachineAudio();
-    }
 
-    void PauseBelt(bool pause)
-    {
-        _paused = pause;
-
-        // Audio: pause/unpause conveyor loop so it feels responsive.
-        if (!machineAudio) return;
-
-        if (pause)
-        {
-            if (machineAudio.isPlaying) machineAudio.Pause();
-        }
-        else
-        {
-            // UnPause only works if previously paused; safe to call anyway.
-            machineAudio.UnPause();
-        }
+        if (autoStartWithoutButton)
+            StartCoroutine(AutoStartRoutine());
     }
 
     void StartMachineAudio()
@@ -165,11 +147,7 @@ public class TechfallConveyorController : MonoBehaviour
         if (_wps == null || _wps.Length < 2) return;
         if (spawnPrefabs == null || spawnPrefabs.Count == 0) return;
 
-        //fail scene if spawn finished
-        if (maxTotalSpawns > 0 && _totalSpawned >= maxTotalSpawns) 
-        {
-            SceneManager.LoadScene(failSceneName);
-        }
+        if (maxTotalSpawns > 0 && _totalSpawned >= maxTotalSpawns) return;
         if (_active.Count >= maxActiveOnBelt) return;
 
         GameObject prefab = PickPrefab();
@@ -225,9 +203,6 @@ public class TechfallConveyorController : MonoBehaviour
         if (obj != null) _active.Remove(obj);
         strikes++;
 
-        // Simple feedback on every miss
-        TriggerShake();
-
         // Play reprimands only for strikes 1..(strikesToFail-1)
         if (strikes < strikesToFail)
         {
@@ -265,33 +240,22 @@ public class TechfallConveyorController : MonoBehaviour
         PauseBelt(false);
     }
 
-    void TriggerShake()
+    public void PauseBelt(bool pause)
     {
-        if (!shakeTarget) return;
-        if (shakeDuration <= 0f || shakeMagnitude <= 0f) return;
+        _paused = pause;
 
-        if (_shakeCo != null) StopCoroutine(_shakeCo);
-        _shakeCo = StartCoroutine(ShakeOnce());
-    }
-
-    IEnumerator ShakeOnce()
-    {
-        Vector3 original = shakeTarget.localPosition;
-        float t = 0f;
-
-        while (t < shakeDuration)
+        foreach (var go in _active)
         {
-            float x = (UnityEngine.Random.value * 2f - 1f) * shakeMagnitude;
-            float y = (UnityEngine.Random.value * 2f - 1f) * shakeMagnitude;
-
-            shakeTarget.localPosition = original + new Vector3(x, y, 0f);
-
-            t += Time.deltaTime;
-            yield return null;
+            if (!go) continue;
+            var mover = go.GetComponent<BeltPathMover>();
+            if (mover) mover.paused = pause;
         }
 
-        shakeTarget.localPosition = original;
-        _shakeCo = null;
+        if (machineAudio)
+        {
+            if (pause) machineAudio.Pause();
+            else machineAudio.UnPause();
+        }
     }
 
     IEnumerator FailSequence()
@@ -304,7 +268,7 @@ public class TechfallConveyorController : MonoBehaviour
         // Stop any current boss audio so it won't overlap with final clip
         if (bossAudio) bossAudio.Stop();
 
-        // Play final boss reprimand (full length), then fade, then load scene
+        // Play final clip (full length), then fade, then load scene
         if (failFinalClip && bossAudio)
         {
             bossAudio.PlayOneShot(failFinalClip);
@@ -315,16 +279,21 @@ public class TechfallConveyorController : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
 
-        // Start alarm right before the fade (no loop, simple)
-        if (sfxAudio && finalAlarmClip)
-        {
-            sfxAudio.PlayOneShot(finalAlarmClip);
-        }
-
         if (fader) yield return fader.FadeOut(fadeOutSeconds);
 
         // IMPORTANT: make sure the target scene is added to Build Settings
         SceneManager.LoadScene(failSceneName);
     }
- 
+
+
+    IEnumerator AutoStartRoutine()
+    {
+        // Wait 1 frame so other objects (e.g., XR rig) initialize cleanly.
+        yield return null;
+
+        if (autoStartDelaySeconds > 0f)
+            yield return new WaitForSeconds(autoStartDelaySeconds);
+
+        StartBelt();
+    }
 }
