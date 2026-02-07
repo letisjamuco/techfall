@@ -1,82 +1,75 @@
 using UnityEngine;
+using Cinemachine;
 
+[DisallowMultipleComponent]
 public class BeltPathMover : MonoBehaviour
 {
+    [Tooltip("True after the player has grabbed the item.")]
     public bool wasGrabbed = false;
-    public bool paused = false;
 
-    Transform[] _wps;
-    float _travelTime;
-    float _elapsed;
-    Transform _pathCenter;
+    CinemachinePathBase _path;
+    float _travelTimeSeconds;
+    float _elapsedSeconds;
+
     TechfallConveyorController _controller;
     ConveyorItemSettings _settings;
 
-    public void Init(Transform[] waypoints, float travelTimeSeconds, TechfallConveyorController controller, Transform pathCenter)
+    public void Init(
+        CinemachinePathBase path,
+        float travelTimeSeconds,
+        TechfallConveyorController controller)
     {
-        _wps = waypoints;
-        _travelTime = Mathf.Max(0.1f, travelTimeSeconds);
+        _path = path;
+        _travelTimeSeconds = Mathf.Max(0.1f, travelTimeSeconds);
         _controller = controller;
-        _pathCenter = pathCenter;
-        _elapsed = 0f;
+
+        _elapsedSeconds = 0f;
 
         _settings = GetComponent<ConveyorItemSettings>();
         if (_settings) _settings.AutoCompute();
 
-        ApplyPoseAt(0, 0f);
+        ApplyPoseAt(0f);
     }
 
     void Update()
     {
-        if (_wps == null || _wps.Length < 2) return;
-        if (wasGrabbed || paused) return;
+        if (!_path) return;
+        if (wasGrabbed) return;
 
-        _elapsed += Time.deltaTime;
-        float t = Mathf.Clamp01(_elapsed / _travelTime);
+        _elapsedSeconds += Time.deltaTime;
+        float t01 = Mathf.Clamp01(_elapsedSeconds / _travelTimeSeconds);
 
-        if (t >= 1f && !wasGrabbed)
+        if (t01 >= 1f)
         {
             _controller?.RegisterMiss(gameObject);
             Destroy(gameObject);
+            return;
         }
 
-        float scaled = t * (_wps.Length - 1);
-        int seg = Mathf.Min(_wps.Length - 2, Mathf.FloorToInt(scaled));
-        float localT = scaled - seg;
-
-        ApplyPoseAt(seg, localT);
+        ApplyPoseAt(t01);
     }
 
-    void ApplyPoseAt(int seg, float localT)
+    void ApplyPoseAt(float t01)
     {
-        Vector3 a = _wps[seg].position;
-        Vector3 b = _wps[seg + 1].position;
+        Vector3 p = _path.EvaluatePositionAtUnit(
+            t01, CinemachinePathBase.PositionUnits.Normalized);
 
-        Vector3 p = Vector3.Lerp(a, b, localT);
+        Vector3 tangent = _path.EvaluateTangentAtUnit(
+            t01, CinemachinePathBase.PositionUnits.Normalized);
 
-        // Apply per-item offsets (up + outward from center)
         float yOff = _settings ? _settings.yOffset : 0f;
-        float rOff = _settings ? _settings.radialOffset : 0f;
-
-        if (_pathCenter && rOff != 0f)
-        {
-            Vector3 outward = (p - _pathCenter.position);
-            outward.y = 0f;
-            if (outward.sqrMagnitude > 0.0001f)
-                p += outward.normalized * rOff;
-        }
-
         p += Vector3.up * yOff;
+
         transform.position = p;
 
-        // Face along the path
-        Vector3 dir = (b - a);
-        if (dir.sqrMagnitude > 0.0001f)
-            transform.rotation = Quaternion.LookRotation(dir.normalized, Vector3.up);
+        if (tangent.sqrMagnitude > 0.0001f)
+            transform.rotation = Quaternion.LookRotation(tangent.normalized, Vector3.up);
     }
 
     public void MarkGrabbed()
     {
+        if (wasGrabbed) return;
+
         wasGrabbed = true;
         _controller?.RegisterGrabbed(gameObject);
     }

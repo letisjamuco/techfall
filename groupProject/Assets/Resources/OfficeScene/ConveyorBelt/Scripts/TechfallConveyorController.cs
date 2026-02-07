@@ -2,87 +2,114 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
+[DisallowMultipleComponent]
 public class TechfallConveyorController : MonoBehaviour
 {
     [Header("Spawn Prefabs")]
+    [Tooltip("Prefabs spawned onto the conveyor belt.")]
     public List<GameObject> spawnPrefabs = new List<GameObject>();
 
     public enum SpawnMode { InOrder, ShuffleNoRepeat, Random }
     public SpawnMode spawnMode = SpawnMode.ShuffleNoRepeat;
 
     [Header("Spawn Timing")]
-    public float spawnIntervalSeconds = 20f; // time between spawns
-    public int maxActiveOnBelt = 1;          // how many items can be visible on belt at once
-    public int maxTotalSpawns = 20;          // total items for MVP (0 = infinite)
+    [Tooltip("Time between spawns in seconds.")]
+    public float spawnIntervalSeconds = 20f;
 
-    [Header("Path")]
-    public Transform generatedPathParent; // GeneratedPath (parent of WP_00..)
-    public float travelTimeSeconds = 20f; // time to travel from WP_00 to last WP
+    [Tooltip("Maximum number of items allowed on the belt at once. Set to 1 for strict one-at-a-time behavior.")]
+    public int maxActiveOnBelt = 1;
 
-    [Header("Path Center (for radial offsets)")]
-    public Transform pathCenter;
+    [Tooltip("Total number of items to spawn (0 = infinite).")]
+    public int maxTotalSpawns = 20;
+
+    [Header("Cinemachine Path (required)")]
+    [Tooltip("Cinemachine path followed by spawned items.")]
+    public CinemachinePathBase cinemachinePath;
+
+    [Tooltip("Time for an item to travel from start (t=0) to end (t=1).")]
+    public float travelTimeSeconds = 20f;
 
     [Header("Boss Strikes")]
     public int strikes = 0;
-    public int strikesToFail = 4;             // on this strike -> fail sequence
-    public AudioClip[] bossReprimandClips;    // size 3: calm, harsh, toxic (strikes 1..3)
-    public AudioClip failFinalClip;           // played ONLY on strike 4
+
+    [Tooltip("On this strike count, the fail sequence is executed.")]
+    public int strikesToFail = 4;
+
+    [Tooltip("Reprimand clips for strikes 1..3.")]
+    public AudioClip[] bossReprimandClips;
+
+    [Tooltip("Final boss clip played on strike 4.")]
+    public AudioClip failFinalClip;
 
     [Header("Audio Sources")]
-    public AudioSource machineAudio; // looping conveyor sound
-    public AudioSource bossAudio;    // voice over (2D recommended)
+    [Tooltip("Looping conveyor/machine audio.")]
+    public AudioSource machineAudio;
+
+    [Tooltip("Boss voice audio source (2D recommended).")]
+    public AudioSource bossAudio;
+
+    [Header("Final Alarm SFX (optional)")]
+    public AudioSource sfxAudio;
+    public AudioClip finalAlarmClip;
+
+    [Header("Camera Shake (optional)")]
+    public Transform shakeTarget;
+    public float shakeDuration = 0.12f;
+    public float shakeMagnitude = 0.02f;
 
     [Header("Fail Transition")]
-    public string failSceneName = "FarmScene"; // Will later change on PreTechnologyWorldScene
+    [Tooltip("Scene loaded on failure (strike 4). Must be in Build Settings.")]
+    public string failSceneName = "PreTechnologyWorldScene";
+
     public ScreenFader fader;
-    public float fadeOutSeconds = 1.5f; // fade duration AFTER final voice ends
-
-
-    [Header("Debug / Testing")]
-    [Tooltip("If true, the conveyor belt starts automatically on play (useful for testing without pressing the start button).")]
-    public bool autoStartWithoutButton = false;
-
-    [Tooltip("Optional delay before auto-start (seconds).")]
-    public float autoStartDelaySeconds = 0f;
-
-    [Header("Option")]
-    public bool pauseBeltOnGrab = false;
+    public float fadeOutSeconds = 1.5f;
 
     [Header("Pause On Grab")]
-    public float pauseOnGrabSeconds = 0.6f;
-    Coroutine _resumeCo;
+    [Tooltip("If true, spawning and machine audio pause briefly when an item is grabbed.")]
+    public bool pauseBeltOnGrab = false;
 
-    // Runtime state
+    [Tooltip("Pause duration in seconds when an item is grabbed.")]
+    public float pauseOnGrabSeconds = 0.6f;
+
+    [Header("Debug / Testing")]
+    [Tooltip("If true, starts automatically without pressing the start button.")]
+    public bool autoStartWithoutButton = false;
+
+    [Tooltip("Optional delay before auto-start.")]
+    public float autoStartDelaySeconds = 0f;
+
+    Coroutine _resumeCo;
+    Coroutine _shakeCo;
+
     float _timer;
     int _orderIndex;
     int _totalSpawned;
-    readonly HashSet<GameObject> _active = new();
-    readonly List<int> _bag = new();
-    bool _paused = false;
-    bool _running = false; // belt starts OFF; StartBelt() turns it ON
-    bool _failing = false; // prevents double fail sequence
-    Transform[] _wps;
+
+    readonly HashSet<GameObject> _active = new HashSet<GameObject>();
+    readonly List<int> _bag = new List<int>();
+
+    bool _paused;
+    bool _running;
+    bool _failing;
 
     void Start()
     {
-        CacheWaypoints();
-
-        // IMPORTANT: do NOT auto-start.
-        // Belt starts only when StartBelt() is called by the StartButton trigger.
         StopMachineAudio();
 
         if (autoStartWithoutButton)
             StartCoroutine(AutoStartRoutine());
     }
 
-    void CacheWaypoints()
+    IEnumerator AutoStartRoutine()
     {
-        if (!generatedPathParent) return;
+        yield return null;
 
-        int n = generatedPathParent.childCount;
-        _wps = new Transform[n];
-        for (int i = 0; i < n; i++) _wps[i] = generatedPathParent.GetChild(i);
+        if (autoStartDelaySeconds > 0f)
+            yield return new WaitForSeconds(autoStartDelaySeconds);
+
+        StartBelt();
     }
 
     void Update()
@@ -97,35 +124,48 @@ public class TechfallConveyorController : MonoBehaviour
         }
     }
 
-    // Called by StartButton trigger
     public void StartBelt()
     {
         if (_failing) return;
+        if (!cinemachinePath) return;
 
         _running = true;
         _paused = false;
 
-        // Spawn first item immediately
         _timer = 0f;
         TrySpawn();
 
         StartMachineAudio();
     }
 
-    // Optional: if you want a Stop button later
     public void StopBelt()
     {
         _running = false;
         PauseBelt(true);
         StopMachineAudio();
+    }
 
-        if (autoStartWithoutButton)
-            StartCoroutine(AutoStartRoutine());
+    void PauseBelt(bool pause)
+    {
+        _paused = pause;
+
+        // This pause is intended to briefly delay spawning and optionally pause conveyor audio.
+        if (!machineAudio) return;
+
+        if (pause)
+        {
+            if (machineAudio.isPlaying) machineAudio.Pause();
+        }
+        else
+        {
+            machineAudio.UnPause();
+        }
     }
 
     void StartMachineAudio()
     {
         if (!machineAudio) return;
+
         machineAudio.loop = true;
         if (!machineAudio.isPlaying) machineAudio.Play();
         else machineAudio.UnPause();
@@ -143,8 +183,7 @@ public class TechfallConveyorController : MonoBehaviour
     {
         CleanupNulls();
 
-        if (_wps == null || _wps.Length < 2) CacheWaypoints();
-        if (_wps == null || _wps.Length < 2) return;
+        if (!cinemachinePath) return;
         if (spawnPrefabs == null || spawnPrefabs.Count == 0) return;
 
         if (maxTotalSpawns > 0 && _totalSpawned >= maxTotalSpawns) return;
@@ -153,12 +192,22 @@ public class TechfallConveyorController : MonoBehaviour
         GameObject prefab = PickPrefab();
         if (!prefab) return;
 
-        GameObject go = Instantiate(prefab, _wps[0].position, _wps[0].rotation);
+        // Spawn at path start (t=0).
+        Vector3 startPos = cinemachinePath.EvaluatePositionAtUnit(0f, CinemachinePathBase.PositionUnits.Normalized);
+        Vector3 startDir = cinemachinePath.EvaluateTangentAtUnit(0f, CinemachinePathBase.PositionUnits.Normalized);
+
+        Quaternion startRot =
+            (startDir.sqrMagnitude > 0.0001f)
+                ? Quaternion.LookRotation(startDir.normalized, Vector3.up)
+                : Quaternion.identity;
+
+        GameObject go = Instantiate(prefab, startPos, startRot);
         _totalSpawned++;
 
+        // NOTE: Your BeltPathMover is expected to be the Cinemachine-based mover (Init(path, travelTime, controller, center)).
         var mover = go.GetComponent<BeltPathMover>();
         if (!mover) mover = go.AddComponent<BeltPathMover>();
-        mover.Init(_wps, travelTimeSeconds, this, pathCenter);
+        mover.Init(cinemachinePath, travelTimeSeconds, this);
 
         _active.Add(go);
     }
@@ -168,34 +217,36 @@ public class TechfallConveyorController : MonoBehaviour
         switch (spawnMode)
         {
             case SpawnMode.InOrder:
-                var p = spawnPrefabs[_orderIndex % spawnPrefabs.Count];
-                _orderIndex++;
-                return p;
+                {
+                    var p = spawnPrefabs[_orderIndex % spawnPrefabs.Count];
+                    _orderIndex++;
+                    return p;
+                }
 
             case SpawnMode.Random:
                 return spawnPrefabs[UnityEngine.Random.Range(0, spawnPrefabs.Count)];
 
             case SpawnMode.ShuffleNoRepeat:
             default:
-                if (_bag.Count == 0)
                 {
-                    for (int i = 0; i < spawnPrefabs.Count; i++) _bag.Add(i);
-
-                    // Fisher-Yates shuffle
-                    for (int i = 0; i < _bag.Count; i++)
+                    if (_bag.Count == 0)
                     {
-                        int j = UnityEngine.Random.Range(i, _bag.Count);
-                        (_bag[i], _bag[j]) = (_bag[j], _bag[i]);
-                    }
-                }
+                        for (int i = 0; i < spawnPrefabs.Count; i++) _bag.Add(i);
 
-                int idx = _bag[0];
-                _bag.RemoveAt(0);
-                return spawnPrefabs[idx];
+                        for (int i = 0; i < _bag.Count; i++)
+                        {
+                            int j = UnityEngine.Random.Range(i, _bag.Count);
+                            (_bag[i], _bag[j]) = (_bag[j], _bag[i]);
+                        }
+                    }
+
+                    int idx = _bag[0];
+                    _bag.RemoveAt(0);
+                    return spawnPrefabs[idx];
+                }
         }
     }
 
-    // Called by WallEaterTrigger when an ungrabbed object "disappears" behind the wall
     public void RegisterMiss(GameObject obj)
     {
         if (_failing) return;
@@ -203,7 +254,9 @@ public class TechfallConveyorController : MonoBehaviour
         if (obj != null) _active.Remove(obj);
         strikes++;
 
-        // Play reprimands only for strikes 1..(strikesToFail-1)
+        TriggerShake();
+
+        // Strikes 1..3: reprimands
         if (strikes < strikesToFail)
         {
             if (bossAudio && bossReprimandClips != null && bossReprimandClips.Length > 0)
@@ -214,12 +267,11 @@ public class TechfallConveyorController : MonoBehaviour
             }
         }
 
-        // On strike 4 -> fail sequence
+        // Strike 4: fail sequence
         if (strikes >= strikesToFail)
             StartCoroutine(FailSequence());
     }
 
-    // Called by grab system
     public void RegisterGrabbed(GameObject obj)
     {
         if (obj != null) _active.Remove(obj);
@@ -228,7 +280,6 @@ public class TechfallConveyorController : MonoBehaviour
         {
             PauseBelt(true);
 
-            // auto-resume after short delay so spawns continue
             if (_resumeCo != null) StopCoroutine(_resumeCo);
             _resumeCo = StartCoroutine(ResumeAfterDelay());
         }
@@ -240,35 +291,43 @@ public class TechfallConveyorController : MonoBehaviour
         PauseBelt(false);
     }
 
-    public void PauseBelt(bool pause)
+    void TriggerShake()
     {
-        _paused = pause;
+        if (!shakeTarget) return;
+        if (shakeDuration <= 0f || shakeMagnitude <= 0f) return;
 
-        foreach (var go in _active)
+        if (_shakeCo != null) StopCoroutine(_shakeCo);
+        _shakeCo = StartCoroutine(ShakeOnce());
+    }
+
+    IEnumerator ShakeOnce()
+    {
+        Vector3 original = shakeTarget.localPosition;
+        float t = 0f;
+
+        while (t < shakeDuration)
         {
-            if (!go) continue;
-            var mover = go.GetComponent<BeltPathMover>();
-            if (mover) mover.paused = pause;
+            float x = (UnityEngine.Random.value * 2f - 1f) * shakeMagnitude;
+            float y = (UnityEngine.Random.value * 2f - 1f) * shakeMagnitude;
+
+            shakeTarget.localPosition = original + new Vector3(x, y, 0f);
+
+            t += Time.deltaTime;
+            yield return null;
         }
 
-        if (machineAudio)
-        {
-            if (pause) machineAudio.Pause();
-            else machineAudio.UnPause();
-        }
+        shakeTarget.localPosition = original;
+        _shakeCo = null;
     }
 
     IEnumerator FailSequence()
     {
         _failing = true;
 
-        // Stop belt & machine sound
         PauseBelt(true);
 
-        // Stop any current boss audio so it won't overlap with final clip
         if (bossAudio) bossAudio.Stop();
 
-        // Play final clip (full length), then fade, then load scene
         if (failFinalClip && bossAudio)
         {
             bossAudio.PlayOneShot(failFinalClip);
@@ -279,21 +338,11 @@ public class TechfallConveyorController : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
 
+        if (sfxAudio && finalAlarmClip)
+            sfxAudio.PlayOneShot(finalAlarmClip);
+
         if (fader) yield return fader.FadeOut(fadeOutSeconds);
 
-        // IMPORTANT: make sure the target scene is added to Build Settings
         SceneManager.LoadScene(failSceneName);
-    }
-
-
-    IEnumerator AutoStartRoutine()
-    {
-        // Wait 1 frame so other objects (e.g., XR rig) initialize cleanly.
-        yield return null;
-
-        if (autoStartDelaySeconds > 0f)
-            yield return new WaitForSeconds(autoStartDelaySeconds);
-
-        StartBelt();
     }
 }

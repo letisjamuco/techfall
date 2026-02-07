@@ -1,17 +1,18 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
-// Bridges XR Grab events -> BeltPathMover.MarkGrabbed()
-[RequireComponent(typeof(UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable))]
+[DisallowMultipleComponent]
+[RequireComponent(typeof(XRGrabInteractable))]
 public class GrabHook : MonoBehaviour
 {
     BeltPathMover _mover;
-    UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable _grab;
+    XRGrabInteractable _grab;
 
     void Awake()
     {
         _mover = GetComponent<BeltPathMover>();
-        _grab = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
+        _grab = GetComponent<XRGrabInteractable>();
     }
 
     void OnEnable()

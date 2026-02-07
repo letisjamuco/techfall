@@ -1,9 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class FadeInOnStart : MonoBehaviour
 {
+    [Tooltip("Screen fader used to fade from black at scene start.")]
     public ScreenFader fader;
+
+    [Tooltip("Fade-in duration in seconds.")]
     public float fadeInSeconds = 1.5f;
 
     IEnumerator Start()
@@ -11,10 +15,8 @@ public class FadeInOnStart : MonoBehaviour
         if (!fader) fader = GetComponent<ScreenFader>();
         if (!fader || !fader.canvasGroup) yield break;
 
-        // start black
+        // Start fully black, then fade to transparent.
         fader.canvasGroup.alpha = 1f;
-
-        // fade to clear
         yield return fader.FadeIn(fadeInSeconds);
     }
 }

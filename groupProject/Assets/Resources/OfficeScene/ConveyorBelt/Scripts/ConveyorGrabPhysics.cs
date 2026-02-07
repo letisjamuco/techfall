@@ -2,28 +2,29 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
+[DisallowMultipleComponent]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(XRGrabInteractable))]
 public class ConveyorGrabPhysics : MonoBehaviour
 {
-    [Header("Gravity behavior")]
-    [Tooltip("Gravity state while the item is on the belt (before grab).")]
+    [Header("Gravity")]
+    [Tooltip("Gravity state while the item is on the belt (before it is grabbed).")]
     public bool gravityWhileOnBelt = false;
 
     [Tooltip("Gravity state after the player releases the item.")]
     public bool gravityAfterRelease = true;
 
-    [Header("Damping (to avoid 'floating in water')")]
-    [Tooltip("Drag while on belt (low = less 'water').")]
+    [Header("Damping")]
+    [Tooltip("Linear damping while the item is on the belt.")]
     public float dragOnBelt = 0.05f;
 
-    [Tooltip("Drag while held (usually low).")]
+    [Tooltip("Linear damping while the item is held.")]
     public float dragWhileHeld = 0.0f;
 
-    [Tooltip("Drag after release (low, so it falls naturally).")]
+    [Tooltip("Linear damping after the item is released.")]
     public float dragAfterRelease = 0.05f;
 
-    [Tooltip("Angular damping after release.")]
+    [Tooltip("Angular damping after the item is released.")]
     public float angularDampingAfterRelease = 0.1f;
 
     Rigidbody _rb;
@@ -37,7 +38,6 @@ public class ConveyorGrabPhysics : MonoBehaviour
 
     void OnEnable()
     {
-        // Subscribe to grab events
         _grab.selectEntered.AddListener(OnGrab);
         _grab.selectExited.AddListener(OnRelease);
     }
@@ -50,7 +50,6 @@ public class ConveyorGrabPhysics : MonoBehaviour
 
     void Start()
     {
-        // Initial state: on belt
         ApplyOnBeltState();
     }
 
@@ -58,19 +57,18 @@ public class ConveyorGrabPhysics : MonoBehaviour
     {
         _rb.useGravity = gravityWhileOnBelt;
         _rb.linearDamping = dragOnBelt;
-        // keep current angular damping
+        // Keep existing angular damping while on belt; it is usually not critical here.
     }
 
     void OnGrab(SelectEnterEventArgs args)
     {
-        // When grabbed: keep stable
-        _rb.useGravity = false;           // prevent weird falling while held
+        // Disable gravity while held to avoid unintended falling/oscillation during hand movement.
+        _rb.useGravity = false;
         _rb.linearDamping = dragWhileHeld;
     }
 
     void OnRelease(SelectExitEventArgs args)
     {
-        // After release: let it fall naturally
         _rb.useGravity = gravityAfterRelease;
         _rb.linearDamping = dragAfterRelease;
         _rb.angularDamping = angularDampingAfterRelease;

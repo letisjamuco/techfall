@@ -1,21 +1,26 @@
 using System.Collections;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class ScreenFader : MonoBehaviour
 {
-    // CanvasGroup controls UI alpha (0 = visible scene, 1 = black)
+    [Tooltip("CanvasGroup controlling overlay alpha (0 = transparent, 1 = black).")]
     public CanvasGroup canvasGroup;
 
     void Awake()
     {
         if (!canvasGroup) canvasGroup = GetComponent<CanvasGroup>();
         if (!canvasGroup) canvasGroup = GetComponentInChildren<CanvasGroup>();
-        if (canvasGroup) canvasGroup.alpha = 0f; // start transparent
+
+        if (canvasGroup)
+            canvasGroup.alpha = 0f;
     }
 
     public IEnumerator FadeOut(float seconds)
     {
         if (!canvasGroup) yield break;
+
+        seconds = Mathf.Max(0.01f, seconds);
 
         float t = 0f;
         while (t < seconds)
@@ -31,6 +36,8 @@ public class ScreenFader : MonoBehaviour
     public IEnumerator FadeIn(float seconds)
     {
         if (!canvasGroup) yield break;
+
+        seconds = Mathf.Max(0.01f, seconds);
 
         float t = 0f;
         while (t < seconds)
