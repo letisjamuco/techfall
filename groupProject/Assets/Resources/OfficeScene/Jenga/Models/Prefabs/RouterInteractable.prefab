@@ -149,6 +149,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.015480034, y: 0.05340034, z: 0.06923801}
   m_Center: {x: -0.0035553058, y: -5.032723e-10, z: 0.032248076}
+--- !u!1 &4223227296858279583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3091761047062947976}
+  m_Layer: 0
+  m_Name: ContentRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3091761047062947976
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4223227296858279583}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.07123811, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5696108705209457289}
+  m_Father: {fileID: 5021683126701667919}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6150952277728419113
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +192,6 @@ GameObject:
   - component: {fileID: 5021683126701667919}
   - component: {fileID: 3231746014972440519}
   - component: {fileID: -4455635676511504712}
-  - component: {fileID: -5987598528647038420}
   - component: {fileID: -5892942893791981306}
   - component: {fileID: -7906672951274521776}
   - component: {fileID: 493486273144096012}
@@ -184,7 +215,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5696108705209457289}
+  - {fileID: 3091761047062947976}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &3231746014972440519
@@ -342,20 +373,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
---- !u!114 &-5987598528647038420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6150952277728419113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a84aaf71768f82c41a4876bd155b2a34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ConveyorItemSettings
-  yOffset: 0
-  autoFromBounds: 0
 --- !u!114 &-5892942893791981306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,7 +439,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8416365465135007533}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.58501804, y: -0.06949615, z: -1.3821096}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -430,7 +447,7 @@ Transform:
   - {fileID: 8077280346319672125}
   - {fileID: 8036968040277541312}
   - {fileID: 3746562118234036655}
-  m_Father: {fileID: 5021683126701667919}
+  m_Father: {fileID: 3091761047062947976}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6688542337188614972
 PrefabInstance:

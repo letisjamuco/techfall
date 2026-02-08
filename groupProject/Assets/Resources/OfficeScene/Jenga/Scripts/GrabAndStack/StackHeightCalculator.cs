@@ -6,9 +6,9 @@ public class StackHeightCalculator : MonoBehaviour
 {
     public static StackHeightCalculator instance;
 
-    //set of stacked objects
+    // Set of stacked objects
     HashSet<GameObject> objectsInStack = new HashSet<GameObject>();
-    //maxHeight of stack
+    // maxHeight of stack
     public float maxHeight { get; private set; }
 
     
@@ -39,7 +39,7 @@ public class StackHeightCalculator : MonoBehaviour
     {
         if (other.gameObject.CompareTag("JengaPiece"))
         {
-            //remove points and update score manager
+            // Remove points and update score manager
             objectsInStack.Remove(other.gameObject);
         }
     }

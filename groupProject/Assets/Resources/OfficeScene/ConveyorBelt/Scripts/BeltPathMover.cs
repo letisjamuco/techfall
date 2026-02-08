@@ -2,31 +2,22 @@ using UnityEngine;
 using Cinemachine;
 
 [DisallowMultipleComponent]
-public class BeltPathMover : MonoBehaviour
+public sealed class BeltPathMover : MonoBehaviour
 {
-    [Tooltip("True after the player has grabbed the item.")]
-    public bool wasGrabbed = false;
+    [Tooltip("True after the player has grabbed the item at least once.")]
+    public bool wasGrabbed;
 
     CinemachinePathBase _path;
     float _travelTimeSeconds;
     float _elapsedSeconds;
-
     TechfallConveyorController _controller;
-    ConveyorItemSettings _settings;
 
-    public void Init(
-        CinemachinePathBase path,
-        float travelTimeSeconds,
-        TechfallConveyorController controller)
+    public void Init(CinemachinePathBase path, float travelTimeSeconds, TechfallConveyorController controller)
     {
         _path = path;
         _travelTimeSeconds = Mathf.Max(0.1f, travelTimeSeconds);
         _controller = controller;
-
         _elapsedSeconds = 0f;
-
-        _settings = GetComponent<ConveyorItemSettings>();
-        if (_settings) _settings.AutoCompute();
 
         ApplyPoseAt(0f);
     }
@@ -51,14 +42,8 @@ public class BeltPathMover : MonoBehaviour
 
     void ApplyPoseAt(float t01)
     {
-        Vector3 p = _path.EvaluatePositionAtUnit(
-            t01, CinemachinePathBase.PositionUnits.Normalized);
-
-        Vector3 tangent = _path.EvaluateTangentAtUnit(
-            t01, CinemachinePathBase.PositionUnits.Normalized);
-
-        float yOff = _settings ? _settings.yOffset : 0f;
-        p += Vector3.up * yOff;
+        Vector3 p = _path.EvaluatePositionAtUnit(t01, CinemachinePathBase.PositionUnits.Normalized);
+        Vector3 tangent = _path.EvaluateTangentAtUnit(t01, CinemachinePathBase.PositionUnits.Normalized);
 
         transform.position = p;
 
@@ -69,7 +54,6 @@ public class BeltPathMover : MonoBehaviour
     public void MarkGrabbed()
     {
         if (wasGrabbed) return;
-
         wasGrabbed = true;
         _controller?.RegisterGrabbed(gameObject);
     }
