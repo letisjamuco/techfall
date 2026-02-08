@@ -1,4 +1,5 @@
 using Cinemachine;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -12,6 +13,9 @@ public class NPC_CineMove : MonoBehaviour
     public AudioClip workplaceClip;
 
     public float walkSpeed = 2f;
+    public float stopPoint1 = 4f;
+    //public float stopPoint2 = 4f;
+    private int Stage = 0;
 
     private bool moving = false;
 
@@ -35,6 +39,12 @@ public class NPC_CineMove : MonoBehaviour
         audioSource.Play();
     }
 
+    public void WorkstationMove()
+    {
+        Stage = 1;
+        Invoke("StartMoving", 0f);
+    }    
+
     void StartMoving()
     {
         moving = true;
@@ -44,7 +54,16 @@ public class NPC_CineMove : MonoBehaviour
 
     void Update()
     {
-        if (moving && cart.m_Position >= cart.m_Path.PathLength)
+        if (moving && cart.m_Position >= stopPoint1 && Stage == 0)
+        {
+            // reached first stop point
+            cart.m_Speed = 0f;
+            anim.SetBool("isWalking", false);
+            moving = false;
+        }
+
+
+        if (moving && cart.m_Position >= cart.m_Path.PathLength && Stage == 1)
         {
             // reached end of path
             cart.m_Speed = 0f;
