@@ -12,35 +12,42 @@ public class TechfallConveyorController : MonoBehaviour
     public List<GameObject> spawnPrefabs = new List<GameObject>();
 
     public enum SpawnMode { InOrder, ShuffleNoRepeat, Random }
+    [Tooltip("ShuffleNoRepeat: each prefab appears once per cycle, then the cycle repeats.")]
     public SpawnMode spawnMode = SpawnMode.ShuffleNoRepeat;
 
     [Header("Spawn Timing")]
     [Tooltip("Time between spawns in seconds.")]
+    [Min(0.01f)]
     public float spawnIntervalSeconds = 20f;
 
     [Tooltip("Maximum number of items allowed on the belt at once. Set to 1 for strict one-at-a-time behavior.")]
+    [Min(1)]
     public int maxActiveOnBelt = 1;
 
-    [Tooltip("Total number of items to spawn (0 = infinite).")]
-    public int maxTotalSpawns = 20;
+    [Tooltip("Total number of items to spawn. Set to 0 for infinite.")]
+    [Min(0)]
+    public int maxTotalSpawns = 0;
 
     [Header("Cinemachine Path (required)")]
     [Tooltip("Cinemachine path followed by spawned items.")]
     public CinemachinePathBase cinemachinePath;
 
     [Tooltip("Time for an item to travel from start (t=0) to end (t=1).")]
+    [Min(0.1f)]
     public float travelTimeSeconds = 20f;
 
     [Header("Boss Strikes")]
+    [Tooltip("Current strike count (runtime).")]
     public int strikes = 0;
 
     [Tooltip("On this strike count, the fail sequence is executed.")]
+    [Min(1)]
     public int strikesToFail = 4;
 
-    [Tooltip("Reprimand clips for strikes 1..3.")]
+    [Tooltip("Reprimand clips for strikes 1..(strikesToFail-1).")]
     public AudioClip[] bossReprimandClips;
 
-    [Tooltip("Final boss clip played on strike 4.")]
+    [Tooltip("Final boss clip played on strike strikesToFail.")]
     public AudioClip failFinalClip;
 
     [Header("Audio Sources")]
@@ -60,24 +67,24 @@ public class TechfallConveyorController : MonoBehaviour
     public float shakeMagnitude = 0.02f;
 
     [Header("Fail Transition")]
-    [Tooltip("Scene loaded on failure (strike 4). Must be in Build Settings.")]
+    [Tooltip("Scene loaded on failure (strike strikesToFail). Must be in Build Settings.")]
     public string failSceneName = "PreTechnologyWorldScene";
 
     public ScreenFader fader;
     public float fadeOutSeconds = 1.5f;
 
     [Header("Pause On Grab")]
-    [Tooltip("If true, spawning and machine audio pause briefly when an item is grabbed.")]
+    [Tooltip("If true, spawning and machine audio pause briefly when an item is grabbed (movement is handled by the grabbed item).")]
     public bool pauseBeltOnGrab = false;
 
-    [Tooltip("Pause duration in seconds when an item is grabbed.")]
+    [Min(0f)]
     public float pauseOnGrabSeconds = 0.6f;
 
     [Header("Debug / Testing")]
     [Tooltip("If true, starts automatically without pressing the start button.")]
     public bool autoStartWithoutButton = false;
 
-    [Tooltip("Optional delay before auto-start.")]
+    [Min(0f)]
     public float autoStartDelaySeconds = 0f;
 
     Coroutine _resumeCo;
@@ -149,7 +156,6 @@ public class TechfallConveyorController : MonoBehaviour
     {
         _paused = pause;
 
-        // This pause is intended to briefly delay spawning and optionally pause conveyor audio.
         if (!machineAudio) return;
 
         if (pause)
@@ -186,15 +192,19 @@ public class TechfallConveyorController : MonoBehaviour
         if (!cinemachinePath) return;
         if (spawnPrefabs == null || spawnPrefabs.Count == 0) return;
 
+        // If maxTotalSpawns == 0 -> infinite.
         if (maxTotalSpawns > 0 && _totalSpawned >= maxTotalSpawns) return;
+
         if (_active.Count >= maxActiveOnBelt) return;
 
         GameObject prefab = PickPrefab();
         if (!prefab) return;
 
-        // Spawn at path start (t=0).
-        Vector3 startPos = cinemachinePath.EvaluatePositionAtUnit(0f, CinemachinePathBase.PositionUnits.Normalized);
-        Vector3 startDir = cinemachinePath.EvaluateTangentAtUnit(0f, CinemachinePathBase.PositionUnits.Normalized);
+        Vector3 startPos = cinemachinePath.EvaluatePositionAtUnit(
+            0f, CinemachinePathBase.PositionUnits.Normalized);
+
+        Vector3 startDir = cinemachinePath.EvaluateTangentAtUnit(
+            0f, CinemachinePathBase.PositionUnits.Normalized);
 
         Quaternion startRot =
             (startDir.sqrMagnitude > 0.0001f)
@@ -204,7 +214,6 @@ public class TechfallConveyorController : MonoBehaviour
         GameObject go = Instantiate(prefab, startPos, startRot);
         _totalSpawned++;
 
-        // NOTE: Your BeltPathMover is expected to be the Cinemachine-based mover (Init(path, travelTime, controller, center)).
         var mover = go.GetComponent<BeltPathMover>();
         if (!mover) mover = go.AddComponent<BeltPathMover>();
         mover.Init(cinemachinePath, travelTimeSeconds, this);
@@ -229,9 +238,13 @@ public class TechfallConveyorController : MonoBehaviour
             case SpawnMode.ShuffleNoRepeat:
             default:
                 {
+                    // Refill and reshuffle when the bag is empty.
+                    // This is what makes the system repeat after one full cycle (expected behavior).
                     if (_bag.Count == 0)
                     {
-                        for (int i = 0; i < spawnPrefabs.Count; i++) _bag.Add(i);
+                        _bag.Clear();
+                        for (int i = 0; i < spawnPrefabs.Count; i++)
+                            _bag.Add(i);
 
                         for (int i = 0; i < _bag.Count; i++)
                         {
@@ -256,7 +269,7 @@ public class TechfallConveyorController : MonoBehaviour
 
         TriggerShake();
 
-        // Strikes 1..3: reprimands
+        // Strikes 1..(strikesToFail-1): reprimands
         if (strikes < strikesToFail)
         {
             if (bossAudio && bossReprimandClips != null && bossReprimandClips.Length > 0)
@@ -267,7 +280,7 @@ public class TechfallConveyorController : MonoBehaviour
             }
         }
 
-        // Strike 4: fail sequence
+        // Strike strikesToFail: fail sequence
         if (strikes >= strikesToFail)
             StartCoroutine(FailSequence());
     }
