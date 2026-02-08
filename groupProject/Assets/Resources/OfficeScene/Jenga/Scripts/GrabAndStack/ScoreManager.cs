@@ -20,7 +20,7 @@ public class ScoreManager : MonoBehaviour
     {
         StackHeightCalculator.instance.UpdateMaxHeight();
         score = (int)(StackHeightCalculator.instance.maxHeight * 100);
-        //update only if score changed
+        // Update only if score changed
         if (score != lastScore)
         {
             scoreText.text = "Score " + score.ToString();

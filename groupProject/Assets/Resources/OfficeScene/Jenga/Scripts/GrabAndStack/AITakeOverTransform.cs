@@ -16,7 +16,7 @@ public class AITakeOverTransform : MonoBehaviour
         while (Time.time <= stopTime)
         {
             transform.Rotate(rotationSpeed * Time.deltaTime);
-            //AIaudio.Play();
+            // AIaudio.Play();
         }
         Debug.Log("STOP TIME = " + Time.time);
         QuitApplication.instance.QuitApp(); 
