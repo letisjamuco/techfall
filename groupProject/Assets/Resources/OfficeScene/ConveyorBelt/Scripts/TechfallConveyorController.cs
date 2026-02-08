@@ -186,7 +186,10 @@ public class TechfallConveyorController : MonoBehaviour
         if (!cinemachinePath) return;
         if (spawnPrefabs == null || spawnPrefabs.Count == 0) return;
 
-        if (maxTotalSpawns > 0 && _totalSpawned >= maxTotalSpawns) return;
+        if (maxTotalSpawns > 0 && _totalSpawned >= maxTotalSpawns)
+        {
+            FailSequence();
+        }
         if (_active.Count >= maxActiveOnBelt) return;
 
         GameObject prefab = PickPrefab();

@@ -1015,6 +1015,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioInteractionAffordance
       objectReference: {fileID: 0}
+    - target: {fileID: 4029416092834278471, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6016233748928177912, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_AffordanceThemeDatum.m_Variable
       value: 
