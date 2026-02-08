@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7703987391608048560}
+  m_Father: {fileID: 8821086351060085527}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1845300226136009037
 MeshFilter:
@@ -89,6 +89,40 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1759379510786422483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8821086351060085527}
+  m_Layer: 0
+  m_Name: VisualRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8821086351060085527
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759379510786422483}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.2359011, y: -0.10485871, z: -1.8129225}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5354379234837958262}
+  - {fileID: 3229354048147000611}
+  - {fileID: 206048687786702786}
+  m_Father: {fileID: 7703987391608048560}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7112498957834894387
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,9 +158,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5354379234837958262}
-  - {fileID: 3229354048147000611}
-  - {fileID: 206048687786702786}
+  - {fileID: 8821086351060085527}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &5904572253021899527
@@ -297,7 +329,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConveyorItemSettings
   yOffset: 0
-  radialOffset: 0
   autoFromBounds: 0
 --- !u!114 &5734903528068935392
 MonoBehaviour:
@@ -371,7 +402,7 @@ Transform:
   m_LocalScale: {x: 0.44, y: 0.05, z: 0.21}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7703987391608048560}
+  m_Father: {fileID: 8821086351060085527}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4361368192632973099
 BoxCollider:
@@ -400,7 +431,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 7703987391608048560}
+    m_TransformParent: {fileID: 8821086351060085527}
     m_Modifications:
     - target: {fileID: 3221867569475832344, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Name

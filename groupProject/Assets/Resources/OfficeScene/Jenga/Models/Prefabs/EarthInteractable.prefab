@@ -1,5 +1,39 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1403292948655702727
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8547567270465057583}
+  m_Layer: 0
+  m_Name: VisualRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8547567270465057583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403292948655702727}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.319956, y: -0.010000001, z: -3.1592195}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2273690842079499902}
+  - {fileID: 6159193897185791215}
+  - {fileID: 100716248109546200}
+  m_Father: {fileID: 9150034376403318969}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1419547521084205457
 GameObject:
   m_ObjectHideFlags: 0
@@ -35,9 +69,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2273690842079499902}
-  - {fileID: 6159193897185791215}
-  - {fileID: 100716248109546200}
+  - {fileID: 8547567270465057583}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &6552474574816830469
@@ -208,7 +240,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConveyorItemSettings
   yOffset: 0
-  radialOffset: 0
   autoFromBounds: 0
 --- !u!114 &324573484876554156
 MonoBehaviour:
@@ -282,7 +313,7 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 9150034376403318969}
+  m_Father: {fileID: 8547567270465057583}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &5911586576504880873
 BoxCollider:
@@ -336,7 +367,7 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 9150034376403318969}
+  m_Father: {fileID: 8547567270465057583}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4096832254373368749
 MeshFilter:
@@ -400,7 +431,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 9150034376403318969}
+    m_TransformParent: {fileID: 8547567270465057583}
     m_Modifications:
     - target: {fileID: 3221867569475832344, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Name
