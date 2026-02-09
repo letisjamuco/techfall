@@ -11,30 +11,9 @@ public class ExitDoorToSceneTrigger : MonoBehaviour
     public ScreenFader fader;
     public float fadeOutSeconds = 1.0f;
 
-    [Header("Who can trigger")]
-    public string playerTag = "Player";
-    public LayerMask playerLayers = ~0;
-    public bool useTagCheck = true;
 
-    [Header("Safety")]
-    public bool oneShot = true;
-
-    bool _triggered;
-
-    void OnTriggerEnter(Collider other)
+    public void OnInteractExit()
     {
-        if (oneShot && _triggered) return;
-
-        if (useTagCheck)
-        {
-            if (!other.CompareTag(playerTag)) return;
-        }
-        else
-        {
-            if (((1 << other.gameObject.layer) & playerLayers) == 0) return;
-        }
-
-        _triggered = true;
         StartCoroutine(LoadSceneRoutine());
     }
 
