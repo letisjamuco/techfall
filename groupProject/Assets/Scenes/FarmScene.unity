@@ -5088,9 +5088,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.53
+      value: -1.48
       objectReference: {fileID: 0}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5128,7 +5136,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5704,6 +5713,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -47.75
@@ -5744,7 +5761,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7166,6 +7184,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -32.61
@@ -7206,7 +7232,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7608,6 +7635,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -32.61
@@ -7648,7 +7683,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9191,6 +9227,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -47.04
@@ -9231,7 +9275,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -15319,6 +15364,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -27.65
@@ -15359,7 +15412,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -19476,9 +19530,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.61
+      value: -7.9
       objectReference: {fileID: 0}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -19516,7 +19578,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -19538,6 +19601,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -26.65
@@ -19578,7 +19649,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -19955,6 +20027,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -51.85
@@ -19995,7 +20075,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -22581,6 +22662,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -43.51
@@ -22621,7 +22710,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -27774,6 +27864,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.46
@@ -27814,7 +27912,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -28294,6 +28393,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -50.75
@@ -28334,7 +28441,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -30303,6 +30411,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -31.69
@@ -30343,7 +30459,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -35065,6 +35182,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.42
@@ -35105,7 +35230,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -36253,6 +36379,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -37.87
@@ -36293,7 +36427,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -40288,6 +40423,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.82
@@ -40328,7 +40471,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -40623,6 +40767,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -23.68
@@ -40663,7 +40815,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -40901,6 +41054,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -41.17
@@ -40941,7 +41102,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -41927,6 +42089,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.74
@@ -41967,7 +42137,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -46936,6 +47107,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -41.77
@@ -46976,7 +47155,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -49683,6 +49863,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -32.61
@@ -49723,7 +49911,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -55787,6 +55976,74 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.410775, y: 3.9690104, z: 4.2876167}
   m_Center: {x: 0.12881468, y: 0.93111324, z: 1.0420927}
+--- !u!1001 &1367528067
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1117181747837879065, guid: fbf7e9d62f2832f479ca3a338714e40c, type: 3}
+      propertyPath: m_Name
+      value: XR Interaction Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480122806586275211, guid: fbf7e9d62f2832f479ca3a338714e40c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 113.58397
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480122806586275211, guid: fbf7e9d62f2832f479ca3a338714e40c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00103
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480122806586275211, guid: fbf7e9d62f2832f479ca3a338714e40c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 96.62825
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480122806586275211, guid: fbf7e9d62f2832f479ca3a338714e40c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480122806586275211, guid: fbf7e9d62f2832f479ca3a338714e40c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480122806586275211, guid: fbf7e9d62f2832f479ca3a338714e40c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480122806586275211, guid: fbf7e9d62f2832f479ca3a338714e40c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480122806586275211, guid: fbf7e9d62f2832f479ca3a338714e40c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480122806586275211, guid: fbf7e9d62f2832f479ca3a338714e40c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480122806586275211, guid: fbf7e9d62f2832f479ca3a338714e40c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fbf7e9d62f2832f479ca3a338714e40c, type: 3}
+--- !u!114 &1367528068 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7123218902244926224, guid: fbf7e9d62f2832f479ca3a338714e40c, type: 3}
+  m_PrefabInstance: {fileID: 1367528067}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.XRInteractionManager
 --- !u!1001 &1367731403
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56022,6 +56279,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -47.04
@@ -56062,7 +56327,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -64808,6 +65074,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -43.51
@@ -64848,7 +65122,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -68939,6 +69214,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -25.17
@@ -68979,7 +69262,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -73212,7 +73496,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1920393997}
   - {fileID: 143389388}
   - {fileID: 569582969}
   - {fileID: 1074492391}
@@ -74841,6 +75124,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -31.92
@@ -74881,7 +75172,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -78490,6 +78782,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.21
@@ -78530,7 +78830,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -80310,6 +80611,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 906df009be950e44fac11639cea5a092, type: 3}
+--- !u!114 &1917172036 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3655516293794904363, guid: 906df009be950e44fac11639cea5a092, type: 3}
+  m_PrefabInstance: {fileID: 1917172035}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01f69dc1cb084aa42b2f2f8cd87bc770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &1917404301
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -80472,68 +80784,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 87.936165, y: 93.92139, z: 104.33678}
   m_Center: {x: 3.2913055, y: -4.895423, z: 44.59934}
---- !u!1001 &1920393996
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1769552616}
-    m_Modifications:
-    - target: {fileID: 1682149530129583542, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
-      propertyPath: m_Name
-      value: TeleportationPath
-      objectReference: {fileID: 0}
-    - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
---- !u!4 &1920393997 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
-  m_PrefabInstance: {fileID: 1920393996}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1921885219
 GameObject:
   m_ObjectHideFlags: 0
@@ -82361,6 +82611,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -30.73
@@ -82401,7 +82659,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -87630,6 +87889,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -21.84
@@ -87670,7 +87937,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -89017,6 +89285,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportationPath (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1367528068}
+    - target: {fileID: 2074949737669799168, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
+      propertyPath: m_TeleportationProvider
+      value: 
+      objectReference: {fileID: 1917172036}
     - target: {fileID: 4822879066228341034, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -31.19
@@ -89057,7 +89333,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2461758515165708898, guid: 779f7c3040c103e43afc9fadc269aca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -96502,6 +96779,7 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1367528067}
   - {fileID: 1917172035}
   - {fileID: 1911382059}
   - {fileID: 819564953}
