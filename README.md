@@ -23,9 +23,10 @@ The game asks a simple question:
 ## Core Gameplay
 
 - The main gameplay is inspired by **Jenga**
-- The player removes and places blocks
-- Every move makes the structure more unstable
-- Mistakes, hesitation, or overconfidence can cause collapse
+- Blocks arrive continuously and must be grabbed and placed
+- The player stacks components to build the tower
+- Every move increases instability
+- Mistakes or missed components can lead to collapse
 
 The gameplay is simple, but the consequences are not.
 
@@ -38,8 +39,8 @@ If the player chooses to quit, they leave the tech world behind.
 The game transitions to a **quiet farm**, symbolizing a return to a slower, human-scale life.
 
 ### 2. Failure - A World Without Technology
-If the player loses and the system collapses, the game moves to a **pre-technology world**.  
-Technology is gone. What remains is emptiness, silence, and a reset.
+If the player fails repeatedly and the system collapses, the game moves to a **pre-technology world**.  
+Technology is gone. What remains is emptiness, silence, and nature.
 
 ### 3. Success - AI Takeover
 If the player performs perfectly and maintains full control, **AI takes over**.  
@@ -48,7 +49,7 @@ Efficiency wins - but at a cost.
 
 Each ending reflects a different relationship between humans and technology.
 
-![Project Concept](groupProject/Assets/DesignDocuments/D.1.0%20-%20Concept.jpg)
+![Project Concept](groupProject/Assets/DesignDocuments/Concept%20&%20Design.jpg)
 
 ## Who Is This Game For?
 
@@ -94,3 +95,6 @@ git clone https://github.com/letisjamuco/techfall.git
 git lfs pull
 ```
 
+## Credits
+
+All project credits are available in the following folder: `groupProject/Assets/DesignDocuments/Credits`
