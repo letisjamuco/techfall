@@ -8,6 +8,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3681577381831713823, guid: cf23add20e5cd6c4fa214052973f5381, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3681577381831713823, guid: cf23add20e5cd6c4fa214052973f5381, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3354296437720811273, guid: cf23add20e5cd6c4fa214052973f5381, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3354296437720811273, guid: cf23add20e5cd6c4fa214052973f5381, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8128668236925612103, guid: cf23add20e5cd6c4fa214052973f5381, type: 3}
       propertyPath: m_Name
       value: Corn

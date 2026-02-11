@@ -8,9 +8,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9065210395027688490, guid: cbaff4ba21d2b284da6817b1f6b9eead, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -9065210395027688490, guid: cbaff4ba21d2b284da6817b1f6b9eead, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -6689036041284674117, guid: cbaff4ba21d2b284da6817b1f6b9eead, type: 3}
       propertyPath: m_Name
       value: Tomatoe
+      objectReference: {fileID: 0}
+    - target: {fileID: -4958125427659076043, guid: cbaff4ba21d2b284da6817b1f6b9eead, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4958125427659076043, guid: cbaff4ba21d2b284da6817b1f6b9eead, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2774220344278030320, guid: cbaff4ba21d2b284da6817b1f6b9eead, type: 3}
       propertyPath: m_LocalScale.x

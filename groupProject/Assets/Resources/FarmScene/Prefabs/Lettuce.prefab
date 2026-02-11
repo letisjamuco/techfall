@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lettuce
       objectReference: {fileID: 0}
+    - target: {fileID: -4891870874541097259, guid: d5c1d6d51ab0cd24da5c856f279a6939, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4891870874541097259, guid: d5c1d6d51ab0cd24da5c856f279a6939, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2774220344278030320, guid: d5c1d6d51ab0cd24da5c856f279a6939, type: 3}
       propertyPath: m_LocalScale.x
       value: 3
