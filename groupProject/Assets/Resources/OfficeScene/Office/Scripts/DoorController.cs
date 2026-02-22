@@ -3,34 +3,51 @@ using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
-    [SerializeField] private Transform doorPivot;
-    [SerializeField] private float openAngle = 90f;
-    [SerializeField] private float duration = 0.8f;
+    [SerializeField] private Transform hinge;
+    [SerializeField] private float openAngle = 80f;
+    [SerializeField] private float duration = 0.6f;
 
-    private bool isOpen = false;
+    private bool isOpen;
+
+    private Quaternion closedLocalRot;
+    private Quaternion openLocalRot;
+
+    private void Awake()
+    {
+        if (hinge == null) hinge = transform;
+
+        closedLocalRot = hinge.localRotation;
+        openLocalRot = closedLocalRot * Quaternion.Euler(0f, openAngle, 0f);
+    }
 
     public void Open()
     {
         if (isOpen) return;
         isOpen = true;
-
-        if (doorPivot == null) doorPivot = transform;
-        StartCoroutine(OpenRoutine());
+        StopAllCoroutines();
+        StartCoroutine(RotateTo(openLocalRot));
     }
 
-    private IEnumerator OpenRoutine()
+    public void Close()
     {
-        Quaternion start = doorPivot.localRotation;
-        Quaternion target = start * Quaternion.Euler(0f, openAngle, 0f);
+        if (!isOpen) return;
+        isOpen = false;
+        StopAllCoroutines();
+        StartCoroutine(RotateTo(closedLocalRot));
+    }
 
+    private IEnumerator RotateTo(Quaternion target)
+    {
+        Quaternion start = hinge.localRotation;
         float t = 0f;
+
         while (t < 1f)
         {
             t += Time.deltaTime / Mathf.Max(0.01f, duration);
-            doorPivot.localRotation = Quaternion.Slerp(start, target, t);
+            hinge.localRotation = Quaternion.Slerp(start, target, t);
             yield return null;
         }
 
-        doorPivot.localRotation = target;
+        hinge.localRotation = target;
     }
 }
