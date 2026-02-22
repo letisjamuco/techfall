@@ -234,10 +234,21 @@
     .about-grid,.install-grid,.endings-grid,.docs-grid,.credits-main,.credits-support{grid-template-columns:1fr}
     h1{font-size:64px}.hero-corner{display:none}
     footer{flex-direction:column;text-align:center}.miro-cta{flex-direction:column}
-    .hero-inner{grid-template-columns:1fr;gap:36px}
-    .hero-content{max-width:100%}.hero-buttons{justify-content:center}
-    .tower-wrap{width:150px;height:320px;margin:0 auto}
+    .hero-inner{grid-template-columns:1fr;gap:36px;justify-items:center;text-align:center}
+    .hero-content{max-width:100%;text-align:center}
+    .hero-buttons{justify-content:center;flex-direction:column;align-items:center}
+    .hero-buttons .btn{width:100%;max-width:280px;justify-content:center}
+    .tower-wrap{width:130px;height:340px;margin:0 auto;order:2}
+    .hero-content{order:1}
     .t-row.h .t-block{width:44px;height:16px}.t-row.v .t-block{width:20px;height:16px}
+    .audio-row{flex-direction:column;align-items:flex-start}
+    .audio-row audio{width:100%;min-width:unset}
+    .csup{flex-direction:column;align-items:flex-start;gap:12px}
+  }
+
+  @media(max-width:400px){
+    h1{font-size:48px;letter-spacing:2px}
+    .tower-wrap{width:110px;height:290px}
   }
 
   body.lb-open::before {
@@ -607,7 +618,7 @@
                 { l: 'Network', c: 'c-net' }, { l: 'App', c: 'c-app' }, { l: 'DNS', c: 'c-dns' },
                 { l: 'ML', c: 'c-ai' }, { l: 'API', c: 'c-app' }, { l: 'DB', c: 'c-data' },
                 { l: 'IoT', c: 'c-net' }, { l: 'AWS', c: 'c-cloud' }, { l: 'Neural', c: 'c-hw' },
-                { l: 'VR', c: 'c-sec' }, { l: 'Linux', c: 'c-dns' }, { l: 'WASM', c: 'c-algo' },
+                { l: 'VR', c: 'c-sec' }, { l: 'Linux', c: 'c-dns' },
             ];
 
             // Width/height combos — varied to look like real different objects
@@ -615,10 +626,70 @@
                 { w: 140, h: 22 }, { w: 90, h: 28 }, { w: 120, h: 20 }, { w: 70, h: 32 }, { w: 150, h: 18 },
                 { w: 100, h: 26 }, { w: 130, h: 24 }, { w: 80, h: 30 }, { w: 110, h: 22 }, { w: 95, h: 28 },
                 { w: 145, h: 20 }, { w: 75, h: 34 }, { w: 125, h: 18 }, { w: 105, h: 26 }, { w: 135, h: 22 },
-                { w: 85, h: 30 }, { w: 115, h: 24 }, { w: 155, h: 16 },
+                { w: 85, h: 30 }, { w: 115, h: 24 },
             ];
 
-            const ROWS = 18;
+            // All available special shape types (applied via clip-path)
+            const allShapeTypes = ['diamond', 'circle', 'hexagon', 'triangle', 'parallelogram', 'roundrect', 'pentagon', 'tag'];
+
+            function applyShape(el, type, origW, origH) {
+                switch (type) {
+                    case 'diamond':
+                        el.style.width = '42px'; el.style.height = '42px';
+                        el.style.clipPath = 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)';
+                        el.style.borderRadius = '0'; break;
+                    case 'circle':
+                        el.style.width = '34px'; el.style.height = '34px';
+                        el.style.clipPath = 'circle(50% at 50% 50%)';
+                        el.style.borderRadius = '0'; break;
+                    case 'hexagon':
+                        el.style.width = '46px'; el.style.height = '40px';
+                        el.style.clipPath = 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)';
+                        el.style.borderRadius = '0'; break;
+                    case 'triangle':
+                        el.style.width = '48px'; el.style.height = '40px';
+                        el.style.clipPath = 'polygon(50% 0%, 100% 100%, 0% 100%)';
+                        el.style.borderRadius = '0'; break;
+                    case 'parallelogram':
+                        el.style.width = origW + 'px'; el.style.height = origH + 'px';
+                        el.style.clipPath = 'polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%)';
+                        el.style.borderRadius = '0'; break;
+                    case 'roundrect':
+                        el.style.width = origW + 'px'; el.style.height = origH + 'px';
+                        el.style.clipPath = 'none'; el.style.borderRadius = '999px'; break;
+                    case 'pentagon':
+                        el.style.width = '44px'; el.style.height = '42px';
+                        el.style.clipPath = 'polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)';
+                        el.style.borderRadius = '0'; break;
+                    case 'tag':
+                        el.style.width = origW + 'px'; el.style.height = origH + 'px';
+                        el.style.clipPath = 'polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%)';
+                        el.style.borderRadius = '0'; break;
+                    default: // rect
+                        el.style.width = origW + 'px'; el.style.height = origH + 'px';
+                        el.style.clipPath = 'none'; el.style.borderRadius = '3px';
+                }
+            }
+
+            // Build a randomised shape list — ~35% specials, no two same specials adjacent
+            function makeShapeList(count) {
+                const pool = Array(count).fill('rect');
+                const specialCount = Math.round(count * 0.35);
+                const usedIdx = new Set();
+                while (usedIdx.size < specialCount) usedIdx.add(Math.floor(Math.random() * count));
+                let lastSpecial = '';
+                usedIdx.forEach(idx => {
+                    let shape;
+                    do { shape = allShapeTypes[Math.floor(Math.random() * allShapeTypes.length)]; }
+                    while (shape === lastSpecial);
+                    pool[idx] = shape;
+                    lastSpecial = shape;
+                });
+                return pool;
+            }
+
+            // Tower stops at Linux (index 16 = row 17, the last entry in blockDefs)
+            const ROWS = 17;
             let collapsed = false;
             let rebuildTimer = null;
 
@@ -627,16 +698,18 @@
                 wrap.classList.remove('collapsing', 'rebuilding');
                 wrap.classList.add('swaying');
 
+                const shapeList = makeShapeList(ROWS);
+
                 for (let r = 0; r < ROWS; r++) {
                     const bd = blockDefs[r % blockDefs.length];
                     const sh = shapes[r % shapes.length];
+                    const type = shapeList[r];
 
                     const blk = document.createElement('div');
                     blk.className = 't-block ' + bd.c;
                     if (r >= ROWS - 4) blk.classList.add('top-blk');
 
-                    blk.style.width = sh.w + 'px';
-                    blk.style.height = sh.h + 'px';
+                    applyShape(blk, type, sh.w, sh.h);
                     blk.textContent = bd.l;
 
                     // Random subtle tilt (-1.5 to +1.5 deg)
@@ -653,7 +726,10 @@
                     blk.style.setProperty('--fy', (40 + Math.random() * 160).toFixed(0) + 'px');
                     blk.style.setProperty('--fr', ((Math.random() - .5) * 120).toFixed(0) + 'deg');
                     blk.style.setProperty('--fly-dur', (.25 + Math.random() * .3).toFixed(2) + 's');
-                    blk.style.setProperty('--fly-dly', (r * .02).toFixed(2) + 's');
+                    // Realistic collapse: top blocks fall first
+                    // r=0 is BOTTOM (column-reverse), r=ROWS-1 is TOP
+                    // Top (r=ROWS-1) → delay 0s, Bottom (r=0) → largest delay
+                    blk.style.setProperty('--fly-dly', ((ROWS - 1 - r) * 0.05).toFixed(2) + 's');
 
                     tower.appendChild(blk);
                 }
