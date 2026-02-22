@@ -45,22 +45,28 @@
   .hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
 
   /* TOWER */
-  .tower-wrap{position:relative;flex-shrink:0;width:185px;height:510px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;animation:sway 5s ease-in-out infinite;transform-origin:bottom center}
+  .tower-wrap{position:relative;flex-shrink:0;width:160px;height:510px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;transform-origin:bottom center;transition:filter .3s}
+  .tower-wrap.swaying{animation:sway 5s ease-in-out infinite}
   @keyframes sway{0%,100%{transform:rotate(0deg)}30%{transform:rotate(1.5deg)}70%{transform:rotate(-1.2deg)}}
-  .tower{display:flex;flex-direction:column-reverse;align-items:center;gap:2px;width:100%}
-  .t-row{display:flex;gap:3px;align-items:center}
-  .t-row.h .t-block{width:55px;height:19px}
-  .t-row.v .t-block{width:25px;height:19px}
-  .t-block{border-radius:2px;font-family:'Share Tech Mono',monospace;font-size:6.5px;letter-spacing:.3px;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,.76);font-weight:700;text-transform:uppercase;white-space:nowrap;flex-shrink:0;animation:shimmer var(--dur,3s) ease-in-out var(--dly,0s) infinite}
-  @keyframes shimmer{0%,100%{transform:translateX(0) translateY(0);filter:brightness(1)}30%{transform:translateX(var(--sx,1px)) translateY(-.6px);filter:brightness(1.1)}70%{transform:translateX(calc(var(--sx,1px)*-1)) translateY(.6px);filter:brightness(.92)}}
-  .t-row.top .t-block{animation-name:shake;animation-duration:1.3s}
-  @keyframes shake{0%,100%{transform:translateX(0) rotate(0deg)}20%{transform:translateX(3px) rotate(.6deg)}50%{transform:translateX(-3px) rotate(-.5deg)}80%{transform:translateX(2px) rotate(.4deg)}}
+  .tower-wrap.collapsing{animation:none}
+  .tower{display:flex;flex-direction:column-reverse;align-items:center;gap:3px;width:100%}
+  /* Single block per row, varying widths/heights */
+  .t-block{border-radius:3px;font-family:'Share Tech Mono',monospace;font-size:7px;letter-spacing:.3px;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,.76);font-weight:700;text-transform:uppercase;white-space:nowrap;transition:transform .15s,opacity .3s;animation:shimmer var(--dur,3s) ease-in-out var(--dly,0s) infinite}
+  @keyframes shimmer{0%,100%{transform:translateX(0) translateY(0) rotate(var(--tilt,0deg));filter:brightness(1)}30%{transform:translateX(var(--sx,1px)) translateY(-.8px) rotate(var(--tilt,0deg));filter:brightness(1.1)}70%{transform:translateX(calc(var(--sx,1px)*-1)) translateY(.8px) rotate(var(--tilt,0deg));filter:brightness(.92)}}
+  .t-block.top-blk{animation-name:shake;animation-duration:1.2s}
+  @keyframes shake{0%,100%{transform:translateX(0) rotate(var(--tilt,0deg))}20%{transform:translateX(4px) rotate(calc(var(--tilt,0deg) + .8deg))}50%{transform:translateX(-4px) rotate(calc(var(--tilt,0deg) - .7deg))}80%{transform:translateX(3px) rotate(calc(var(--tilt,0deg) + .5deg))}}
+  /* collapsing: blocks fly off */
+  .tower-wrap.collapsing .t-block{animation:blk-fly var(--fly-dur,.4s) var(--fly-dly,0s) ease-in forwards}
+  @keyframes blk-fly{0%{opacity:1;transform:translateX(0) translateY(0) rotate(var(--tilt,0deg))}100%{opacity:0;transform:translateX(var(--fx,30px)) translateY(var(--fy,120px)) rotate(var(--fr,45deg))}}
+  /* rebuild: fade in from bottom */
+  .tower-wrap.rebuilding .t-block{animation:blk-rise .4s var(--fly-dly,0s) ease-out both}
+  @keyframes blk-rise{from{opacity:0;transform:translateY(20px) rotate(var(--tilt,0deg))}to{opacity:1;transform:translateY(0) rotate(var(--tilt,0deg))}}
   .c-ai{background:#e8c060}.c-cloud{background:#5aabdf}.c-data{background:#5ecb8a}.c-sec{background:#e07060}.c-hw{background:#a888d8}.c-algo{background:#e09848}.c-net{background:#58c8d0}.c-app{background:#d098b8}.c-dns{background:#98c460}
-  .t-gap{background:transparent!important;border:1px dashed rgba(255,255,255,.15)!important}
-  .t-falling{position:absolute;top:108px;left:50%;transform:translateX(-50%);width:55px;height:19px;border-radius:2px;font-family:'Share Tech Mono',monospace;font-size:6.5px;font-weight:700;text-transform:uppercase;color:rgba(0,0,0,.76);display:flex;align-items:center;justify-content:center;animation:fall 4.2s cubic-bezier(.4,0,1,1) 1.3s infinite;opacity:0}
-  @keyframes fall{0%{opacity:1;transform:translateX(-50%) translateY(0) rotate(0deg)}15%{opacity:1;transform:translateX(calc(-50% + 18px)) translateY(24px) rotate(10deg)}50%{opacity:1;transform:translateX(calc(-50% + 38px)) translateY(175px) rotate(32deg)}80%{opacity:.45;transform:translateX(calc(-50% + 28px)) translateY(330px) rotate(54deg)}100%{opacity:0;transform:translateX(calc(-50% + 14px)) translateY(440px) rotate(70deg)}}
-  .t-shadow{width:100px;height:7px;border-radius:50%;margin-top:5px;background:radial-gradient(ellipse,rgba(0,0,0,.55) 0%,transparent 70%);animation:shp 5s ease-in-out infinite}
+  .t-shadow{width:90px;height:7px;border-radius:50%;margin-top:5px;background:radial-gradient(ellipse,rgba(0,0,0,.55) 0%,transparent 70%);animation:shp 5s ease-in-out infinite}
   @keyframes shp{0%,100%{transform:scaleX(1);opacity:.5}50%{transform:scaleX(.76);opacity:.2}}
+  /* hover zone indicator */
+  .tower-wrap::after{content:'touch to collapse';position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);opacity:0;transition:opacity .3s;white-space:nowrap}
+  .tower-wrap:hover::after{opacity:.5}
 
   /* BUTTONS */
   .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1px solid;transition:all .25s;position:relative;overflow:hidden;cursor:crosshair}
@@ -193,7 +199,26 @@
   .csup .sname{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:var(--accent)}
   .csup .sdesc{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.6}
 
-  /* FOOTER */
+  /* LINKEDIN */
+  .cname-link{text-decoration:none;color:inherit;display:inline-flex;align-items:center;gap:8px}
+  .li-icon{width:18px;height:18px;border-radius:3px;background:#0a66c2;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;opacity:0;transition:opacity .2s;font-size:9px;color:#fff;font-weight:900;font-family:sans-serif}
+  .ccard:hover .li-icon{opacity:1}
+
+  /* LIGHTBOX */
+  .doc-card{cursor:zoom-in}
+  #lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(6px)}
+  #lightbox.active{display:flex}
+  #lightbox img{max-width:92vw;max-height:90vh;object-fit:contain;border:1px solid var(--border2);box-shadow:0 0 60px rgba(0,0,0,.8)}
+  #lightbox-close{position:absolute;top:20px;right:28px;font-size:28px;color:var(--muted);cursor:pointer;line-height:1;background:none;border:none;transition:color .2s}
+  #lightbox-close:hover{color:var(--accent)}
+  #lightbox-label{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)}
+
+  /* ASSETS NOTE */
+  .assets-note{margin-top:3px;background:var(--surface2);border:1px solid var(--border);padding:22px 28px;display:flex;align-items:flex-start;gap:16px}
+  .assets-note-icon{font-size:20px;flex-shrink:0;margin-top:2px}
+  .assets-note p{font-size:12px;opacity:.65;line-height:1.8}
+  .assets-note a{color:var(--amber);text-decoration:none}
+  .assets-note a:hover{text-decoration:underline}
   footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;justify-content:space-between;align-items:center;font-size:10px;color:var(--muted);letter-spacing:1px;flex-wrap:wrap;gap:10px}
   .foot-logo{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:4px;color:var(--border2)}
 
@@ -213,6 +238,10 @@
     .hero-content{max-width:100%}.hero-buttons{justify-content:center}
     .tower-wrap{width:150px;height:320px;margin:0 auto}
     .t-row.h .t-block{width:44px;height:16px}.t-row.v .t-block{width:20px;height:16px}
+  }
+
+  body.lb-open::before {
+    opacity: 0;
   }
 </style>
 </head>
@@ -249,9 +278,8 @@
                     <a href="#video" class="btn btn-ghost">▶ Watch Demo</a>
                 </div>
             </div>
-            <div class="tower-wrap" aria-hidden="true">
+            <div class="tower-wrap" id="towerWrap" aria-hidden="true">
                 <div class="tower" id="tower"></div>
-                <div class="t-falling" id="tFall"></div>
                 <div class="t-shadow"></div>
             </div>
         </div>
@@ -432,7 +460,7 @@
                 <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Gameplay Loop.jpg" alt="Gameplay Loop"><div class="doc-label">Gameplay Loop</div></div>
                 <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Game Mechanics & User Input.jpg" alt="Game Mechanics"><div class="doc-label">Game Mechanics &amp; User Input</div></div>
                 <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Audios Voice-overs.jpg" alt="Audio & Voice-overs"><div class="doc-label">Audio &amp; Voice-overs</div></div>
-                <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Meme Inspiration.jpg" alt="Inspiration"><div class="doc-label">Inspiration &amp; References</div></div>
+                <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Meme Inspiration.jpg" alt="Inspiration"><div class="doc-label">Inspiration &amp; References (MEMES)</div></div>
             </div>
             <div class="miro-cta">
                 <p>View the full interactive design board on Miro — all scenes, narrative branches, mechanics, and audio scripts in detail.</p>
@@ -443,13 +471,13 @@
 
     <!-- VIDEO -->
     <div class="section" id="video">
-      <p class="tag">05 — Demo</p>
-      <h2>Watch the Demo</h2>
-      <div class="video-wrap">
-        <div class="video-box">
-            <iframe src="https://www.youtube.com/embed/YsLoK3r3p7c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <p class="tag">05 — Demo</p>
+        <h2>Watch the Demo</h2>
+        <div class="video-wrap">
+            <div class="video-box">
+                <iframe src="https://www.youtube.com/embed/YsLoK3r3p7c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
         </div>
-      </div>
     </div>
     <hr class="divider">
 
@@ -493,100 +521,174 @@
         <div class="credits-main">
             <div class="ccard">
                 <div class="cavatar">LM</div>
-                <div class="cname">Letisja Muco</div>
+                <a class="cname-link" href="https://www.linkedin.com/in/letisjamuco/" target="_blank">
+                    <div class="cname">Letisja Muco</div>
+                    <span class="li-icon">in</span>
+                </a>
                 <div class="crole">Project Lead &amp; Developer</div>
                 <div class="ctasks">Project organization &amp; leadership · GitHub repository management · Miro board organization · Farm scene · Office scene · Pro Technology scene · Conveyor belt mechanics · NPC boss audio &amp; ambient audio · Office doors · Scene transitions · Website</div>
             </div>
             <div class="ccard">
                 <div class="cavatar">DB</div>
-                <div class="cname">Domniki Barbari</div>
+                <a class="cname-link" href="https://www.linkedin.com/in/domniki-barbari-45a08538a/" target="_blank">
+                    <div class="cname">Domniki Barbari</div>
+                    <span class="li-icon">in</span>
+                </a>
                 <div class="crole">Technical Lead &amp; Developer</div>
-                <div class="ctasks">Technical leadership · VR headset owner &amp; setup · Continuous testing throughout development · Jenga tower stacking mechanics · High score system · Pro Technology scene design · Transition scene audio · Website</div>
+                <div class="ctasks">Technical leadership · VR headset owner &amp; setup · Continuous testing throughout development · Jenga tower stacking mechanics · High score system · Pro Technology scene design · Transition scene audio</div>
             </div>
             <div class="ccard">
                 <div class="cavatar">KP</div>
-                <div class="cname">Konstantinos Patrinos</div>
+                <a class="cname-link" href="https://www.linkedin.com/in/konstantinos-patrinos-a31277320/" target="_blank">
+                    <div class="cname">Konstantinos Patrinos</div>
+                    <span class="li-icon">in</span>
+                </a>
                 <div class="crole">Scene Designer</div>
                 <div class="ctasks">Office scene design · Pro Technology scene design</div>
             </div>
         </div>
         <div class="credits-support">
-            <div class="csup">
+            <div class="ccard csup">
                 <div class="csup-icon">🎓</div>
                 <div>
                     <div class="slabel">Course Instructor</div>
-                    <div class="sname">Dr. Maria Roussou</div>
+                    <a class="cname-link" href="https://www.linkedin.com/in/mariaroussou/" target="_blank">
+                        <div class="sname">Dr. Maria Roussou</div>
+                        <span class="li-icon">in</span>
+                    </a>
                     <div class="sdesc">Associate Professor in Interactive Systems<br>University of Athens</div>
                 </div>
             </div>
-            <div class="csup">
+
+            <div class="ccard csup">
                 <div class="csup-icon">🛠️</div>
                 <div>
                     <div class="slabel">Technical Support</div>
-                    <div class="sname">Olga Chatzifoti</div>
-                    <div class="sdesc">Unity seminar support &amp; technical assistance throughout development. Helped resolve all technical challenges encountered during the project.</div>
+                    <a class="cname-link" href="https://www.linkedin.com/in/olga-chatzif0ti/" target="_blank">
+                        <div class="sname">Olga Chatzifoti</div>
+                        <span class="li-icon">in</span>
+                    </a>
+                    <div class="sdesc">
+                        Unity seminar support &amp; technical assistance throughout development.
+                        Helped resolve all technical challenges encountered during the project.
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- THIRD PARTY ASSETS NOTE -->
+    <div class="assets-note">
+        <div class="assets-note-icon">📋</div>
+        <p>Third-party assets (3D models, textures, audio, scripts) used in this project are fully documented with sources, licenses, and attribution in the <a href="https://miro.com/app/board/uXjVGXBwrIg=/?share_link_id=971232323960" target="_blank">Miro design board</a> — see the Assets List spreadsheets for each scene (Farm, Office, Pro Technology World, etc.), including links to original sources and license details.</p>
+    </div>
 
     <footer>
+        <!-- LIGHTBOX -->
+        <div id="lightbox">
+            <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+            <img id="lightbox-img" src="" alt="">
+            <div id="lightbox-label"></div>
+        </div>
         <div class="foot-logo">TECHFALL</div>
         <div>Interactive Systems M110 · University of Athens</div>
         <div>Built with Unity · Deployed on GitHub Pages</div>
     </footer>
 
     <script>
-        // BUILD TOWER
+        // ── TOWER: single block per row, varying sizes, mouse collapse ──
         (function () {
+            const wrap = document.getElementById('towerWrap');
             const tower = document.getElementById('tower');
-            const fall = document.getElementById('tFall');
             if (!tower) return;
 
-            const blocks = [
-                { l: 'AI', c: 'c-ai' }, { l: 'Cloud', c: 'c-cloud' }, { l: 'Data', c: 'c-data' },
+            const blockDefs = [
+                { l: 'AI', c: 'c-ai' }, { l: 'Cloud', c: 'c-cloud' }, { l: 'Big Data', c: 'c-data' },
                 { l: 'Sec', c: 'c-sec' }, { l: 'GPU', c: 'c-hw' }, { l: 'Algo', c: 'c-algo' },
-                { l: 'Net', c: 'c-net' }, { l: 'App', c: 'c-app' }, { l: 'DNS', c: 'c-dns' },
+                { l: 'Network', c: 'c-net' }, { l: 'App', c: 'c-app' }, { l: 'DNS', c: 'c-dns' },
                 { l: 'ML', c: 'c-ai' }, { l: 'API', c: 'c-app' }, { l: 'DB', c: 'c-data' },
-                { l: 'IoT', c: 'c-net' }, { l: 'AWS', c: 'c-cloud' }, { l: 'NN', c: 'c-hw' },
+                { l: 'IoT', c: 'c-net' }, { l: 'AWS', c: 'c-cloud' }, { l: 'Neural', c: 'c-hw' },
+                { l: 'VR', c: 'c-sec' }, { l: 'Linux', c: 'c-dns' }, { l: 'WASM', c: 'c-algo' },
             ];
 
-            const ROWS = 17, GAP_ROW = ROWS - 5, GAP_POS = 1;
-            let bi = 0;
-            function nb() { const b = blocks[bi % blocks.length]; bi++; return b; }
+            // Width/height combos — varied to look like real different objects
+            const shapes = [
+                { w: 140, h: 22 }, { w: 90, h: 28 }, { w: 120, h: 20 }, { w: 70, h: 32 }, { w: 150, h: 18 },
+                { w: 100, h: 26 }, { w: 130, h: 24 }, { w: 80, h: 30 }, { w: 110, h: 22 }, { w: 95, h: 28 },
+                { w: 145, h: 20 }, { w: 75, h: 34 }, { w: 125, h: 18 }, { w: 105, h: 26 }, { w: 135, h: 22 },
+                { w: 85, h: 30 }, { w: 115, h: 24 }, { w: 155, h: 16 },
+            ];
 
-            for (let r = 0; r < ROWS; r++) {
-                const row = document.createElement('div');
-                const isH = r % 2 === 0;
-                row.className = 't-row ' + (isH ? 'h' : 'v');
-                if (r >= ROWS - 4) row.classList.add('top');
+            const ROWS = 18;
+            let collapsed = false;
+            let rebuildTimer = null;
 
-                for (let c = 0; c < 3; c++) {
-                    const bd = nb();
+            function buildTower() {
+                tower.innerHTML = '';
+                wrap.classList.remove('collapsing', 'rebuilding');
+                wrap.classList.add('swaying');
+
+                for (let r = 0; r < ROWS; r++) {
+                    const bd = blockDefs[r % blockDefs.length];
+                    const sh = shapes[r % shapes.length];
+
                     const blk = document.createElement('div');
+                    blk.className = 't-block ' + bd.c;
+                    if (r >= ROWS - 4) blk.classList.add('top-blk');
 
-                    if (r === GAP_ROW && c === GAP_POS) {
-                        blk.className = 't-block t-gap';
-                        fall.textContent = bd.l;
-                        fall.classList.add(bd.c);
-                    } else {
-                        blk.className = 't-block ' + bd.c;
-                        blk.textContent = isH ? bd.l : '';
-                        // Each block gets unique random shimmer timing
-                        const dur = (2.0 + Math.random() * 2.2).toFixed(1) + 's';
-                        const dly = (Math.random() * 1.8).toFixed(2) + 's';
-                        const sx = (Math.random() > .5 ? 1 : -1) * (0.4 + Math.random() * 1.6).toFixed(1) + 'px';
-                        blk.style.setProperty('--dur', dur);
-                        blk.style.setProperty('--dly', dly);
-                        blk.style.setProperty('--sx', sx);
-                    }
-                    row.appendChild(blk);
+                    blk.style.width = sh.w + 'px';
+                    blk.style.height = sh.h + 'px';
+                    blk.textContent = bd.l;
+
+                    // Random subtle tilt (-1.5 to +1.5 deg)
+                    const tilt = ((Math.random() - .5) * 3).toFixed(1) + 'deg';
+                    const dur = (2.0 + Math.random() * 2.0).toFixed(1) + 's';
+                    const dly = (Math.random() * 1.8).toFixed(2) + 's';
+                    const sx = (Math.random() > .5 ? 1 : -1) * (0.5 + Math.random() * 1.5).toFixed(1) + 'px';
+                    blk.style.setProperty('--tilt', tilt);
+                    blk.style.setProperty('--dur', dur);
+                    blk.style.setProperty('--dly', dly);
+                    blk.style.setProperty('--sx', sx);
+                    // fly direction for collapse
+                    blk.style.setProperty('--fx', ((Math.random() - .5) * 120).toFixed(0) + 'px');
+                    blk.style.setProperty('--fy', (40 + Math.random() * 160).toFixed(0) + 'px');
+                    blk.style.setProperty('--fr', ((Math.random() - .5) * 120).toFixed(0) + 'deg');
+                    blk.style.setProperty('--fly-dur', (.25 + Math.random() * .3).toFixed(2) + 's');
+                    blk.style.setProperty('--fly-dly', (r * .02).toFixed(2) + 's');
+
+                    tower.appendChild(blk);
                 }
-                tower.appendChild(row);
             }
+
+            function collapse() {
+                if (collapsed) return;
+                collapsed = true;
+                wrap.classList.remove('swaying', 'rebuilding');
+                wrap.classList.add('collapsing');
+
+                // Rebuild after 2.8s
+                rebuildTimer = setTimeout(() => {
+                    wrap.classList.remove('collapsing');
+                    wrap.classList.add('rebuilding');
+                    buildTower();
+                    // After rebuild animation, go back to swaying
+                    setTimeout(() => {
+                        wrap.classList.remove('rebuilding');
+                        wrap.classList.add('swaying');
+                        collapsed = false;
+                    }, ROWS * 20 + 500);
+                }, 2800);
+            }
+
+            // Mouse proximity collapse
+            wrap.addEventListener('mouseenter', collapse);
+
+            // Touch support
+            wrap.addEventListener('touchstart', collapse, { passive: true });
+
+            buildTower();
         })();
 
-        // AUDIO SPOILER TOGGLE
+        // ── AUDIO SPOILER TOGGLE ──
         function toggleSpoiler(id) {
             const el = document.getElementById(id);
             if (!el) return;
@@ -594,6 +696,32 @@
             el.classList.toggle('open');
             if (wasOpen) el.querySelectorAll('audio').forEach(a => a.pause());
         }
+
+        // ── LIGHTBOX ──
+        document.querySelectorAll('.doc-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const img = card.querySelector('.doc-img');
+                const label = card.querySelector('.doc-label');
+                document.getElementById('lightbox-img').src = img.src;
+                document.getElementById('lightbox-img').alt = img.alt;
+                document.getElementById('lightbox-label').textContent = label.textContent;
+                document.getElementById('lightbox').classList.add('active');
+                document.body.style.overflow = 'hidden';
+                document.body.classList.add('lb-open');
+            });
+        });
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+            document.body.classList.remove('lb-open');
+        }
+        document.getElementById('lightbox').addEventListener('click', e => {
+            if (e.target === e.currentTarget) closeLightbox();
+        });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeLightbox();
+        });
     </script>
 </body>
 </html>
