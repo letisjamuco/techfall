@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#111010;--surface:#181717;--surface2:#1e1d1d;--border:#2a2828;--border2:#383434;--text:#c5c0bb;--muted:#5a5654;--accent:#ede8e3;--red:#e63940;--green:#3dbb7c;--yellow:#f0c040;--blue:#4a8fe8;--amber:#d4884a}
+  :root{--bg:#111010;--surface:#181717;--surface2:#1e1d1d;--border:#2a2828;--border2:#383434;--text:#c5c0bb;--muted:#8a8480;--accent:#ede8e3;--red:#e63940;--green:#3dbb7c;--yellow:#f0c040;--blue:#4a8fe8;--amber:#d4884a}
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.75;overflow-x:hidden;cursor:crosshair}
@@ -19,7 +19,8 @@
   .logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:5px;color:var(--accent);text-decoration:none;position:relative}
   .logo::before{content:'TECHFALL';position:absolute;left:2px;top:0;color:var(--red);clip-path:polygon(0 35%,100% 35%,100% 55%,0 55%);animation:gnav 5s infinite;opacity:0}
   @keyframes gnav{0%,88%,100%{transform:translateX(0);opacity:0}90%{transform:translateX(-3px);opacity:.7}92%{transform:translateX(3px);opacity:.5}94%{opacity:0}}
-  nav a{color:var(--muted);text-decoration:none;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border-left:1px solid transparent;transition:color .2s,border-color .2s}
+  /* NAV LINKS: WHITE for contrast / accessibility */
+  nav a{color:var(--accent);text-decoration:none;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border-left:1px solid transparent;transition:color .2s,border-color .2s}
   nav a:hover{color:var(--green);border-left-color:var(--green)}
 
   /* HERO */
@@ -42,7 +43,7 @@
   @keyframes gr{0%,84%,100%{transform:translateX(0);opacity:0}86%{transform:translateX(7px);opacity:.8}88%{transform:translateX(-5px);opacity:.6}90%{opacity:0}}
   @keyframes gb{0%,84%,100%{transform:translateX(0);opacity:0}86%{transform:translateX(-9px);opacity:.65}89%{transform:translateX(4px);opacity:.45}91%{opacity:0}}
   .hero-sub{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--muted);margin:12px 0 20px}
-  .hero-tagline{font-size:14px;color:var(--text);margin:0 0 36px;line-height:1.9;opacity:.82}
+  .hero-tagline{font-size:14px;color:var(--text);margin:0 0 36px;line-height:1.9;opacity:.88}
   .hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
 
   /* TOWER */
@@ -51,21 +52,17 @@
   @keyframes sway{0%,100%{transform:rotate(0deg)}30%{transform:rotate(1.5deg)}70%{transform:rotate(-1.2deg)}}
   .tower-wrap.collapsing{animation:none}
   .tower{display:flex;flex-direction:column-reverse;align-items:center;gap:3px;width:100%}
-  /* Single block per row, varying widths/heights */
   .t-block{border-radius:3px;font-family:'Share Tech Mono',monospace;font-size:7px;letter-spacing:.3px;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,.76);font-weight:700;text-transform:uppercase;white-space:nowrap;transition:transform .15s,opacity .3s;animation:shimmer var(--dur,3s) ease-in-out var(--dly,0s) infinite}
   @keyframes shimmer{0%,100%{transform:translateX(0) translateY(0) rotate(var(--tilt,0deg));filter:brightness(1)}30%{transform:translateX(var(--sx,1px)) translateY(-.8px) rotate(var(--tilt,0deg));filter:brightness(1.1)}70%{transform:translateX(calc(var(--sx,1px)*-1)) translateY(.8px) rotate(var(--tilt,0deg));filter:brightness(.92)}}
   .t-block.top-blk{animation-name:shake;animation-duration:1.2s}
   @keyframes shake{0%,100%{transform:translateX(0) rotate(var(--tilt,0deg))}20%{transform:translateX(4px) rotate(calc(var(--tilt,0deg) + .8deg))}50%{transform:translateX(-4px) rotate(calc(var(--tilt,0deg) - .7deg))}80%{transform:translateX(3px) rotate(calc(var(--tilt,0deg) + .5deg))}}
-  /* collapsing: blocks fly off */
   .tower-wrap.collapsing .t-block{animation:blk-fly var(--fly-dur,.4s) var(--fly-dly,0s) ease-in forwards}
   @keyframes blk-fly{0%{opacity:1;transform:translateX(0) translateY(0) rotate(var(--tilt,0deg))}100%{opacity:0;transform:translateX(var(--fx,30px)) translateY(var(--fy,120px)) rotate(var(--fr,45deg))}}
-  /* rebuild: fade in from bottom */
   .tower-wrap.rebuilding .t-block{animation:blk-rise .4s var(--fly-dly,0s) ease-out both}
   @keyframes blk-rise{from{opacity:0;transform:translateY(20px) rotate(var(--tilt,0deg))}to{opacity:1;transform:translateY(0) rotate(var(--tilt,0deg))}}
   .c-ai{background:#e8c060}.c-cloud{background:#5aabdf}.c-data{background:#5ecb8a}.c-sec{background:#e07060}.c-hw{background:#a888d8}.c-algo{background:#e09848}.c-net{background:#58c8d0}.c-app{background:#d098b8}.c-dns{background:#98c460}
   .t-shadow{width:90px;height:7px;border-radius:50%;margin-top:5px;background:radial-gradient(ellipse,rgba(0,0,0,.55) 0%,transparent 70%);animation:shp 5s ease-in-out infinite}
   @keyframes shp{0%,100%{transform:scaleX(1);opacity:.5}50%{transform:scaleX(.76);opacity:.2}}
-  /* hover zone indicator */
   .tower-wrap::after{content:'touch to collapse';position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);opacity:0;transition:opacity .3s;white-space:nowrap}
   .tower-wrap:hover::after{opacity:.5}
 
@@ -74,8 +71,8 @@
   .btn::before{content:'';position:absolute;inset:0;background:currentColor;opacity:0;transition:opacity .2s}
   .btn:hover::before{opacity:.08}
   .btn-amber{border-color:var(--amber);color:var(--amber)}
-  .btn-ghost{border-color:var(--border2);color:var(--muted)}
-  .btn-ghost:hover{border-color:var(--text);color:var(--text)}
+  .btn-ghost{border-color:var(--border2);color:var(--accent)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
   .btn-green{border-color:var(--green);color:var(--green)}
 
   /* TICKER */
@@ -87,14 +84,14 @@
   .section{max-width:1080px;margin:0 auto;padding:96px 44px}
   .section-full{padding:96px 44px;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
   .section-full .inner{max-width:1080px;margin:0 auto}
-  .tag{display:inline-block;font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--amber);margin-bottom:10px;opacity:.8}
+  .tag{display:inline-block;font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--amber);margin-bottom:10px;opacity:.9}
   .tag::before{content:'// ';color:var(--muted)}
   h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,4.5vw,52px);letter-spacing:4px;color:var(--accent);margin-bottom:48px}
   hr.divider{border:none;border-top:1px solid var(--border);max-width:1080px;margin:0 auto}
 
   /* ABOUT */
   .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
-  .about-text p{margin-bottom:18px;opacity:.85}
+  .about-text p{margin-bottom:18px;opacity:.88}
   .quote-box{border-left:3px solid var(--amber);padding:18px 28px;margin-top:36px;background:rgba(212,136,74,.04);font-style:italic;font-size:16px;color:var(--accent);line-height:1.9;opacity:.9}
   .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
   .stat-box{background:var(--surface2);border:1px solid var(--border);padding:28px;position:relative;transition:border-color .3s}
@@ -102,6 +99,27 @@
   .stat-box::before{content:attr(data-i);position:absolute;top:10px;right:14px;font-size:10px;color:var(--muted)}
   .stat-num{font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--accent);line-height:1;margin-bottom:4px}
   .stat-lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+
+  /* DESIGN PILLARS */
+  .design-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+  .design-pillar{background:var(--surface2);border:1px solid var(--border);padding:36px;position:relative;overflow:hidden;transition:border-color .3s}
+  .design-pillar:hover{border-color:rgba(212,136,74,.4)}
+  .design-pillar::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+  .design-pillar.story::before{background:var(--amber)}
+  .design-pillar.mechanics::before{background:var(--green)}
+  .design-pillar.aesthetics::before{background:var(--blue)}
+  .design-pillar.technology::before{background:var(--red)}
+  .design-pillar.prototyping::before{background:var(--muted)}
+  .design-pillar.prototyping{grid-column:1/-1}
+  .dp-icon{font-size:28px;margin-bottom:14px;display:block}
+  .dp-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;margin-bottom:18px}
+  .design-pillar.story .dp-title{color:var(--amber)}
+  .design-pillar.mechanics .dp-title{color:var(--green)}
+  .design-pillar.aesthetics .dp-title{color:var(--blue)}
+  .design-pillar.technology .dp-title{color:var(--red)}
+  .design-pillar.prototyping .dp-title{color:var(--muted)}
+  .dp-text p{font-size:13px;opacity:.84;line-height:1.9;margin-bottom:12px}
+  .dp-text p:last-child{margin-bottom:0}
 
   /* GAMEPLAY */
   .gblock{background:var(--surface2);border:1px solid var(--border);padding:32px 36px;margin-bottom:2px;display:grid;grid-template-columns:48px 1fr;gap:24px;transition:border-color .3s;position:relative;overflow:hidden}
@@ -122,9 +140,9 @@
   .spoiler-body{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;padding:0 16px}
   .audio-spoiler.open .spoiler-body{max-height:420px;padding:12px 16px 16px}
   .s-warn{display:inline-flex;align-items:center;gap:6px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--red);opacity:.7;border:1px solid rgba(230,57,64,.3);padding:3px 10px;margin-bottom:10px}
-  .s-hint{font-size:11px;opacity:.55;margin-bottom:12px;line-height:1.6;font-style:italic}
+  .s-hint{font-size:11px;opacity:.65;margin-bottom:12px;line-height:1.6;font-style:italic}
   .audio-row{display:flex;align-items:center;gap:12px;margin-bottom:8px;flex-wrap:wrap;padding:8px 10px;background:rgba(255,255,255,.02);border:1px solid var(--border)}
-  .audio-row-label{font-size:10px;color:var(--text);opacity:.75;min-width:155px;letter-spacing:.5px;flex-shrink:0}
+  .audio-row-label{font-size:10px;color:var(--text);opacity:.85;min-width:155px;letter-spacing:.5px;flex-shrink:0}
   .audio-row audio{flex:1;min-width:170px;height:28px;accent-color:var(--amber)}
 
   /* ENDINGS */
@@ -147,40 +165,57 @@
   .ecard.fail .etitle{color:var(--red)}
   .ecard.win .etitle{color:var(--blue)}
   .esub{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
-  .edesc{font-size:13px;opacity:.72;line-height:1.85}
+  .edesc{font-size:13px;opacity:.78;line-height:1.85}
 
   /* VIDEO */
   .video-wrap{max-width:900px;margin:0 auto}
   .video-box{position:relative;aspect-ratio:16/9;background:#080808;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden}
   .video-box iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
-  .vid-placeholder{text-align:center;z-index:2}
-  .vid-play{width:68px;height:68px;border:2px solid rgba(237,232,227,.22);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:22px;transition:border-color .3s,color .3s}
-  .vid-placeholder:hover .vid-play{border-color:var(--amber);color:var(--amber)}
-  .vid-placeholder p{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
-  .vid-scanlines{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.35) 3px,rgba(0,0,0,.35) 6px);pointer-events:none;opacity:.4}
 
   /* DOCS */
   .docs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
-  .doc-card{background:var(--surface2);border:1px solid var(--border);overflow:hidden;transition:border-color .3s}
+  .doc-card{background:var(--surface2);border:1px solid var(--border);overflow:hidden;transition:border-color .3s;cursor:zoom-in}
   .doc-card:hover{border-color:rgba(212,136,74,.4)}
   .doc-img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top;display:block;opacity:.85;transition:opacity .3s}
   .doc-card:hover .doc-img{opacity:1}
   .doc-label{padding:12px 14px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--border)}
   .miro-cta{margin-top:28px;background:var(--surface2);border:1px solid var(--border);padding:26px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-  .miro-cta p{opacity:.75;max-width:540px;font-size:13px}
+  .miro-cta p{opacity:.8;max-width:540px;font-size:13px}
+
+  /* SCREENSHOTS */
+  .screens-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+  .screen-placeholder{aspect-ratio:16/9;background:var(--surface2);border:1px solid var(--border);border-style:dashed;display:flex;align-items:center;justify-content:center;transition:border-color .3s,background .3s;position:relative;overflow:hidden}
+  .screen-placeholder:hover{border-color:rgba(212,136,74,.4);background:rgba(212,136,74,.03)}
+  .screen-placeholder::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(255,255,255,.015) 8px,rgba(255,255,255,.015) 9px)}
+  .screen-inner{text-align:center;z-index:1}
+  .screen-icon{font-size:28px;display:block;margin-bottom:10px;opacity:.25}
+  .screen-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);opacity:.5;margin-bottom:4px}
+  .screen-hint{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);opacity:.5}
+  @media(max-width:800px){.screens-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:400px){.screens-grid{grid-template-columns:1fr}}
+
+  /* PROTOTYPING BONUS */
+  .proto-bonus{margin-top:3px;display:flex;gap:0;align-items:stretch;background:var(--bg);border:1px solid var(--border);overflow:hidden;transition:border-color .3s}
+  .proto-bonus:hover{border-color:rgba(212,136,74,.3)}
+  .proto-bonus-label{padding:32px 36px;min-width:280px;max-width:320px;display:flex;flex-direction:column;justify-content:center;gap:10px;flex-shrink:0}
+  .proto-tag{display:inline-block;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);border:1px solid rgba(212,136,74,.35);padding:3px 10px;width:fit-content}
+  .proto-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:var(--accent)}
+  .proto-desc{font-size:12px;opacity:.65;line-height:1.8}
+  .proto-card{border:none!important;border-left:1px solid var(--border)!important;cursor:zoom-in}
+  @media(max-width:800px){.proto-bonus{flex-direction:column}.proto-bonus-label{min-width:unset;max-width:unset}}
 
   /* INSTALL */
   .install-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
   .method-card{background:var(--surface2);border:1px solid var(--border);padding:36px;position:relative}
   .method-card::before{content:attr(data-method);position:absolute;top:-1px;left:-1px;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;padding:4px 12px}
   .method-card.vr::before{background:var(--green);color:#000}
-  .method-card.dev::before{background:var(--border2);color:var(--muted)}
+  .method-card.dev::before{background:var(--border2);color:var(--accent)}
   .method-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:var(--accent);margin:28px 0 12px}
-  .method-desc{opacity:.75;margin-bottom:22px;font-size:13px}
+  .method-desc{opacity:.82;margin-bottom:22px;font-size:13px}
   .steps{counter-reset:step}
   .step{display:flex;gap:14px;margin-bottom:14px;align-items:flex-start;counter-increment:step}
   .step::before{content:counter(step);font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--muted);min-width:22px;line-height:1.2}
-  .step p{font-size:13px;opacity:.8}
+  .step p{font-size:13px;opacity:.85}
   .step strong{color:var(--accent)}
   .code-block{background:#080808;border:1px solid var(--border);border-left:3px solid var(--green);padding:15px 20px;margin:10px 0;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--green);letter-spacing:.5px;overflow-x:auto}
   .code-block .cm{color:var(--muted)}
@@ -192,7 +227,7 @@
   .cavatar{width:52px;height:52px;border-radius:50%;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--muted);margin-bottom:14px;background:var(--bg)}
   .cname{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--accent);margin-bottom:2px}
   .crole{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
-  .ctasks{font-size:12px;opacity:.62;line-height:1.8}
+  .ctasks{font-size:12px;opacity:.72;line-height:1.8}
   .credits-support{display:grid;grid-template-columns:1fr 1fr;gap:3px}
   .csup{background:var(--surface2);border:1px solid var(--border);padding:24px 28px;display:flex;align-items:center;gap:18px}
   .csup-icon{width:44px;height:44px;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;border-radius:4px}
@@ -206,7 +241,6 @@
   .ccard:hover .li-icon{opacity:1}
 
   /* LIGHTBOX */
-  .doc-card{cursor:zoom-in}
   #lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(6px)}
   #lightbox.active{display:flex}
   #lightbox img{max-width:92vw;max-height:90vh;object-fit:contain;border:1px solid var(--border2);box-shadow:0 0 60px rgba(0,0,0,.8)}
@@ -217,7 +251,7 @@
   /* ASSETS NOTE */
   .assets-note{margin-top:3px;background:var(--surface2);border:1px solid var(--border);padding:22px 28px;display:flex;align-items:flex-start;gap:16px}
   .assets-note-icon{font-size:20px;flex-shrink:0;margin-top:2px}
-  .assets-note p{font-size:12px;opacity:.65;line-height:1.8}
+  .assets-note p{font-size:12px;opacity:.75;line-height:1.8}
   .assets-note a{color:var(--amber);text-decoration:none}
   .assets-note a:hover{text-decoration:underline}
   footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;justify-content:space-between;align-items:center;font-size:10px;color:var(--muted);letter-spacing:1px;flex-wrap:wrap;gap:10px}
@@ -232,7 +266,7 @@
   @media(max-width:800px){
     header{padding:12px 20px}nav{display:none}
     .section{padding:60px 20px}.section-full{padding:60px 20px}
-    .about-grid,.install-grid,.endings-grid,.docs-grid,.credits-main,.credits-support{grid-template-columns:1fr}
+    .about-grid,.install-grid,.endings-grid,.docs-grid,.credits-main,.credits-support,.design-grid{grid-template-columns:1fr}
     h1{font-size:64px}.hero-corner{display:none}
     footer{flex-direction:column;text-align:center}.miro-cta{flex-direction:column}
     .hero-inner{grid-template-columns:1fr;gap:36px;justify-items:center;text-align:center}
@@ -241,20 +275,15 @@
     .hero-buttons .btn{width:100%;max-width:280px;justify-content:center}
     .tower-wrap{width:130px;height:340px;margin:0 auto;order:2}
     .hero-content{order:1}
-    .t-row.h .t-block{width:44px;height:16px}.t-row.v .t-block{width:20px;height:16px}
     .audio-row{flex-direction:column;align-items:flex-start}
     .audio-row audio{width:100%;min-width:unset}
     .csup{flex-direction:column;align-items:flex-start;gap:12px}
   }
-
   @media(max-width:400px){
     h1{font-size:48px;letter-spacing:2px}
     .tower-wrap{width:110px;height:290px}
   }
-
-  body.lb-open::before {
-    opacity: 0;
-  }
+  body.lb-open::before{opacity:0}
 </style>
 </head>
 <body>
@@ -263,10 +292,12 @@
         <a class="logo" href="#hero">TECHFALL</a>
         <nav>
             <a href="#about">About</a>
+            <a href="#design">Design</a>
             <a href="#gameplay">Gameplay</a>
             <a href="#endings">Endings</a>
             <a href="#docs">Design Docs</a>
             <a href="#video">Demo</a>
+            <a href="#screenshots">Screenshots</a>
             <a href="#play">Get It</a>
             <a href="#credits">Credits</a>
         </nav>
@@ -322,16 +353,77 @@
     </div>
     <hr class="divider">
 
+    <!-- DESIGN: 4 Pillars -->
+    <div class="section-full" id="design">
+        <div class="inner">
+            <p class="tag">02 — Design Framework</p>
+            <h2>The Five Design Pillars</h2>
+            <p style="margin-bottom:40px;opacity:.78;">Techfall was designed through five core dimensions of interactive experience design — Story, Mechanics, Aesthetics, Technology, and Prototyping — each shaping the experience in a distinct way.</p>
+            <div class="design-grid">
+
+                <div class="design-pillar story">
+                    <span class="dp-icon">📖</span>
+                    <div class="dp-title">Story</div>
+                    <div class="dp-text">
+                        <p>You just finished your master's. You got the job. Day one, the CEO hands you a task so absurd it barely qualifies as work: stack tech equipment into a tower. No explanation. No purpose. Just do it.</p>
+                        <p>At your workstation, components arrive on a conveyor belt. Miss too many and the CEO's patience — already thin — runs out. Four strikes and you're fired. The tower falls. So does civilization.</p>
+                        <p>But build it too high, and you've fed the machine more than it needed. The AI takes over. There's also a door. It's always been there. Walk through it and none of this was ever your problem.</p>
+                    </div>
+                </div>
+
+                <div class="design-pillar mechanics">
+                    <span class="dp-icon">⚙️</span>
+                    <div class="dp-title">Mechanics</div>
+                    <div class="dp-text">
+                        <p>Accessibility shaped every decision. Movement supports both continuous locomotion and teleportation — because VR motion sickness is real, and the game shouldn't exclude anyone before they even start.</p>
+                        <p>Grabbing uses a near-grab system rather than physics-based collision, making interactions feel immediate and physical without the frustration of missed grabs.</p>
+                        <p>Every interaction — grabbing components, pressing buttons, triggering UI — is mapped to the same controller input. One button. No confusion.</p>
+                    </div>
+                </div>
+
+                <div class="design-pillar aesthetics">
+                    <span class="dp-icon">🎨</span>
+                    <div class="dp-title">Aesthetics</div>
+                    <div class="dp-text">
+                        <p>The visual style lands between photorealistic and cartoonish — detailed enough to feel grounded, stylized enough to feel intentional.</p>
+                        <p>The Office is cold. Futuristic, minimalistic, unwelcoming — and deliberately empty of other people. Just you, the conveyor belt, and a boss who doesn't like you.</p>
+                        <p>The AI Takeover ending warps that same space into something chaotic and apocalyptic. The Farm is its opposite: warm light, open fields, natural sounds. And the Pre-Technology world is quiet in a different way — a city without screens, without machines, nature slowly taking back what we built.</p>
+                    </div>
+                </div>
+
+                <div class="design-pillar technology">
+                    <span class="dp-icon">🖥️</span>
+                    <div class="dp-title">Technology</div>
+                    <div class="dp-text">
+                        <p>Techfall is a 3D VR experience built for the Meta Quest 2 — two controllers, full hand tracking, full immersion.</p>
+                        <p>Built in Unity, the engine handles everything from the physics of the conveyor belt to the spatial audio of the boss reprimands to the lighting shifts between scenes.</p>
+                    </div>
+                </div>
+
+                <div class="design-pillar prototyping">
+                    <span class="dp-icon">🗺️</span>
+                    <div class="dp-title">Prototyping</div>
+                    <div class="dp-text">
+                        <p>Before building, we mapped it. The prototyping process produced a full gameplay flow diagram — scenes, branching decisions, and transitions — so every mechanic had a place before a single line of code was written.</p>
+                        <p>The full prototyping map is available in the design documents below.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <hr class="divider">
+
     <!-- GAMEPLAY -->
     <div class="section" id="gameplay">
-        <p class="tag">02 — Mechanics</p>
+        <p class="tag">03 — Mechanics In Detail</p>
         <h2>How It Works</h2>
 
         <div class="gblock">
             <div class="gnum">01</div>
             <div>
                 <div class="gtitle">Office Intro &amp; Task Briefing</div>
-                <p>The experience begins in the company director's office. Standing before their avatar, a short tutorial triggers — familiarizing the player with VR controls and virtual hands. The boss speaks. The task is assigned. Then the door to the workstation opens.</p>
+                <p>The experience begins in the company director's office. A short tutorial triggers — familiarizing the player with VR controls and virtual hands. The boss speaks. The task is assigned. Then the door to the workstation opens.</p>
                 <div class="audio-spoiler" id="sp-intro">
                     <button class="spoiler-toggle" onclick="toggleSpoiler('sp-intro')">
                         <span>🔊 &nbsp;Wanna hear the company boss introduction?</span>
@@ -424,7 +516,7 @@
             <div class="gnum">06</div>
             <div>
                 <div class="gtitle">Score System &amp; Exit Choice</div>
-                <p>Score is determined by tower height — tracked in real time via HeightDetector and ScoreManager. Required high score to trigger the AI ending is 250. At any moment, the player can also walk through the exit door — triggering the Farm ending immediately.</p>
+                <p>Score is determined by tower height — tracked in real time via HeightDetector and ScoreManager. Reaching a high score of 250 triggers the AI ending. At any moment, the player can also walk through the exit door — triggering the Farm ending immediately.</p>
             </div>
         </div>
     </div>
@@ -432,9 +524,9 @@
 
     <!-- ENDINGS -->
     <div class="section" id="endings">
-        <p class="tag">03 — Outcomes</p>
+        <p class="tag">04 — Outcomes</p>
         <h2>Three Endings</h2>
-        <p style="margin-bottom:40px;opacity:.72;">Your choices — and your performance — determine where the story goes. Each ending reflects a different relationship between humans and technology.</p>
+        <p style="margin-bottom:40px;opacity:.78;">Your choices — and your performance — determine where the story goes. Each ending reflects a different relationship between humans and technology.</p>
         <div class="endings-grid">
             <div class="ecard resign">
                 <span class="eicon">🌾</span>
@@ -463,9 +555,9 @@
     <!-- DESIGN DOCS -->
     <div class="section-full" id="docs">
         <div class="inner">
-            <p class="tag">04 — Design Documents</p>
+            <p class="tag">05 — Design Documents</p>
             <h2>Behind the Game</h2>
-            <p style="margin-bottom:40px;opacity:.72;">Our full design process is documented in Miro — concept, narrative, mechanics, audio scripts, and gameplay flow.</p>
+            <p style="margin-bottom:40px;opacity:.78;">Our full design process is documented in Miro — concept, narrative, mechanics, audio scripts, gameplay flow, and prototyping map. Click any document to enlarge.</p>
             <div class="docs-grid">
                 <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Concept & Design.jpg" alt="Concept & Design"><div class="doc-label">Concept &amp; Design</div></div>
                 <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Narrative Design.jpg" alt="Narrative Design"><div class="doc-label">Narrative Design</div></div>
@@ -478,12 +570,24 @@
                 <p>View the full interactive design board on Miro — all scenes, narrative branches, mechanics, and audio scripts in detail.</p>
                 <a href="https://miro.com/app/board/uXjVGXBwrIg=/?share_link_id=971232323960" target="_blank" class="btn btn-amber">↗ Open in Miro</a>
             </div>
+            <!-- PROTOTYPING MAP BONUS -->
+            <div class="proto-bonus">
+                <div class="proto-bonus-label">
+                    <span class="proto-tag">+ Bonus</span>
+                    <div class="proto-title">Prototyping Map</div>
+                    <p class="proto-desc">During the design process, we created a prototyping map outlining the full progression of gameplay — scenes, branches, and decision points visualized end-to-end.</p>
+                </div>
+                <div class="doc-card proto-card" style="flex:1;min-width:0">
+                    <img class="doc-img" src="groupProject/Assets/DesignDocuments/Prototyping/Prototyping Map.jpg" alt="Prototyping Map" style="aspect-ratio:16/9;object-position:center">
+                    <div class="doc-label">Prototyping Map</div>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- VIDEO -->
     <div class="section" id="video">
-        <p class="tag">05 — Demo</p>
+        <p class="tag">06 — Demo</p>
         <h2>Watch the Demo</h2>
         <div class="video-wrap">
             <div class="video-box">
@@ -491,11 +595,61 @@
             </div>
         </div>
     </div>
+    <!-- SCREENSHOTS -->
+    <div class="section" id="screenshots">
+        <p class="tag">06b — In-Game</p>
+        <h2>Screenshots</h2>
+        <p style="margin-bottom:36px;opacity:.65;font-size:13px;">Replace the placeholders below with actual in-game screenshots.</p>
+        <div class="screens-grid">
+            <div class="screen-placeholder">
+                <div class="screen-inner">
+                    <span class="screen-icon">🖼</span>
+                    <div class="screen-label">Office Scene</div>
+                    <div class="screen-hint">replace with actual screenshot</div>
+                </div>
+            </div>
+            <div class="screen-placeholder">
+                <div class="screen-inner">
+                    <span class="screen-icon">🖼</span>
+                    <div class="screen-label">Conveyor Belt / Gameplay</div>
+                    <div class="screen-hint">replace with actual screenshot</div>
+                </div>
+            </div>
+            <div class="screen-placeholder">
+                <div class="screen-inner">
+                    <span class="screen-icon">🖼</span>
+                    <div class="screen-label">Tower Stacking</div>
+                    <div class="screen-hint">replace with actual screenshot</div>
+                </div>
+            </div>
+            <div class="screen-placeholder">
+                <div class="screen-inner">
+                    <span class="screen-icon">🖼</span>
+                    <div class="screen-label">Farm Ending</div>
+                    <div class="screen-hint">replace with actual screenshot</div>
+                </div>
+            </div>
+            <div class="screen-placeholder">
+                <div class="screen-inner">
+                    <span class="screen-icon">🖼</span>
+                    <div class="screen-label">AI Takeover Ending</div>
+                    <div class="screen-hint">replace with actual screenshot</div>
+                </div>
+            </div>
+            <div class="screen-placeholder">
+                <div class="screen-inner">
+                    <span class="screen-icon">🖼</span>
+                    <div class="screen-label">Pre-Technology World</div>
+                    <div class="screen-hint">replace with actual screenshot</div>
+                </div>
+            </div>
+        </div>
+    </div>
     <hr class="divider">
 
     <!-- INSTALL -->
     <div class="section" id="play">
-        <p class="tag">06 — Get the Game</p>
+        <p class="tag">07 — Get the Game</p>
         <h2>Play Techfall</h2>
         <div class="install-grid">
             <div class="method-card vr" data-method="▶ Play Now">
@@ -507,7 +661,6 @@
                     <div class="step"><p>Put on your headset and get ready for an <strong>immersive experience</strong></p></div>
                 </div>
                 <div style="margin-top:24px">
-                    <!-- REPLACE href WITH YOUR APK DOWNLOAD LINK -->
                     <a href="YOUR_APK_LINK_HERE" class="btn btn-green">↓ Download .apk</a>
                 </div>
             </div>
@@ -528,7 +681,7 @@
 
     <!-- CREDITS -->
     <div class="section" id="credits">
-        <p class="tag">07 — Team</p>
+        <p class="tag">08 — Team</p>
         <h2>Credits</h2>
         <div class="credits-main">
             <div class="ccard">
@@ -571,7 +724,6 @@
                     <div class="sdesc">Associate Professor in Interactive Systems<br>University of Athens</div>
                 </div>
             </div>
-
             <div class="ccard csup">
                 <div class="csup-icon">🛠️</div>
                 <div>
@@ -580,18 +732,16 @@
                         <div class="sname">Olga Chatzifoti</div>
                         <span class="li-icon">in</span>
                     </a>
-                    <div class="sdesc">
-                        Unity seminar support &amp; technical assistance throughout development.
-                        Helped resolve all technical challenges encountered during the project.
-                    </div>
+                    <div class="sdesc">Unity seminar support &amp; technical assistance throughout development. Helped resolve all technical challenges encountered during the project.</div>
                 </div>
             </div>
         </div>
     </div>
+
     <!-- THIRD PARTY ASSETS NOTE -->
     <div class="assets-note">
         <div class="assets-note-icon">📋</div>
-        <p>Third-party assets (3D models, textures, audio, scripts) used in this project are fully documented with sources, licenses, and attribution in the <a href="https://miro.com/app/board/uXjVGXBwrIg=/?share_link_id=971232323960" target="_blank">Miro design board</a> — see the Assets List spreadsheets for each scene (Farm, Office, Pro Technology World, etc.), including links to original sources and license details.</p>
+        <p>Third-party assets (3D models, textures, audio, scripts) used in this project are fully documented with sources, licenses, and attribution in the <a href="https://miro.com/app/board/uXjVGXBwrIg=/?share_link_id=971232323960" target="_blank">Miro design board</a> — see the Assets List spreadsheets for each scene (Farm, Office, Pre-Technology World, etc.), including links to original sources and license details.</p>
     </div>
 
     <footer>
@@ -607,7 +757,7 @@
     </footer>
 
     <script>
-        // ── TOWER: single block per row, varying sizes, mouse collapse ──
+        // ── TOWER ──
         (function () {
             const wrap = document.getElementById('towerWrap');
             const tower = document.getElementById('tower');
@@ -622,7 +772,6 @@
                 { l: 'VR', c: 'c-sec' }, { l: 'Linux', c: 'c-dns' },
             ];
 
-            // Width/height combos — varied to look like real different objects
             const shapes = [
                 { w: 140, h: 22 }, { w: 90, h: 28 }, { w: 120, h: 20 }, { w: 70, h: 32 }, { w: 150, h: 18 },
                 { w: 100, h: 26 }, { w: 130, h: 24 }, { w: 80, h: 30 }, { w: 110, h: 22 }, { w: 95, h: 28 },
@@ -630,49 +779,22 @@
                 { w: 85, h: 30 }, { w: 115, h: 24 },
             ];
 
-            // All available special shape types (applied via clip-path)
             const allShapeTypes = ['diamond', 'circle', 'hexagon', 'triangle', 'parallelogram', 'roundrect', 'pentagon', 'tag'];
 
             function applyShape(el, type, origW, origH) {
                 switch (type) {
-                    case 'diamond':
-                        el.style.width = '42px'; el.style.height = '42px';
-                        el.style.clipPath = 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)';
-                        el.style.borderRadius = '0'; break;
-                    case 'circle':
-                        el.style.width = '34px'; el.style.height = '34px';
-                        el.style.clipPath = 'circle(50% at 50% 50%)';
-                        el.style.borderRadius = '0'; break;
-                    case 'hexagon':
-                        el.style.width = '46px'; el.style.height = '40px';
-                        el.style.clipPath = 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)';
-                        el.style.borderRadius = '0'; break;
-                    case 'triangle':
-                        el.style.width = '48px'; el.style.height = '40px';
-                        el.style.clipPath = 'polygon(50% 0%, 100% 100%, 0% 100%)';
-                        el.style.borderRadius = '0'; break;
-                    case 'parallelogram':
-                        el.style.width = origW + 'px'; el.style.height = origH + 'px';
-                        el.style.clipPath = 'polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%)';
-                        el.style.borderRadius = '0'; break;
-                    case 'roundrect':
-                        el.style.width = origW + 'px'; el.style.height = origH + 'px';
-                        el.style.clipPath = 'none'; el.style.borderRadius = '999px'; break;
-                    case 'pentagon':
-                        el.style.width = '44px'; el.style.height = '42px';
-                        el.style.clipPath = 'polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)';
-                        el.style.borderRadius = '0'; break;
-                    case 'tag':
-                        el.style.width = origW + 'px'; el.style.height = origH + 'px';
-                        el.style.clipPath = 'polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%)';
-                        el.style.borderRadius = '0'; break;
-                    default: // rect
-                        el.style.width = origW + 'px'; el.style.height = origH + 'px';
-                        el.style.clipPath = 'none'; el.style.borderRadius = '3px';
+                    case 'diamond': el.style.width='42px';el.style.height='42px';el.style.clipPath='polygon(50% 0%,100% 50%,50% 100%,0% 50%)';el.style.borderRadius='0';break;
+                    case 'circle': el.style.width='34px';el.style.height='34px';el.style.clipPath='circle(50% at 50% 50%)';el.style.borderRadius='0';break;
+                    case 'hexagon': el.style.width='46px';el.style.height='40px';el.style.clipPath='polygon(25% 0%,75% 0%,100% 50%,75% 100%,25% 100%,0% 50%)';el.style.borderRadius='0';break;
+                    case 'triangle': el.style.width='48px';el.style.height='40px';el.style.clipPath='polygon(50% 0%,100% 100%,0% 100%)';el.style.borderRadius='0';break;
+                    case 'parallelogram': el.style.width=origW+'px';el.style.height=origH+'px';el.style.clipPath='polygon(15% 0%,100% 0%,85% 100%,0% 100%)';el.style.borderRadius='0';break;
+                    case 'roundrect': el.style.width=origW+'px';el.style.height=origH+'px';el.style.clipPath='none';el.style.borderRadius='999px';break;
+                    case 'pentagon': el.style.width='44px';el.style.height='42px';el.style.clipPath='polygon(50% 0%,100% 38%,82% 100%,18% 100%,0% 38%)';el.style.borderRadius='0';break;
+                    case 'tag': el.style.width=origW+'px';el.style.height=origH+'px';el.style.clipPath='polygon(0% 0%,90% 0%,100% 50%,90% 100%,0% 100%)';el.style.borderRadius='0';break;
+                    default: el.style.width=origW+'px';el.style.height=origH+'px';el.style.clipPath='none';el.style.borderRadius='3px';
                 }
             }
 
-            // Build a randomised shape list — ~35% specials, no two same specials adjacent
             function makeShapeList(count) {
                 const pool = Array(count).fill('rect');
                 const specialCount = Math.round(count * 0.35);
@@ -681,57 +803,38 @@
                 let lastSpecial = '';
                 usedIdx.forEach(idx => {
                     let shape;
-                    do { shape = allShapeTypes[Math.floor(Math.random() * allShapeTypes.length)]; }
-                    while (shape === lastSpecial);
+                    do { shape = allShapeTypes[Math.floor(Math.random() * allShapeTypes.length)]; } while (shape === lastSpecial);
                     pool[idx] = shape;
                     lastSpecial = shape;
                 });
                 return pool;
             }
 
-            // Tower stops at Linux (index 16 = row 17, the last entry in blockDefs)
             const ROWS = 17;
             let collapsed = false;
-            let rebuildTimer = null;
 
             function buildTower() {
                 tower.innerHTML = '';
                 wrap.classList.remove('collapsing', 'rebuilding');
                 wrap.classList.add('swaying');
-
                 const shapeList = makeShapeList(ROWS);
-
                 for (let r = 0; r < ROWS; r++) {
                     const bd = blockDefs[r % blockDefs.length];
                     const sh = shapes[r % shapes.length];
-                    const type = shapeList[r];
-
                     const blk = document.createElement('div');
                     blk.className = 't-block ' + bd.c;
                     if (r >= ROWS - 4) blk.classList.add('top-blk');
-
-                    applyShape(blk, type, sh.w, sh.h);
+                    applyShape(blk, shapeList[r], sh.w, sh.h);
                     blk.textContent = bd.l;
-
-                    // Random subtle tilt (-1.5 to +1.5 deg)
-                    const tilt = ((Math.random() - .5) * 3).toFixed(1) + 'deg';
-                    const dur = (2.0 + Math.random() * 2.0).toFixed(1) + 's';
-                    const dly = (Math.random() * 1.8).toFixed(2) + 's';
-                    const sx = (Math.random() > .5 ? 1 : -1) * (0.5 + Math.random() * 1.5).toFixed(1) + 'px';
-                    blk.style.setProperty('--tilt', tilt);
-                    blk.style.setProperty('--dur', dur);
-                    blk.style.setProperty('--dly', dly);
-                    blk.style.setProperty('--sx', sx);
-                    // fly direction for collapse
-                    blk.style.setProperty('--fx', ((Math.random() - .5) * 120).toFixed(0) + 'px');
-                    blk.style.setProperty('--fy', (40 + Math.random() * 160).toFixed(0) + 'px');
-                    blk.style.setProperty('--fr', ((Math.random() - .5) * 120).toFixed(0) + 'deg');
-                    blk.style.setProperty('--fly-dur', (.25 + Math.random() * .3).toFixed(2) + 's');
-                    // Realistic collapse: top blocks fall first
-                    // r=0 is BOTTOM (column-reverse), r=ROWS-1 is TOP
-                    // Top (r=ROWS-1) → delay 0s, Bottom (r=0) → largest delay
-                    blk.style.setProperty('--fly-dly', ((ROWS - 1 - r) * 0.05).toFixed(2) + 's');
-
+                    blk.style.setProperty('--tilt', ((Math.random()-.5)*3).toFixed(1)+'deg');
+                    blk.style.setProperty('--dur', (2.0+Math.random()*2.0).toFixed(1)+'s');
+                    blk.style.setProperty('--dly', (Math.random()*1.8).toFixed(2)+'s');
+                    blk.style.setProperty('--sx', (Math.random()>.5?1:-1)*(0.5+Math.random()*1.5).toFixed(1)+'px');
+                    blk.style.setProperty('--fx', ((Math.random()-.5)*120).toFixed(0)+'px');
+                    blk.style.setProperty('--fy', (40+Math.random()*160).toFixed(0)+'px');
+                    blk.style.setProperty('--fr', ((Math.random()-.5)*120).toFixed(0)+'deg');
+                    blk.style.setProperty('--fly-dur', (.25+Math.random()*.3).toFixed(2)+'s');
+                    blk.style.setProperty('--fly-dly', ((ROWS-1-r)*0.05).toFixed(2)+'s');
                     tower.appendChild(blk);
                 }
             }
@@ -739,15 +842,12 @@
             function collapse() {
                 if (collapsed) return;
                 collapsed = true;
-                wrap.classList.remove('swaying', 'rebuilding');
+                wrap.classList.remove('swaying','rebuilding');
                 wrap.classList.add('collapsing');
-
-                // Rebuild after 2.8s
-                rebuildTimer = setTimeout(() => {
+                setTimeout(() => {
                     wrap.classList.remove('collapsing');
                     wrap.classList.add('rebuilding');
                     buildTower();
-                    // After rebuild animation, go back to swaying
                     setTimeout(() => {
                         wrap.classList.remove('rebuilding');
                         wrap.classList.add('swaying');
@@ -756,16 +856,12 @@
                 }, 2800);
             }
 
-            // Mouse proximity collapse
             wrap.addEventListener('mouseenter', collapse);
-
-            // Touch support
             wrap.addEventListener('touchstart', collapse, { passive: true });
-
             buildTower();
         })();
 
-        // ── AUDIO SPOILER TOGGLE ──
+        // ── AUDIO SPOILER ──
         function toggleSpoiler(id) {
             const el = document.getElementById(id);
             if (!el) return;
