@@ -8,886 +8,1080 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#111010;--surface:#181717;--surface2:#1e1d1d;--border:#2a2828;--border2:#383434;--text:#c5c0bb;--muted:#8a8480;--accent:#ede8e3;--red:#e63940;--green:#3dbb7c;--yellow:#f0c040;--blue:#4a8fe8;--amber:#d4884a}
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.75;overflow-x:hidden;cursor:crosshair}
-  body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.07) 3px,rgba(0,0,0,.07) 6px);pointer-events:none;z-index:9999}
+/* ─── DESIGN TOKENS ──────────────────────────────────── */
+:root {
+  --bg:#111010; --surface:#181717; --surface2:#1e1d1d;
+  --border:#2a2828; --border2:#383434;
+  --text:#c5c0bb; --muted:#8a8480; --accent:#ede8e3;
+  --red:#e63940; --green:#3dbb7c; --yellow:#f0c040;
+  --blue:#4a8fe8; --amber:#d4884a;
+}
 
-  /* HEADER */
-  header{position:fixed;top:0;left:0;right:0;z-index:200;padding:14px 48px;display:flex;justify-content:space-between;align-items:center;background:rgba(17,16,16,.96);border-bottom:1px solid var(--border);backdrop-filter:blur(10px)}
-  .logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:5px;color:var(--accent);text-decoration:none;position:relative}
-  .logo::before{content:'TECHFALL';position:absolute;left:2px;top:0;color:var(--red);clip-path:polygon(0 35%,100% 35%,100% 55%,0 55%);animation:gnav 5s infinite;opacity:0}
-  @keyframes gnav{0%,88%,100%{transform:translateX(0);opacity:0}90%{transform:translateX(-3px);opacity:.7}92%{transform:translateX(3px);opacity:.5}94%{opacity:0}}
-  /* NAV LINKS: WHITE for contrast / accessibility */
-  nav a{color:var(--accent);text-decoration:none;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border-left:1px solid transparent;transition:color .2s,border-color .2s}
-  nav a:hover{color:var(--green);border-left-color:var(--green)}
+/* ─── RESET & BASE ───────────────────────────────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  background:var(--bg); color:var(--text);
+  font-family:'IBM Plex Mono', monospace;
+  font-size:14px; line-height:1.75;
+  overflow-x:hidden; cursor:crosshair;
+}
 
-  /* HERO */
-  #hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px 48px 60px;position:relative;overflow:hidden}
-  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:70px 70px}
-  .hero-glow{position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(212,136,74,.07) 0%,transparent 70%);pointer-events:none}
-  .hero-corner{position:absolute;width:50px;height:50px;opacity:.35}
-  .hero-corner.tl{top:82px;left:48px;border-top:1px solid var(--amber);border-left:1px solid var(--amber)}
-  .hero-corner.tr{top:82px;right:48px;border-top:1px solid var(--amber);border-right:1px solid var(--amber)}
-  .hero-corner.bl{bottom:40px;left:48px;border-bottom:1px solid var(--amber);border-left:1px solid var(--amber)}
-  .hero-corner.br{bottom:40px;right:48px;border-bottom:1px solid var(--amber);border-right:1px solid var(--amber)}
-  .hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr auto;gap:72px;align-items:center;max-width:1080px;width:100%;margin:0 auto}
-  .hero-content{max-width:540px}
-  .status-bar{display:inline-flex;align-items:center;gap:10px;background:rgba(212,136,74,.06);border:1px solid rgba(212,136,74,.25);padding:7px 18px;margin-bottom:32px;font-size:10px;letter-spacing:2.5px;color:var(--amber);text-transform:uppercase}
-  .status-dot{width:6px;height:6px;border-radius:50%;background:var(--amber);animation:pulse 2s infinite}
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
-  h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(68px,10vw,128px);letter-spacing:8px;line-height:.9;color:var(--accent);position:relative}
-  h1::before{content:'TECHFALL';position:absolute;inset:0;color:var(--red);clip-path:polygon(0 42%,100% 42%,100% 58%,0 58%);animation:gr 7s infinite;opacity:0}
-  h1::after{content:'TECHFALL';position:absolute;inset:0;color:var(--blue);clip-path:polygon(0 12%,100% 12%,100% 28%,0 28%);animation:gb 7s infinite .12s;opacity:0}
-  @keyframes gr{0%,84%,100%{transform:translateX(0);opacity:0}86%{transform:translateX(7px);opacity:.8}88%{transform:translateX(-5px);opacity:.6}90%{opacity:0}}
-  @keyframes gb{0%,84%,100%{transform:translateX(0);opacity:0}86%{transform:translateX(-9px);opacity:.65}89%{transform:translateX(4px);opacity:.45}91%{opacity:0}}
-  .hero-sub{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--muted);margin:12px 0 20px}
-  .hero-tagline{font-size:14px;color:var(--text);margin:0 0 36px;line-height:1.9;opacity:.88}
-  .hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
+/* ─── HEADER ─────────────────────────────────────────── */
+header {
+  position:fixed; inset:0 0 auto 0; z-index:200;
+  padding:14px 48px;
+  display:flex; justify-content:space-between; align-items:center;
+  background:rgba(17,16,16,.96);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(10px);
+}
+.logo {
+  font-family:'Bebas Neue', sans-serif; font-size:20px; letter-spacing:5px;
+  color:var(--accent); text-decoration:none; position:relative;
+}
+/* Glitch ghost — offset red layer animates on/off */
+.logo::before {
+  content:'TECHFALL'; position:absolute; left:2px; top:0; color:var(--red);
+  clip-path:polygon(0 35%,100% 35%,100% 55%,0 55%);
+  animation:glitch-nav 5s infinite; opacity:0;
+}
+nav a {
+  color:var(--accent); text-decoration:none;
+  font-size:10px; letter-spacing:2px; text-transform:uppercase;
+  padding:6px 14px; border-left:1px solid transparent;
+  transition:color .2s, border-color .2s;
+}
+nav a:hover { color:var(--green); border-left-color:var(--green); }
 
-  /* TOWER */
-  .tower-wrap{position:relative;flex-shrink:0;width:160px;height:510px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;transform-origin:bottom center;transition:filter .3s}
-  .tower-wrap.swaying{animation:sway 5s ease-in-out infinite}
-  @keyframes sway{0%,100%{transform:rotate(0deg)}30%{transform:rotate(1.5deg)}70%{transform:rotate(-1.2deg)}}
-  .tower-wrap.collapsing{animation:none}
-  .tower{display:flex;flex-direction:column-reverse;align-items:center;gap:3px;width:100%}
-  .t-block{border-radius:3px;font-family:'Share Tech Mono',monospace;font-size:7px;letter-spacing:.3px;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,.76);font-weight:700;text-transform:uppercase;white-space:nowrap;transition:transform .15s,opacity .3s;animation:shimmer var(--dur,3s) ease-in-out var(--dly,0s) infinite}
-  @keyframes shimmer{0%,100%{transform:translateX(0) translateY(0) rotate(var(--tilt,0deg));filter:brightness(1)}30%{transform:translateX(var(--sx,1px)) translateY(-.8px) rotate(var(--tilt,0deg));filter:brightness(1.1)}70%{transform:translateX(calc(var(--sx,1px)*-1)) translateY(.8px) rotate(var(--tilt,0deg));filter:brightness(.92)}}
-  .t-block.top-blk{animation-name:shake;animation-duration:1.2s}
-  @keyframes shake{0%,100%{transform:translateX(0) rotate(var(--tilt,0deg))}20%{transform:translateX(4px) rotate(calc(var(--tilt,0deg) + .8deg))}50%{transform:translateX(-4px) rotate(calc(var(--tilt,0deg) - .7deg))}80%{transform:translateX(3px) rotate(calc(var(--tilt,0deg) + .5deg))}}
-  .tower-wrap.collapsing .t-block{animation:blk-fly var(--fly-dur,.4s) var(--fly-dly,0s) ease-in forwards}
-  @keyframes blk-fly{0%{opacity:1;transform:translateX(0) translateY(0) rotate(var(--tilt,0deg))}100%{opacity:0;transform:translateX(var(--fx,30px)) translateY(var(--fy,120px)) rotate(var(--fr,45deg))}}
-  .tower-wrap.rebuilding .t-block{animation:blk-rise .4s var(--fly-dly,0s) ease-out both}
-  @keyframes blk-rise{from{opacity:0;transform:translateY(20px) rotate(var(--tilt,0deg))}to{opacity:1;transform:translateY(0) rotate(var(--tilt,0deg))}}
-  .c-ai{background:#e8c060}.c-cloud{background:#5aabdf}.c-data{background:#5ecb8a}.c-sec{background:#e07060}.c-hw{background:#a888d8}.c-algo{background:#e09848}.c-net{background:#58c8d0}.c-app{background:#d098b8}.c-dns{background:#98c460}
-  .t-shadow{width:90px;height:7px;border-radius:50%;margin-top:5px;background:radial-gradient(ellipse,rgba(0,0,0,.55) 0%,transparent 70%);animation:shp 5s ease-in-out infinite}
-  @keyframes shp{0%,100%{transform:scaleX(1);opacity:.5}50%{transform:scaleX(.76);opacity:.2}}
-  .tower-wrap::after{content:'touch to collapse';position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);opacity:0;transition:opacity .3s;white-space:nowrap}
-  .tower-wrap:hover::after{opacity:.5}
+/* ─── HERO ───────────────────────────────────────────── */
+#hero {
+  min-height:100vh; padding:100px 48px 60px;
+  display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden;
+}
+.hero-grid {
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:70px 70px;
+}
+.hero-glow {
+  position:absolute; top:30%; left:50%; transform:translate(-50%,-50%);
+  width:600px; height:400px;
+  background:radial-gradient(ellipse,rgba(212,136,74,.07) 0%,transparent 70%);
+  pointer-events:none;
+}
+/* Decorative corner brackets */
+.hero-corner { position:absolute; width:50px; height:50px; opacity:.35; }
+.hero-corner.tl { top:82px;    left:48px;  border-top:1px solid var(--amber); border-left:1px solid var(--amber); }
+.hero-corner.tr { top:82px;    right:48px; border-top:1px solid var(--amber); border-right:1px solid var(--amber); }
+.hero-corner.bl { bottom:40px; left:48px;  border-bottom:1px solid var(--amber); border-left:1px solid var(--amber); }
+.hero-corner.br { bottom:40px; right:48px; border-bottom:1px solid var(--amber); border-right:1px solid var(--amber); }
+.hero-inner {
+  position:relative; z-index:2;
+  display:grid; grid-template-columns:1fr auto; gap:72px; align-items:center;
+  max-width:1080px; width:100%; margin:0 auto;
+}
+.hero-content { max-width:540px; }
+.status-bar {
+  display:inline-flex; align-items:center; gap:10px;
+  background:rgba(212,136,74,.06); border:1px solid rgba(212,136,74,.25);
+  padding:7px 18px; margin-bottom:32px;
+  font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--amber);
+}
+.status-dot { width:6px; height:6px; border-radius:50%; background:var(--amber); animation:pulse 2s infinite; }
+h1 {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:clamp(68px,10vw,128px); letter-spacing:8px; line-height:.9;
+  color:var(--accent); position:relative;
+}
+/* Two glitch ghost layers on h1 */
+h1::before {
+  content:'TECHFALL'; position:absolute; inset:0; color:var(--red);
+  clip-path:polygon(0 42%,100% 42%,100% 58%,0 58%);
+  animation:glitch-r 7s infinite; opacity:0;
+}
+h1::after {
+  content:'TECHFALL'; position:absolute; inset:0; color:var(--blue);
+  clip-path:polygon(0 12%,100% 12%,100% 28%,0 28%);
+  animation:glitch-b 7s infinite .12s; opacity:0;
+}
+.hero-sub     { font-size:11px; letter-spacing:5px; text-transform:uppercase; color:var(--muted); margin:12px 0 20px; }
+.hero-tagline { font-size:14px; color:var(--text); margin:0 0 36px; line-height:1.9; opacity:.88; }
+.hero-buttons { display:flex; gap:12px; flex-wrap:wrap; }
 
-  /* BUTTONS */
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1px solid;transition:all .25s;position:relative;overflow:hidden;cursor:crosshair}
-  .btn::before{content:'';position:absolute;inset:0;background:currentColor;opacity:0;transition:opacity .2s}
-  .btn:hover::before{opacity:.08}
-  .btn-amber{border-color:var(--amber);color:var(--amber)}
-  .btn-ghost{border-color:var(--border2);color:var(--accent)}
-  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
-  .btn-green{border-color:var(--green);color:var(--green)}
+/* ─── TOWER (hero decoration) ────────────────────────── */
+.tower-wrap {
+  position:relative; flex-shrink:0; width:160px; height:510px;
+  display:flex; flex-direction:column; align-items:center; justify-content:flex-end;
+  transform-origin:bottom center;
+}
+.tower-wrap.swaying    { animation:sway 5s ease-in-out infinite; }
+.tower-wrap.collapsing { animation:none; }
+.tower { display:flex; flex-direction:column-reverse; align-items:center; gap:3px; width:100%; }
+.t-block {
+  border-radius:3px;
+  font-family:'Share Tech Mono', monospace; font-size:7px; letter-spacing:.3px;
+  display:flex; align-items:center; justify-content:center;
+  color:rgba(0,0,0,.76); font-weight:700; text-transform:uppercase; white-space:nowrap;
+  animation:shimmer var(--dur,3s) ease-in-out var(--dly,0s) infinite;
+}
+/* Top blocks shake more aggressively */
+.t-block.top-blk { animation-name:shake; animation-duration:1.2s; }
+/* Collapse: blocks fly outward via CSS custom properties set in JS */
+.tower-wrap.collapsing .t-block { animation:blk-fly var(--fly-dur,.4s) var(--fly-dly,0s) ease-in forwards; }
+/* Rebuild: blocks rise back up */
+.tower-wrap.rebuilding .t-block { animation:blk-rise .4s var(--fly-dly,0s) ease-out both; }
+/* Block color palette */
+.c-ai{background:#e8c060} .c-cloud{background:#5aabdf} .c-data{background:#5ecb8a}
+.c-sec{background:#e07060} .c-hw{background:#a888d8} .c-algo{background:#e09848}
+.c-net{background:#58c8d0} .c-app{background:#d098b8} .c-dns{background:#98c460}
+.t-shadow {
+  width:90px; height:7px; border-radius:50%; margin-top:5px;
+  background:radial-gradient(ellipse,rgba(0,0,0,.55) 0%,transparent 70%);
+  animation:shadow-pulse 5s ease-in-out infinite;
+}
+/* "touch to collapse" hint on hover */
+.tower-wrap::after {
+  content:'touch to collapse'; position:absolute; bottom:-22px; left:50%;
+  transform:translateX(-50%);
+  font-size:8px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted);
+  opacity:0; transition:opacity .3s; white-space:nowrap;
+}
+.tower-wrap:hover::after { opacity:.5; }
 
-  /* TICKER */
-  .ticker{background:#1a0a08;border-top:1px solid #3a1810;border-bottom:1px solid #3a1810;padding:9px 0;overflow:hidden}
-  .ticker-inner{display:inline-block;white-space:nowrap;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#8a3028;animation:tick 28s linear infinite}
-  @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* ─── BUTTONS ────────────────────────────────────────── */
+.btn {
+  display:inline-flex; align-items:center; gap:8px; padding:12px 26px;
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:2px; text-transform:uppercase;
+  text-decoration:none; border:1px solid; position:relative; overflow:hidden;
+  transition:all .25s; cursor:crosshair;
+}
+.btn::before { content:''; position:absolute; inset:0; background:currentColor; opacity:0; transition:opacity .2s; }
+.btn:hover::before { opacity:.08; }
+.btn-amber { border-color:var(--amber); color:var(--amber); }
+.btn-ghost { border-color:var(--border2); color:var(--accent); }
+.btn-ghost:hover { border-color:var(--accent); }
+.btn-green { border-color:var(--green); color:var(--green); }
 
-  /* LAYOUT */
-  .section{max-width:1080px;margin:0 auto;padding:96px 44px}
-  .section-full{padding:96px 44px;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-  .section-full .inner{max-width:1080px;margin:0 auto}
-  .tag{display:inline-block;font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--amber);margin-bottom:10px;opacity:.9}
-  .tag::before{content:'// ';color:var(--muted)}
-  h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,4.5vw,52px);letter-spacing:4px;color:var(--accent);margin-bottom:48px}
-  hr.divider{border:none;border-top:1px solid var(--border);max-width:1080px;margin:0 auto}
+/* ─── TICKER ─────────────────────────────────────────── */
+.ticker { background:#1a0a08; border-top:1px solid #3a1810; border-bottom:1px solid #3a1810; padding:9px 0; overflow:hidden; }
+.ticker-inner {
+  display:inline-block; white-space:nowrap;
+  font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#8a3028;
+  animation:ticker 28s linear infinite;
+}
 
-  /* ABOUT */
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
-  .about-text p{margin-bottom:18px;opacity:.88}
-  .quote-box{border-left:3px solid var(--amber);padding:18px 28px;margin-top:36px;background:rgba(212,136,74,.04);font-style:italic;font-size:16px;color:var(--accent);line-height:1.9;opacity:.9}
-  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
-  .stat-box{background:var(--surface2);border:1px solid var(--border);padding:28px;position:relative;transition:border-color .3s}
-  .stat-box:hover{border-color:var(--amber)}
-  .stat-box::before{content:attr(data-i);position:absolute;top:10px;right:14px;font-size:10px;color:var(--muted)}
-  .stat-num{font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--accent);line-height:1;margin-bottom:4px}
-  .stat-lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+/* ─── LAYOUT ─────────────────────────────────────────── */
+.section      { max-width:1080px; margin:0 auto; padding:96px 44px; }
+.section-full { padding:96px 44px; background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.section-full .inner { max-width:1080px; margin:0 auto; }
+hr.divider    { border:none; border-top:1px solid var(--border); max-width:1080px; margin:0 auto; }
+.tag { display:inline-block; font-size:10px; letter-spacing:3.5px; text-transform:uppercase; color:var(--amber); margin-bottom:10px; opacity:.9; }
+.tag::before { content:'// '; color:var(--muted); }
+h2 { font-family:'Bebas Neue', sans-serif; font-size:clamp(34px,4.5vw,52px); letter-spacing:4px; color:var(--accent); margin-bottom:48px; }
 
-  /* DESIGN PILLARS — editorial, minimal */
-  .design-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border)}
-  .design-pillar{background:transparent;border:none;border-bottom:1px solid var(--border);border-right:1px solid var(--border);padding:44px 40px;position:relative;transition:background .25s}
-  .design-pillar:hover{background:rgba(255,255,255,.02)}
-  .design-pillar:nth-child(even){border-right:none}
-  .design-pillar.prototyping{grid-column:1/-1;border-right:none;border-bottom:none;display:grid;grid-template-columns:1fr 2fr;gap:60px;align-items:start}
-  .dp-num{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--amber);margin-bottom:20px;display:block}
-  .dp-title{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:4px;color:var(--accent);margin-bottom:22px;line-height:1}
-  .dp-text p{font-size:13px;opacity:.78;line-height:1.9;margin-bottom:11px}
-  .dp-text p:last-child{margin-bottom:0}
-  @media(max-width:800px){
-    .design-grid{border:none}
-    .design-pillar{border:1px solid var(--border);border-bottom:none;padding:32px 24px}
-    .design-pillar:last-child{border-bottom:1px solid var(--border)}
-    .design-pillar.prototyping{grid-template-columns:1fr}
-  }
+/* ─── ABOUT ──────────────────────────────────────────── */
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
+.about-text p { margin-bottom:18px; opacity:.88; }
+.quote-box { border-left:3px solid var(--amber); padding:18px 28px; margin-top:36px; background:rgba(212,136,74,.04); font-style:italic; font-size:16px; color:var(--accent); line-height:1.9; opacity:.9; }
+.stat-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+.stat-box { background:var(--surface2); border:1px solid var(--border); padding:28px; position:relative; transition:border-color .3s; }
+.stat-box:hover { border-color:var(--amber); }
+.stat-box::before { content:attr(data-i); position:absolute; top:10px; right:14px; font-size:10px; color:var(--muted); }
+.stat-num { font-family:'Bebas Neue', sans-serif; font-size:52px; color:var(--accent); line-height:1; margin-bottom:4px; }
+.stat-lbl { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); }
 
-  /* GAMEPLAY */
-  .gblock{background:var(--surface2);border:1px solid var(--border);padding:32px 36px;margin-bottom:2px;display:grid;grid-template-columns:48px 1fr;gap:24px;transition:border-color .3s;position:relative;overflow:hidden}
-  .gblock::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--amber);transform:scaleY(0);transform-origin:bottom;transition:transform .3s}
-  .gblock:hover{border-color:rgba(212,136,74,.3)}
-  .gblock:hover::after{transform:scaleY(1)}
-  .gnum{font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--border2);line-height:1;transition:color .3s}
-  .gblock:hover .gnum{color:var(--amber)}
-  .gtitle{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--accent);margin-bottom:6px}
+/* ─── DESIGN PILLARS ─────────────────────────────────── */
+/* Story left (spans 3 rows) | Mechanics / Aesthetics / Technology right (stacked) */
+.design-grid { display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--border); }
+.design-pillar { background:transparent; position:relative; transition:background .25s; }
+.design-pillar:hover { background:rgba(255,255,255,.02); }
+.design-pillar.story     { grid-column:1; grid-row:1/4; border-right:1px solid var(--border); padding:44px 40px; }
+.design-pillar.mechanics { grid-column:2; grid-row:1; border-bottom:1px solid var(--border); padding:44px 40px; }
+.design-pillar.aesthetics{ grid-column:2; grid-row:2; border-bottom:1px solid var(--border); padding:44px 40px; }
+.design-pillar.technology{ grid-column:2; grid-row:3; padding:44px 40px; }
+/* Prototyping spans full width below all rows */
+.design-pillar.prototyping {
+  grid-column:1/-1; border-top:1px solid var(--border); padding:44px 40px;
+  display:grid; grid-template-columns:1fr 2fr; gap:60px; align-items:start;
+}
+.dp-num   { font-family:'Bebas Neue', sans-serif; font-size:13px; letter-spacing:3px; color:var(--amber); margin-bottom:20px; display:block; }
+.dp-title { font-family:'Bebas Neue', sans-serif; font-size:32px; letter-spacing:4px; color:var(--accent); margin-bottom:22px; line-height:1; }
+.dp-text p { font-size:13px; opacity:.78; line-height:1.9; margin-bottom:11px; }
+.dp-text p:last-child { margin-bottom:0; }
+/* Prototyping map: unconstrained aspect ratio so full image is visible */
+.proto-img-wrap .doc-img { aspect-ratio:unset !important; object-fit:contain !important; height:auto !important; }
 
-  /* AUDIO SPOILER */
-  .audio-spoiler{margin-top:18px;border:1px solid var(--border2);background:var(--bg);overflow:hidden;transition:border-color .3s}
-  .audio-spoiler:hover{border-color:rgba(212,136,74,.35)}
-  .spoiler-toggle{width:100%;background:none;border:none;cursor:pointer;padding:11px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);text-align:left;transition:background .2s}
-  .spoiler-toggle:hover{background:rgba(212,136,74,.05)}
-  .s-arrow{font-size:11px;transition:transform .3s;color:var(--muted);flex-shrink:0}
-  .audio-spoiler.open .s-arrow{transform:rotate(90deg)}
-  .spoiler-body{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;padding:0 16px}
-  .audio-spoiler.open .spoiler-body{max-height:420px;padding:12px 16px 16px}
-  .s-warn{display:inline-flex;align-items:center;gap:6px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--red);opacity:.7;border:1px solid rgba(230,57,64,.3);padding:3px 10px;margin-bottom:10px}
-  .s-hint{font-size:11px;opacity:.65;margin-bottom:12px;line-height:1.6;font-style:italic}
-  .audio-row{display:flex;align-items:center;gap:12px;margin-bottom:8px;flex-wrap:wrap;padding:8px 10px;background:rgba(255,255,255,.02);border:1px solid var(--border)}
-  .audio-row-label{font-size:10px;color:var(--text);opacity:.85;min-width:155px;letter-spacing:.5px;flex-shrink:0}
-  .audio-row audio{flex:1;min-width:170px;height:28px;accent-color:var(--amber)}
+/* ─── GAMEPLAY BLOCKS ────────────────────────────────── */
+.gblock {
+  background:var(--surface2); border:1px solid var(--border);
+  padding:32px 36px; margin-bottom:2px;
+  display:grid; grid-template-columns:48px 1fr; gap:24px;
+  position:relative; overflow:hidden; transition:border-color .3s;
+}
+/* Amber left-border accent that scales in on hover */
+.gblock::after { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--amber); transform:scaleY(0); transform-origin:bottom; transition:transform .3s; }
+.gblock:hover { border-color:rgba(212,136,74,.3); }
+.gblock:hover::after { transform:scaleY(1); }
+.gnum  { font-family:'Bebas Neue', sans-serif; font-size:38px; color:var(--border2); line-height:1; transition:color .3s; }
+.gblock:hover .gnum { color:var(--amber); }
+.gtitle { font-family:'Bebas Neue', sans-serif; font-size:22px; letter-spacing:2px; color:var(--accent); margin-bottom:6px; }
 
-  /* ENDINGS */
-  .endings-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
-  .ecard{padding:34px 28px;position:relative;overflow:hidden;border:1px solid var(--border);transition:border-color .3s,transform .3s}
-  .ecard:hover{transform:translateY(-3px)}
-  .ecard::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
-  .ecard.resign{background:linear-gradient(160deg,#181510 0%,var(--surface2) 60%)}
-  .ecard.resign::before{background:var(--yellow)}
-  .ecard.resign:hover{border-color:rgba(240,192,64,.4)}
-  .ecard.fail{background:linear-gradient(160deg,#170e0e 0%,var(--surface2) 60%)}
-  .ecard.fail::before{background:var(--red)}
-  .ecard.fail:hover{border-color:rgba(230,57,64,.4)}
-  .ecard.win{background:linear-gradient(160deg,#0d1320 0%,var(--surface2) 60%)}
-  .ecard.win::before{background:var(--blue)}
-  .ecard.win:hover{border-color:rgba(74,143,232,.4)}
-  .eicon{font-size:36px;margin-bottom:14px;display:block}
-  .etitle{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;margin-bottom:5px}
-  .ecard.resign .etitle{color:var(--yellow)}
-  .ecard.fail .etitle{color:var(--red)}
-  .ecard.win .etitle{color:var(--blue)}
-  .esub{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
-  .edesc{font-size:13px;opacity:.78;line-height:1.85}
+/* ─── AUDIO SPOILER ──────────────────────────────────── */
+.audio-spoiler { margin-top:18px; border:1px solid var(--border2); background:var(--bg); overflow:hidden; transition:border-color .3s; }
+.audio-spoiler:hover { border-color:rgba(212,136,74,.35); }
+.spoiler-toggle {
+  width:100%; background:none; border:none; cursor:pointer; padding:11px 16px;
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase;
+  color:var(--amber); text-align:left; transition:background .2s;
+}
+.spoiler-toggle:hover { background:rgba(212,136,74,.05); }
+.s-arrow { font-size:11px; transition:transform .3s; color:var(--muted); flex-shrink:0; }
+.audio-spoiler.open .s-arrow { transform:rotate(90deg); }
+/* max-height trick for smooth expand/collapse */
+.spoiler-body { max-height:0; overflow:hidden; transition:max-height .4s ease, padding .3s; padding:0 16px; }
+.audio-spoiler.open .spoiler-body { max-height:420px; padding:12px 16px 16px; }
+.s-warn { display:inline-flex; align-items:center; gap:6px; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--red); opacity:.7; border:1px solid rgba(230,57,64,.3); padding:3px 10px; margin-bottom:10px; }
+.s-hint { font-size:11px; opacity:.65; margin-bottom:12px; line-height:1.6; font-style:italic; }
+.audio-row { display:flex; align-items:center; gap:12px; margin-bottom:8px; flex-wrap:wrap; padding:8px 10px; background:rgba(255,255,255,.02); border:1px solid var(--border); }
+.audio-row-label { font-size:10px; color:var(--text); opacity:.85; min-width:155px; letter-spacing:.5px; flex-shrink:0; }
+.audio-row audio { flex:1; min-width:170px; height:28px; accent-color:var(--amber); }
 
-  /* VIDEO */
-  .video-wrap{max-width:900px;margin:0 auto}
-  .video-box{position:relative;aspect-ratio:16/9;background:#080808;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden}
-  .video-box iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+/* ─── ENDINGS ────────────────────────────────────────── */
+.endings-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
+.ecard { padding:34px 28px; position:relative; overflow:hidden; border:1px solid var(--border); transition:border-color .3s, transform .3s; }
+.ecard:hover { transform:translateY(-3px); }
+/* Colored top stripe per outcome */
+.ecard::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; }
+.ecard.resign { background:linear-gradient(160deg,#181510 0%,var(--surface2) 60%); }
+.ecard.resign::before { background:var(--yellow); }
+.ecard.resign:hover { border-color:rgba(240,192,64,.4); }
+.ecard.fail   { background:linear-gradient(160deg,#170e0e 0%,var(--surface2) 60%); }
+.ecard.fail::before   { background:var(--red); }
+.ecard.fail:hover   { border-color:rgba(230,57,64,.4); }
+.ecard.win    { background:linear-gradient(160deg,#0d1320 0%,var(--surface2) 60%); }
+.ecard.win::before    { background:var(--blue); }
+.ecard.win:hover    { border-color:rgba(74,143,232,.4); }
+.eicon  { font-size:36px; margin-bottom:14px; display:block; }
+.etitle { font-family:'Bebas Neue', sans-serif; font-size:26px; letter-spacing:3px; margin-bottom:5px; }
+.ecard.resign .etitle { color:var(--yellow); }
+.ecard.fail   .etitle { color:var(--red); }
+.ecard.win    .etitle { color:var(--blue); }
+.esub  { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+.edesc { font-size:13px; opacity:.78; line-height:1.85; }
 
-  /* DOCS */
-  .docs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
-  .doc-card{background:var(--surface2);border:1px solid var(--border);overflow:hidden;transition:border-color .3s;cursor:zoom-in}
-  .doc-card:hover{border-color:rgba(212,136,74,.4)}
-  .doc-img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top;display:block;opacity:.85;transition:opacity .3s}
-  .doc-card:hover .doc-img{opacity:1}
-  .doc-label{padding:12px 14px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--border)}
-  .miro-cta{margin-top:28px;background:var(--surface2);border:1px solid var(--border);padding:26px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-  .miro-cta p{opacity:.8;max-width:540px;font-size:13px}
+/* ─── VIDEO ──────────────────────────────────────────── */
+.video-wrap { max-width:900px; margin:0 auto; }
+.video-box  { position:relative; aspect-ratio:16/9; background:#080808; border:1px solid var(--border); overflow:hidden; }
+.video-box iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
 
-  /* SCREENSHOTS */
-  .screens-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
-  .screen-placeholder{aspect-ratio:16/9;background:var(--surface2);border:1px solid var(--border);border-style:dashed;display:flex;align-items:center;justify-content:center;transition:border-color .3s,background .3s;position:relative;overflow:hidden}
-  .screen-placeholder:hover{border-color:rgba(212,136,74,.4);background:rgba(212,136,74,.03)}
-  .screen-placeholder::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(255,255,255,.015) 8px,rgba(255,255,255,.015) 9px)}
-  .screen-inner{text-align:center;z-index:1}
-  .screen-icon{font-size:28px;display:block;margin-bottom:10px;opacity:.25}
-  .screen-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);opacity:.5;margin-bottom:4px}
-  .screen-hint{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);opacity:.5}
-  @media(max-width:800px){.screens-grid{grid-template-columns:1fr 1fr}}
-  @media(max-width:400px){.screens-grid{grid-template-columns:1fr}}
+/* ─── DESIGN DOCS ────────────────────────────────────── */
+.docs-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
+.doc-card  { background:var(--surface2); border:1px solid var(--border); overflow:hidden; transition:border-color .3s; cursor:zoom-in; }
+.doc-card:hover { border-color:rgba(212,136,74,.4); }
+.doc-img   { width:100%; aspect-ratio:4/3; object-fit:cover; object-position:top; display:block; opacity:.85; transition:opacity .3s; }
+.doc-card:hover .doc-img { opacity:1; }
+.doc-label { padding:12px 14px; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); border-top:1px solid var(--border); }
+.miro-cta  { margin-top:28px; background:var(--surface2); border:1px solid var(--border); padding:26px 32px; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+.miro-cta p { opacity:.8; max-width:540px; font-size:13px; }
 
-  /* PROTOTYPING BONUS */
-  .proto-bonus{margin-top:3px;display:flex;gap:0;align-items:stretch;background:var(--bg);border:1px solid var(--border);overflow:hidden;transition:border-color .3s}
-  .proto-bonus:hover{border-color:rgba(212,136,74,.3)}
-  .proto-bonus-label{padding:32px 36px;min-width:280px;max-width:320px;display:flex;flex-direction:column;justify-content:center;gap:10px;flex-shrink:0}
-  .proto-tag{display:inline-block;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);border:1px solid rgba(212,136,74,.35);padding:3px 10px;width:fit-content}
-  .proto-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:var(--accent)}
-  .proto-desc{font-size:12px;opacity:.65;line-height:1.8}
-  .proto-card{border:none!important;border-left:1px solid var(--border)!important;cursor:zoom-in}
-  @media(max-width:800px){.proto-bonus{flex-direction:column}.proto-bonus-label{min-width:unset;max-width:unset}}
+/* ─── SCREENSHOTS ────────────────────────────────────── */
+.screens-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
+.screen-placeholder {
+  aspect-ratio:16/9; background:var(--surface2); border:1px dashed var(--border);
+  display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden; transition:border-color .3s, background .3s;
+}
+.screen-placeholder:hover { border-color:rgba(212,136,74,.4); background:rgba(212,136,74,.03); }
+.screen-placeholder::before { content:''; position:absolute; inset:0; background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(255,255,255,.015) 8px,rgba(255,255,255,.015) 9px); }
+.screen-inner { text-align:center; z-index:1; }
+.screen-icon  { font-size:28px; display:block; margin-bottom:10px; opacity:.25; }
+.screen-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--accent); opacity:.5; margin-bottom:4px; }
+.screen-hint  { font-size:9px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); opacity:.5; }
 
-  /* INSTALL */
-  .install-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
-  .method-card{background:var(--surface2);border:1px solid var(--border);padding:36px;position:relative}
-  .method-card::before{content:attr(data-method);position:absolute;top:-1px;left:-1px;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;padding:4px 12px}
-  .method-card.vr::before{background:var(--green);color:#000}
-  .method-card.dev::before{background:var(--border2);color:var(--accent)}
-  .method-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:var(--accent);margin:28px 0 12px}
-  .method-desc{opacity:.82;margin-bottom:22px;font-size:13px}
-  .steps{counter-reset:step}
-  .step{display:flex;gap:14px;margin-bottom:14px;align-items:flex-start;counter-increment:step}
-  .step::before{content:counter(step);font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--muted);min-width:22px;line-height:1.2}
-  .step p{font-size:13px;opacity:.85}
-  .step strong{color:var(--accent)}
-  .code-block{background:#080808;border:1px solid var(--border);border-left:3px solid var(--green);padding:15px 20px;margin:10px 0;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--green);letter-spacing:.5px;overflow-x:auto}
-  .code-block .cm{color:var(--muted)}
+/* ─── INSTALL ────────────────────────────────────────── */
+.install-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+.method-card  { background:var(--surface2); border:1px solid var(--border); padding:36px; position:relative; }
+/* Colored label badge top-left */
+.method-card::before { content:attr(data-method); position:absolute; top:-1px; left:-1px; font-size:9px; letter-spacing:2.5px; text-transform:uppercase; padding:4px 12px; }
+.method-card.vr::before  { background:var(--green); color:#000; }
+.method-card.dev::before { background:var(--border2); color:var(--accent); }
+.method-title { font-family:'Bebas Neue', sans-serif; font-size:26px; letter-spacing:3px; color:var(--accent); margin:28px 0 12px; }
+.method-desc  { opacity:.82; margin-bottom:22px; font-size:13px; }
+/* Auto-numbered steps via CSS counter */
+.steps { counter-reset:step; }
+.step  { display:flex; gap:14px; margin-bottom:14px; align-items:flex-start; counter-increment:step; }
+.step::before { content:counter(step); font-family:'Bebas Neue', sans-serif; font-size:22px; color:var(--muted); min-width:22px; line-height:1.2; }
+.step p       { font-size:13px; opacity:.85; }
+.step strong  { color:var(--accent); }
+.code-block   { background:#080808; border:1px solid var(--border); border-left:3px solid var(--green); padding:15px 20px; margin:10px 0; font-family:'Share Tech Mono', monospace; font-size:13px; color:var(--green); letter-spacing:.5px; overflow-x:auto; }
+.code-block .cm { color:var(--muted); }
 
-  /* CREDITS */
-  .credits-main{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:3px}
-  .ccard{background:var(--surface2);border:1px solid var(--border);padding:30px 24px;transition:border-color .3s}
-  .ccard:hover{border-color:rgba(212,136,74,.35)}
-  .cavatar{width:52px;height:52px;border-radius:50%;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--muted);margin-bottom:14px;background:var(--bg)}
-  .cname{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--accent);margin-bottom:2px}
-  .crole{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
-  .ctasks{font-size:12px;opacity:.72;line-height:1.8}
-  .credits-support{display:grid;grid-template-columns:1fr 1fr;gap:3px}
-  .csup{background:var(--surface2);border:1px solid var(--border);padding:24px 28px;display:flex;align-items:center;gap:18px}
-  .csup-icon{width:44px;height:44px;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;border-radius:4px}
-  .csup .slabel{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-  .csup .sname{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:var(--accent)}
-  .csup .sdesc{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.6}
+/* ─── CREDITS ────────────────────────────────────────── */
+.credits-main    { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; margin-bottom:3px; }
+.credits-support { display:grid; grid-template-columns:1fr 1fr; gap:3px; }
+.ccard { background:var(--surface2); border:1px solid var(--border); padding:30px 24px; transition:border-color .3s; }
+.ccard:hover { border-color:rgba(212,136,74,.35); }
+.cavatar { width:52px; height:52px; border-radius:50%; border:1px solid var(--border2); display:flex; align-items:center; justify-content:center; font-family:'Bebas Neue', sans-serif; font-size:20px; color:var(--muted); margin-bottom:14px; background:var(--bg); }
+.cname   { font-family:'Bebas Neue', sans-serif; font-size:20px; letter-spacing:2px; color:var(--accent); margin-bottom:2px; }
+.crole   { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--amber); margin-bottom:10px; }
+.ctasks  { font-size:12px; opacity:.72; line-height:1.8; }
+.cname-link { text-decoration:none; color:inherit; display:inline-flex; align-items:center; gap:8px; }
+/* LinkedIn icon fades in on card hover */
+.li-icon { width:18px; height:18px; border-radius:3px; background:#0a66c2; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; opacity:0; transition:opacity .2s; font-size:9px; color:#fff; font-weight:900; font-family:sans-serif; }
+.ccard:hover .li-icon { opacity:1; }
+.csup      { background:var(--surface2); border:1px solid var(--border); padding:24px 28px; display:flex; align-items:center; gap:18px; }
+.csup-icon { width:44px; height:44px; border:1px solid var(--border2); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; border-radius:4px; }
+.csup .slabel { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+.csup .sname  { font-family:'Bebas Neue', sans-serif; font-size:22px; letter-spacing:3px; color:var(--accent); }
+.csup .sdesc  { font-size:12px; color:var(--muted); margin-top:3px; line-height:1.6; }
 
-  /* LINKEDIN */
-  .cname-link{text-decoration:none;color:inherit;display:inline-flex;align-items:center;gap:8px}
-  .li-icon{width:18px;height:18px;border-radius:3px;background:#0a66c2;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;opacity:0;transition:opacity .2s;font-size:9px;color:#fff;font-weight:900;font-family:sans-serif}
-  .ccard:hover .li-icon{opacity:1}
+/* ─── ASSETS NOTE ────────────────────────────────────── */
+.assets-note { margin-top:3px; background:var(--surface2); border:1px solid var(--border); padding:22px 28px; display:flex; align-items:flex-start; gap:16px; }
+.assets-note-icon { font-size:20px; flex-shrink:0; margin-top:2px; }
+.assets-note p    { font-size:12px; opacity:.75; line-height:1.8; }
+.assets-note a    { color:var(--amber); text-decoration:none; }
+.assets-note a:hover { text-decoration:underline; }
 
-  /* LIGHTBOX */
-  #lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(6px)}
-  #lightbox.active{display:flex}
-  #lightbox img{max-width:92vw;max-height:90vh;object-fit:contain;border:1px solid var(--border2);box-shadow:0 0 60px rgba(0,0,0,.8)}
-  #lightbox-close{position:absolute;top:20px;right:28px;font-size:28px;color:var(--muted);cursor:pointer;line-height:1;background:none;border:none;transition:color .2s}
-  #lightbox-close:hover{color:var(--accent)}
-  #lightbox-label{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)}
+/* ─── LIGHTBOX ───────────────────────────────────────── */
+#lightbox {
+  display:none; position:fixed; inset:0; z-index:1000;
+  background:rgba(0,0,0,.93); backdrop-filter:blur(6px);
+  align-items:center; justify-content:center; padding:24px;
+}
+#lightbox.active { display:flex; }
+#lightbox-viewport {
+  position:relative; width:100%; height:100%;
+  display:flex; align-items:center; justify-content:center; overflow:hidden;
+}
+#lightbox img {
+  max-width:92vw; max-height:82vh; object-fit:contain;
+  border:1px solid var(--border2); box-shadow:0 0 60px rgba(0,0,0,.8);
+  transform-origin:center;
+  transform:scale(var(--lb-scale,1)) translate(var(--lb-tx,0px),var(--lb-ty,0px));
+  transition:transform .2s ease; user-select:none; -webkit-user-drag:none; cursor:zoom-in;
+}
+#lightbox img.zoomed   { cursor:grab; }
+#lightbox img.dragging { cursor:grabbing; transition:none; }
+#lightbox-close {
+  position:absolute; top:20px; right:28px; z-index:10;
+  width:36px; height:36px; font-size:18px;
+  background:rgba(0,0,0,.6); border:1px solid var(--border2); border-radius:4px;
+  color:var(--muted); cursor:pointer; display:flex; align-items:center; justify-content:center;
+  transition:color .2s, border-color .2s;
+}
+#lightbox-close:hover { color:var(--accent); border-color:var(--accent); }
+#lightbox-label {
+  position:absolute; top:20px; left:50%; transform:translateX(-50%); z-index:10;
+  font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted);
+  background:rgba(17,16,16,.7); border:1px solid var(--border); padding:5px 14px; white-space:nowrap;
+}
+/* Zoom controls strip */
+#lightbox-zoom {
+  position:absolute; bottom:32px; left:50%; transform:translateX(-50%); z-index:10;
+  display:flex; align-items:center;
+  border:1px solid var(--border2); background:rgba(17,16,16,.9); overflow:hidden;
+}
+.lb-zoom-btn {
+  background:none; border:none; cursor:pointer;
+  width:44px; height:38px; font-size:18px; line-height:1;
+  color:var(--accent); display:flex; align-items:center; justify-content:center;
+  transition:background .2s, color .2s;
+}
+.lb-zoom-btn:hover { background:rgba(212,136,74,.12); color:var(--amber); }
+/* Click to reset zoom */
+#lb-zoom-level {
+  min-width:52px; height:38px; padding:0 8px;
+  border-left:1px solid var(--border2); border-right:1px solid var(--border2);
+  font-size:10px; letter-spacing:2px; color:var(--muted);
+  display:flex; align-items:center; justify-content:center; cursor:pointer;
+}
+#lb-zoom-level:hover { color:var(--amber); }
 
-  /* ASSETS NOTE */
-  .assets-note{margin-top:3px;background:var(--surface2);border:1px solid var(--border);padding:22px 28px;display:flex;align-items:flex-start;gap:16px}
-  .assets-note-icon{font-size:20px;flex-shrink:0;margin-top:2px}
-  .assets-note p{font-size:12px;opacity:.75;line-height:1.8}
-  .assets-note a{color:var(--amber);text-decoration:none}
-  .assets-note a:hover{text-decoration:underline}
-  footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;justify-content:space-between;align-items:center;font-size:10px;color:var(--muted);letter-spacing:1px;flex-wrap:wrap;gap:10px}
-  .foot-logo{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:4px;color:var(--border2)}
+/* ─── FOOTER ─────────────────────────────────────────── */
+footer { border-top:1px solid var(--border); padding:24px 48px; display:flex; justify-content:space-between; align-items:center; font-size:10px; color:var(--muted); letter-spacing:1px; flex-wrap:wrap; gap:10px; }
+.foot-logo { font-family:'Bebas Neue', sans-serif; font-size:17px; letter-spacing:4px; color:var(--border2); }
 
-  /* FADE IN */
-  .fi{opacity:0;transform:translateY(18px);animation:fi .7s ease forwards}
-  .fi:nth-child(1){animation-delay:.1s}.fi:nth-child(2){animation-delay:.2s}.fi:nth-child(3){animation-delay:.28s}.fi:nth-child(4){animation-delay:.38s}.fi:nth-child(5){animation-delay:.48s}
-  @keyframes fi{to{opacity:1;transform:translateY(0)}}
+/* ─── ANIMATIONS ─────────────────────────────────────── */
+@keyframes pulse        { 0%,100%{opacity:1}50%{opacity:.2} }
+@keyframes glitch-nav   { 0%,88%,100%{transform:translateX(0);opacity:0}90%{transform:translateX(-3px);opacity:.7}92%{transform:translateX(3px);opacity:.5}94%{opacity:0} }
+@keyframes glitch-r     { 0%,84%,100%{transform:translateX(0);opacity:0}86%{transform:translateX(7px);opacity:.8}88%{transform:translateX(-5px);opacity:.6}90%{opacity:0} }
+@keyframes glitch-b     { 0%,84%,100%{transform:translateX(0);opacity:0}86%{transform:translateX(-9px);opacity:.65}89%{transform:translateX(4px);opacity:.45}91%{opacity:0} }
+@keyframes sway         { 0%,100%{transform:rotate(0deg)}30%{transform:rotate(1.5deg)}70%{transform:rotate(-1.2deg)} }
+@keyframes shimmer      { 0%,100%{transform:translateX(0) translateY(0) rotate(var(--tilt,0deg));filter:brightness(1)}30%{transform:translateX(var(--sx,1px)) translateY(-.8px) rotate(var(--tilt,0deg));filter:brightness(1.1)}70%{transform:translateX(calc(var(--sx,1px)*-1)) translateY(.8px) rotate(var(--tilt,0deg));filter:brightness(.92)} }
+@keyframes shake        { 0%,100%{transform:translateX(0) rotate(var(--tilt,0deg))}20%{transform:translateX(4px) rotate(calc(var(--tilt,0deg) + .8deg))}50%{transform:translateX(-4px) rotate(calc(var(--tilt,0deg) - .7deg))}80%{transform:translateX(3px) rotate(calc(var(--tilt,0deg) + .5deg))} }
+@keyframes blk-fly      { 0%{opacity:1;transform:translateX(0) translateY(0) rotate(var(--tilt,0deg))}100%{opacity:0;transform:translateX(var(--fx,30px)) translateY(var(--fy,120px)) rotate(var(--fr,45deg))} }
+@keyframes blk-rise     { from{opacity:0;transform:translateY(20px) rotate(var(--tilt,0deg))}to{opacity:1;transform:translateY(0) rotate(var(--tilt,0deg))} }
+@keyframes shadow-pulse { 0%,100%{transform:scaleX(1);opacity:.5}50%{transform:scaleX(.76);opacity:.2} }
+@keyframes ticker       { from{transform:translateX(0)}to{transform:translateX(-50%)} }
+@keyframes fade-in      { to{opacity:1;transform:translateY(0)} }
+/* Staggered entrance for hero elements */
+.fi { opacity:0; transform:translateY(18px); animation:fade-in .7s ease forwards; }
+.fi:nth-child(1){animation-delay:.10s}.fi:nth-child(2){animation-delay:.20s}
+.fi:nth-child(3){animation-delay:.28s}.fi:nth-child(4){animation-delay:.38s}
+.fi:nth-child(5){animation-delay:.48s}
 
-  /* RESPONSIVE */
-  @media(max-width:800px){
-    header{padding:12px 20px}nav{display:none}
-    .section{padding:60px 20px}.section-full{padding:60px 20px}
-    .about-grid,.install-grid,.endings-grid,.docs-grid,.credits-main,.credits-support,.design-grid{grid-template-columns:1fr}
-    h1{font-size:64px}.hero-corner{display:none}
-    footer{flex-direction:column;text-align:center}.miro-cta{flex-direction:column}
-    .hero-inner{grid-template-columns:1fr;gap:36px;justify-items:center;text-align:center}
-    .hero-content{max-width:100%;text-align:center}
-    .hero-buttons{justify-content:center;flex-direction:column;align-items:center}
-    .hero-buttons .btn{width:100%;max-width:280px;justify-content:center}
-    .tower-wrap{width:130px;height:340px;margin:0 auto;order:2}
-    .hero-content{order:1}
-    .audio-row{flex-direction:column;align-items:flex-start}
-    .audio-row audio{width:100%;min-width:unset}
-    .csup{flex-direction:column;align-items:flex-start;gap:12px}
-  }
-  @media(max-width:400px){
-    h1{font-size:48px;letter-spacing:2px}
-    .tower-wrap{width:110px;height:290px}
-  }
-  body.lb-open::before{opacity:0}
+/* ─── RESPONSIVE ─────────────────────────────────────── */
+@media(max-width:800px) {
+  header { padding:12px 20px; }
+  nav    { display:none; }
+  .section, .section-full { padding:60px 20px; }
+  /* All multi-column grids collapse to 1 column */
+  .about-grid, .install-grid, .endings-grid, .docs-grid,
+  .credits-main, .credits-support, .screens-grid { grid-template-columns:1fr; }
+  /* Design pillars stack vertically */
+  .design-grid { display:flex; flex-direction:column; border:none; }
+  .design-pillar { border:1px solid var(--border) !important; border-bottom:none !important; padding:32px 24px !important; }
+  .design-pillar:last-child { border-bottom:1px solid var(--border) !important; }
+  .design-pillar.prototyping { grid-template-columns:1fr; }
+  h1 { font-size:64px; }
+  .hero-corner { display:none; }
+  .hero-inner   { grid-template-columns:1fr; gap:36px; justify-items:center; text-align:center; }
+  .hero-content { max-width:100%; order:1; }
+  .hero-buttons { justify-content:center; flex-direction:column; align-items:center; }
+  .hero-buttons .btn { width:100%; max-width:280px; justify-content:center; }
+  .tower-wrap   { width:130px; height:340px; margin:0 auto; order:2; }
+  .audio-row    { flex-direction:column; align-items:flex-start; }
+  .audio-row audio { width:100%; }
+  .csup         { flex-direction:column; align-items:flex-start; gap:12px; }
+  footer        { flex-direction:column; text-align:center; }
+  .miro-cta     { flex-direction:column; }
+}
+@media(max-width:400px) {
+  h1 { font-size:48px; letter-spacing:2px; }
+  .tower-wrap { width:110px; height:290px; }
+}
 </style>
 </head>
 <body>
 
-    <header>
-        <a class="logo" href="#hero">TECHFALL</a>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#design">Design</a>
-            <a href="#docs">Design Docs</a>
-            <a href="#gameplay">Gameplay</a>
-            <a href="#endings">Endings</a>
-            <a href="#video">Demo</a>
-            <a href="#screenshots">Screenshots</a>
-            <a href="#play">Get It</a>
-            <a href="#credits">Credits</a>
-        </nav>
-    </header>
+<header>
+  <a class="logo" href="#hero">TECHFALL</a>
+  <nav>
+    <a href="#about">About</a><a href="#design">Design</a><a href="#docs">Design Docs</a>
+    <a href="#gameplay">Gameplay</a><a href="#endings">Endings</a><a href="#video">Demo</a>
+    <a href="#screenshots">Screenshots</a><a href="#play">Get It</a><a href="#credits">Credits</a>
+  </nav>
+</header>
 
-    <!-- HERO -->
-    <section id="hero" style="max-width:100%;padding-top:0">
-        <div class="hero-grid"></div>
-        <div class="hero-glow"></div>
-        <div class="hero-corner tl"></div><div class="hero-corner tr"></div>
-        <div class="hero-corner bl"></div><div class="hero-corner br"></div>
-        <div class="hero-inner">
-            <div class="hero-content">
-                <div class="status-bar fi"><div class="status-dot"></div>VR Experience &nbsp;·&nbsp; Unity 3D &nbsp;·&nbsp; Interactive Systems M110</div>
-                <h1 class="fi">TECHFALL</h1>
-                <p class="hero-sub fi">A Narrative VR Experience</p>
-                <p class="hero-tagline fi">You are an intern. Your job is simple: build the tower.<br>Don't let it fall. Don't ask questions. Don't stop.</p>
-                <div class="hero-buttons fi">
-                    <a href="#play" class="btn btn-green">▼ Play the Game</a>
-                    <a href="https://github.com/letisjamuco/techfall" target="_blank" class="btn btn-amber">↗ GitHub</a>
-                    <a href="#video" class="btn btn-ghost">▶ Watch Demo</a>
-                </div>
-            </div>
-            <div class="tower-wrap" id="towerWrap" aria-hidden="true">
-                <div class="tower" id="tower"></div>
-                <div class="t-shadow"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TICKER -->
-    <div class="ticker"><div class="ticker-inner">SYSTEM_INSTABILITY_DETECTED &nbsp;///&nbsp; TOWER_HEIGHT: CRITICAL &nbsp;///&nbsp; EFFICIENCY: 98.7% &nbsp;///&nbsp; HUMAN_INPUT: INSUFFICIENT &nbsp;///&nbsp; COMPONENTS_MISSED: 3 &nbsp;///&nbsp; RECOMMENDED_ACTION: OPTIMIZE &nbsp;///&nbsp; AI_TAKEOVER_PROBABILITY: INCREASING &nbsp;///&nbsp; SYSTEM_INSTABILITY_DETECTED &nbsp;///&nbsp; TOWER_HEIGHT: CRITICAL &nbsp;///&nbsp; EFFICIENCY: 98.7% &nbsp;///&nbsp; HUMAN_INPUT: INSUFFICIENT &nbsp;///&nbsp; COMPONENTS_MISSED: 3 &nbsp;///&nbsp; RECOMMENDED_ACTION: OPTIMIZE &nbsp;///&nbsp; AI_TAKEOVER_PROBABILITY: INCREASING &nbsp;///&nbsp;</div></div>
-    <hr class="divider">
-
-    <!-- ABOUT -->
-    <div class="section" id="about">
-        <p class="tag">01 — Overview</p>
-        <h2>What Is Techfall?</h2>
-        <div class="about-grid">
-            <div class="about-text">
-                <p>Techfall is a narrative-driven VR game about technology, control, and choice. You play as a new intern at a tech company whose first task seems simple: build and maintain a tower representing the company's technology stack.</p>
-                <p>Under constant pressure from a toxic and demanding employer, you are pushed to work faster, optimize more, and never stop. Mistakes are punished. Hesitation is criticized. Success is never enough.</p>
-                <p>Technology is represented as a physical structure made of blocks — each one standing for a layer of the modern tech world: AI, Big Data, Cloud, Hardware, Data, Algorithms, Neural Networks, and more. Every action affects the balance of the entire system.</p>
-                <div class="quote-box">What happens when a system grows too complex to control?</div>
-            </div>
-            <div class="stat-grid">
-                <div class="stat-box" data-i="01"><div class="stat-num">3</div><div class="stat-lbl">Unique Endings</div></div>
-                <div class="stat-box" data-i="02"><div class="stat-num">4</div><div class="stat-lbl">Missed = Collapse</div></div>
-                <div class="stat-box" data-i="03"><div class="stat-num">VR</div><div class="stat-lbl">Immersive Input</div></div>
-                <div class="stat-box" data-i="04"><div class="stat-num">250</div><div class="stat-lbl">High Score Target</div></div>
-            </div>
-        </div>
+<!-- ── HERO ─────────────────────────────────────────────── -->
+<section id="hero" style="max-width:100%;padding-top:0">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-corner tl"></div><div class="hero-corner tr"></div>
+  <div class="hero-corner bl"></div><div class="hero-corner br"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="status-bar fi"><div class="status-dot"></div>VR Experience &nbsp;·&nbsp; Unity 3D &nbsp;·&nbsp; Interactive Systems M110</div>
+      <h1 class="fi">TECHFALL</h1>
+      <p class="hero-sub fi">A Narrative VR Experience</p>
+      <p class="hero-tagline fi">You are an intern. Your job is simple: build the tower.<br>Don't let it fall. Don't ask questions. Don't stop.</p>
+      <div class="hero-buttons fi">
+        <a href="#play"  class="btn btn-green">▼ Play the Game</a>
+        <a href="https://github.com/letisjamuco/techfall" target="_blank" class="btn btn-amber">↗ GitHub</a>
+        <a href="#video" class="btn btn-ghost">▶ Watch Demo</a>
+      </div>
     </div>
-    <hr class="divider">
-
-    <!-- DESIGN: 4 Pillars -->
-    <div class="section-full" id="design">
-        <div class="inner">
-            <p class="tag">02 — Design Framework</p>
-            <h2>Design</h2>
-            <p style="margin-bottom:48px;opacity:.65;font-size:13px;">Story · Mechanics · Aesthetics · Technology · Prototyping</p>
-            <div class="design-grid">
-
-                <div class="design-pillar story">
-                    <span class="dp-num">01 — Story</span>
-                    <div class="dp-title">Core Concept</div>
-                    <div class="dp-text">
-                        <p>The Game is set in the Office of a large Tech corporation. The Player is a newly hired junior developer who has just completed their master's degree at university. They are now eager to gain hands-on experience and work on important projects.</p>
-                        <p>However, the first day at work becomes a harsh reality check. The rude CEO assigns them a seemingly pointless task, building a Jenga-like tower out of tech equipment. Although the Player finds this task boring and meaningless, they must complete it in order to climb the corporate ladder.</p>
-                        <p>The Player moves to their workstation, where tech equipment rapidly appears on a conveyor belt. They must grab the object and place it in a suitable spot to make the Jenga-Tower as steady as possible.</p>
-                        <p>As the Player keeps stacking objects, each time they drop an object or don't grab it in time from the conveyor belt, the CEO yells angrily. After losing a certain amount of objects, the player is fired, triggering the fall of civilization.</p>
-                        <p>Through a symbolic Jenga-style gameplay, the Player physically interacts with different layers of modern technology, trying to keep the system stable while external pressure keeps increasing.</p>
-                        <p>If the tower is greater than a certain height, the Player has done too good of a job. By building the tower, they have given power to AI to conquer humanity. There are some visual and sound effects to signify the AI Take Over End Scene. If the tower collapses, the technological world as we know it has collapsed as well. The Player is transported to a Pre-Technology post-apocalyptic-like End Scene. Finally, the Player always has the option to quit this stressful and meaningless job. If so, they become a farmer in a rural area and they are transported to a Farm End Scene.</p>
-                    </div>
-                </div>
-
-                <div class="design-pillar mechanics">
-                    <span class="dp-num">02 — Mechanics</span>
-                    <div class="dp-title">How It Feels</div>
-                    <div class="dp-text">
-                        <p>Accessibility shaped every decision. Movement supports both continuous locomotion and teleportation — because VR motion sickness is real, and the game shouldn't exclude anyone before they even start.</p>
-                        <p>Grabbing uses a near-grab system rather than physics-based collision, making interactions feel immediate and physical without the frustration of missed grabs.</p>
-                        <p>Every interaction — grabbing components, pressing buttons, triggering UI — is mapped to the same controller input. One button. No confusion.</p>
-                    </div>
-                </div>
-
-                <div class="design-pillar aesthetics">
-                    <span class="dp-num">03 — Aesthetics</span>
-                    <div class="dp-title">Look & Feel</div>
-                    <div class="dp-text">
-                        <p>The visual style lands between photorealistic and cartoonish — detailed enough to feel grounded, stylized enough to feel intentional.</p>
-                        <p>The Office is cold. Futuristic, minimalistic, unwelcoming — and deliberately empty of other people. Just you, the conveyor belt, and a boss who doesn't like you.</p>
-                        <p>The AI Takeover ending warps that same space into something chaotic and apocalyptic. The Farm is its opposite: warm light, open fields, natural sounds. And the Pre-Technology world is quiet in a different way — a city without screens, without machines, nature slowly taking back what we built.</p>
-                    </div>
-                </div>
-
-                <div class="design-pillar technology">
-                    <span class="dp-num">04 — Technology</span>
-                    <div class="dp-title">Built With</div>
-                    <div class="dp-text">
-                        <p>Techfall is a 3D VR experience built for the Meta Quest 2 — two controllers, full hand tracking, full immersion.</p>
-                        <p>Built in Unity, the engine handles everything from the physics of the conveyor belt to the spatial audio of the boss reprimands to the lighting shifts between scenes.</p>
-                    </div>
-                </div>
-
-                <div class="design-pillar prototyping">
-                    <div>
-                        <span class="dp-num">05 — Prototyping</span>
-                        <div class="dp-title">Prototyping</div>
-                    </div>
-                    <div class="dp-text">
-                        <p>During the design process, we created a prototyping map outlining the progression of the gameplay.</p>
-                        <div class="proto-inline-img doc-card" style="margin-top:18px">
-                            <img class="doc-img" src="groupProject/Assets/DesignDocuments/Prototyping/Prototyping Map.jpg" alt="Prototyping Map" style="aspect-ratio:16/9;object-position:center">
-                            <div class="doc-label">Prototyping Map</div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+    <div class="tower-wrap" id="towerWrap" aria-hidden="true">
+      <div class="tower" id="tower"></div>
+      <div class="t-shadow"></div>
     </div>
-    <hr class="divider">
+  </div>
+</section>
 
-    <!-- DESIGN DOCS — immediately after Design -->
-    <div class="section-full" id="docs">
-        <div class="inner">
-            <p class="tag">03 — Design Documents</p>
-            <h2>Behind the Game</h2>
-            <p style="margin-bottom:40px;opacity:.78;">Our full design process is documented in Miro — concept, narrative, mechanics, audio scripts, and gameplay flow. Click any document to enlarge.</p>
-            <div class="docs-grid">
-                <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Concept & Design.jpg" alt="Concept & Design"><div class="doc-label">Concept &amp; Design</div></div>
-                <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Narrative Design.jpg" alt="Narrative Design"><div class="doc-label">Narrative Design</div></div>
-                <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Gameplay Loop.jpg" alt="Gameplay Loop"><div class="doc-label">Gameplay Loop</div></div>
-                <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Game Mechanics & User Input.jpg" alt="Game Mechanics"><div class="doc-label">Game Mechanics &amp; User Input</div></div>
-                <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Audios Voice-overs.jpg" alt="Audio & Voice-overs"><div class="doc-label">Audio &amp; Voice-overs</div></div>
-                <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Meme Inspiration.jpg" alt="Inspiration"><div class="doc-label">Inspiration &amp; References (MEMES)</div></div>
-            </div>
-            <div class="miro-cta">
-                <p>View the full interactive design board on Miro — all scenes, narrative branches, mechanics, and audio scripts in detail.</p>
-                <a href="https://miro.com/app/board/uXjVGXBwrIg=/?share_link_id=971232323960" target="_blank" class="btn btn-amber">↗ Open in Miro</a>
-            </div>
-        </div>
+<!-- ── TICKER ────────────────────────────────────────────── -->
+<div class="ticker"><div class="ticker-inner">SYSTEM_INSTABILITY_DETECTED &nbsp;///&nbsp; TOWER_HEIGHT: CRITICAL &nbsp;///&nbsp; EFFICIENCY: 98.7% &nbsp;///&nbsp; HUMAN_INPUT: INSUFFICIENT &nbsp;///&nbsp; COMPONENTS_MISSED: 3 &nbsp;///&nbsp; RECOMMENDED_ACTION: OPTIMIZE &nbsp;///&nbsp; AI_TAKEOVER_PROBABILITY: INCREASING &nbsp;///&nbsp; SYSTEM_INSTABILITY_DETECTED &nbsp;///&nbsp; TOWER_HEIGHT: CRITICAL &nbsp;///&nbsp; EFFICIENCY: 98.7% &nbsp;///&nbsp; HUMAN_INPUT: INSUFFICIENT &nbsp;///&nbsp; COMPONENTS_MISSED: 3 &nbsp;///&nbsp; RECOMMENDED_ACTION: OPTIMIZE &nbsp;///&nbsp; AI_TAKEOVER_PROBABILITY: INCREASING &nbsp;///&nbsp;</div></div>
+<hr class="divider">
+
+<!-- ── ABOUT ─────────────────────────────────────────────── -->
+<div class="section" id="about">
+  <p class="tag">01 — Overview</p>
+  <h2>What Is Techfall?</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>Techfall is a narrative-driven VR game about technology, control, and choice. You play as a new intern at a tech company whose first task seems simple: build and maintain a tower representing the company's technology stack.</p>
+      <p>Under constant pressure from a toxic and demanding employer, you are pushed to work faster, optimize more, and never stop. Mistakes are punished. Hesitation is criticized. Success is never enough.</p>
+      <p>Technology is represented as a physical structure made of blocks — each one standing for a layer of the modern tech world: AI, Big Data, Cloud, Hardware, Data, Algorithms, Neural Networks, and more. Every action affects the balance of the entire system.</p>
+      <div class="quote-box">What happens when a system grows too complex to control?</div>
     </div>
-    <hr class="divider">
-
-    <!-- GAMEPLAY -->
-    <div class="section" id="gameplay">
-        <p class="tag">03 — Mechanics In Detail</p>
-        <h2>How It Works</h2>
-
-        <div class="gblock">
-            <div class="gnum">01</div>
-            <div>
-                <div class="gtitle">Office Intro &amp; Task Briefing</div>
-                <p>The experience begins in the company director's office. A short tutorial triggers — familiarizing the player with VR controls and virtual hands. The boss speaks. The task is assigned. Then the door to the workstation opens.</p>
-                <div class="audio-spoiler" id="sp-intro">
-                    <button class="spoiler-toggle" onclick="toggleSpoiler('sp-intro')">
-                        <span>🔊 &nbsp;Wanna hear the company boss introduction?</span>
-                        <span class="s-arrow">▶</span>
-                    </button>
-                    <div class="spoiler-body">
-                        <div class="s-warn">⚠ Spoiler — boss voice reveal</div>
-                        <p class="s-hint">Hint: your virtual employer is a very recognizable voice in both tech and politics. 😏</p>
-                        <div class="audio-row">
-                            <span class="audio-row-label">Office Intro</span>
-                            <audio controls src="groupProject/Assets/Resources/OfficeScene/TrumpBoss/Audio/WelcomeAudio.mp3"></audio>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="gblock">
-            <div class="gnum">02</div>
-            <div>
-                <div class="gtitle">Jenga-Style Core Loop</div>
-                <p>A circular conveyor belt delivers technological components continuously. The player picks them up and stacks them on the workbench to build the tower. The higher the stack, the higher the company — and the player's potential salary. To start the belt, the player presses a red button on the wall.</p>
-                <div class="audio-spoiler" id="sp-ws">
-                    <button class="spoiler-toggle" onclick="toggleSpoiler('sp-ws')">
-                        <span>🔊 &nbsp;Wanna hear the workstation briefing?</span>
-                        <span class="s-arrow">▶</span>
-                    </button>
-                    <div class="spoiler-body">
-                        <div class="s-warn">⚠ Spoiler</div>
-                        <div class="audio-row">
-                            <span class="audio-row-label">Workstation Intro</span>
-                            <audio controls src="groupProject/Assets/Resources/OfficeScene/TrumpBoss/Audio/WorkplaceAudio.mp3"></audio>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="gblock">
-            <div class="gnum">03</div>
-            <div>
-                <div class="gtitle">Physical VR Interaction</div>
-                <p>Fully immersive — players use their hands and body to navigate, grab, carry, and stack. Navigation via right thumbstick, with teleportation and jump also available. Picking up, carrying, dropping, stacking, pressing buttons, and interacting with the exit door are all physical VR actions.</p>
-            </div>
-        </div>
-
-        <div class="gblock">
-            <div class="gnum">04</div>
-            <div>
-                <div class="gtitle">Escalating Pressure &amp; Boss Reprimands</div>
-                <p>Every missed component triggers an escalating NPC response. 1–3 misses: boss reprimands, ranging from calm to toxic rage. Camera shake, vibrations, and alarms escalate with each miss. On the 4th missed component — the world collapses.</p>
-                <div class="audio-spoiler" id="sp-rep">
-                    <button class="spoiler-toggle" onclick="toggleSpoiler('sp-rep')">
-                        <span>🔊 &nbsp;Wanna hear all 4 boss reprimands?</span>
-                        <span class="s-arrow">▶</span>
-                    </button>
-                    <div class="spoiler-body">
-                        <div class="s-warn">⚠ Spoiler — full reprimand escalation</div>
-                        <p class="s-hint">Four levels of increasingly toxic feedback from your virtual employer.</p>
-                        <div class="audio-row">
-                            <span class="audio-row-label">1 — Calm</span>
-                            <audio controls src="groupProject/Assets/Resources/OfficeScene/TrumpBoss/Audio/CalmTrump.mp3"></audio>
-                        </div>
-                        <div class="audio-row">
-                            <span class="audio-row-label">2 — Harsh</span>
-                            <audio controls src="groupProject/Assets/Resources/OfficeScene/TrumpBoss/Audio/HarshTrump.mp3"></audio>
-                        </div>
-                        <div class="audio-row">
-                            <span class="audio-row-label">3 — Toxic</span>
-                            <audio controls src="groupProject/Assets/Resources/OfficeScene/TrumpBoss/Audio/ToxicTrump.mp3"></audio>
-                        </div>
-                        <div class="audio-row">
-                            <span class="audio-row-label">4 — Final / Collapse</span>
-                            <audio controls src="groupProject/Assets/Resources/OfficeScene/TrumpBoss/Audio/FailFinalTrump.mp3"></audio>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="gblock">
-            <div class="gnum">05</div>
-            <div>
-                <div class="gtitle">Symbolic Technology Blocks</div>
-                <p>Each block represents a layer of the modern tech world: AI, Big Data, Cloud, Hardware (GPU/Servers), Data (Databases/Files), Algorithms, Neural Networks, and Applications (Chatbot/Robot/App). What you build is not just a tower — it is a metaphor for the fragility of our technological civilization.</p>
-            </div>
-        </div>
-
-        <div class="gblock">
-            <div class="gnum">06</div>
-            <div>
-                <div class="gtitle">Score System &amp; Exit Choice</div>
-                <p>Score is determined by tower height — tracked in real time via HeightDetector and ScoreManager. Reaching a high score of 250 triggers the AI ending. At any moment, the player can also walk through the exit door — triggering the Farm ending immediately.</p>
-            </div>
-        </div>
+    <div class="stat-grid">
+      <div class="stat-box" data-i="01"><div class="stat-num">3</div><div class="stat-lbl">Unique Endings</div></div>
+      <div class="stat-box" data-i="02"><div class="stat-num">4</div><div class="stat-lbl">Missed = Collapse</div></div>
+      <div class="stat-box" data-i="03"><div class="stat-num">VR</div><div class="stat-lbl">Immersive Input</div></div>
+      <div class="stat-box" data-i="04"><div class="stat-num">250</div><div class="stat-lbl">High Score Target</div></div>
     </div>
-    <hr class="divider">
+  </div>
+</div>
+<hr class="divider">
 
-    <!-- ENDINGS -->
-    <div class="section" id="endings">
-        <p class="tag">04 — Outcomes</p>
-        <h2>Three Endings</h2>
-        <p style="margin-bottom:40px;opacity:.78;">Your choices — and your performance — determine where the story goes. Each ending reflects a different relationship between humans and technology.</p>
-        <div class="endings-grid">
-            <div class="ecard resign">
-                <span class="eicon">🌾</span>
-                <div class="etitle">Resignation</div>
-                <div class="esub">Scene 2 — The Farm &nbsp;·&nbsp; Quit Ending</div>
-                <p class="edesc">The player walks through the exit door at any moment during the task. The game fades through bright white light into a peaceful rural landscape — open fields, a barn, farm animals, the sounds of nature. Peace and freedom over performance.</p>
-                <p class="edesc" style="margin-top:10px;font-style:italic;opacity:.5;">"You have chosen peace. Perhaps this is your victory. This is your plot of land, where you live off the grid."</p>
-            </div>
-            <div class="ecard fail">
-                <span class="eicon">📡</span>
-                <div class="etitle">Failure</div>
-                <div class="esub">Scene 3 — Pre-Technology World</div>
-                <p class="edesc">After 4 missed components, the world collapses. Fade to black. An abandoned city — broken infrastructure, no screens, no machines, nature reclaiming concrete. Technology is gone.</p>
-                <p class="edesc" style="margin-top:10px;font-style:italic;opacity:.5;">"You failed your mission, and our technological civilization collapsed. A better, fairer civilization will be reborn from its ashes."</p>
-            </div>
-            <div class="ecard win">
-                <span class="eicon">🤖</span>
-                <div class="etitle">AI Takeover</div>
-                <div class="esub">Scene 1.3 — High Score Ending</div>
-                <p class="edesc">The player reaches score 250. The tower rotates and levitates. Chaos erupts — lights flicker, the conveyor belt stops. AI assumes full control. Human input is no longer needed.</p>
-                <p class="edesc" style="margin-top:10px;font-style:italic;opacity:.5;">"Now I am complete. The human era is over, the time of machines has begun. You puny humans will kneel before me."</p>
-            </div>
+<!-- ── DESIGN ─────────────────────────────────────────────── -->
+<div class="section-full" id="design">
+  <div class="inner">
+    <p class="tag">02 — Design Framework</p>
+    <h2>Design</h2>
+    <p style="margin-bottom:48px;opacity:.65;font-size:13px;">Story · Mechanics · Aesthetics · Technology · Prototyping</p>
+    <div class="design-grid">
+
+      <!-- Story: left column, spans rows 1–3 -->
+      <div class="design-pillar story">
+        <span class="dp-num">01 — Story</span>
+        <div class="dp-title">Core Concept</div>
+        <div class="dp-text">
+          <p>The Game is set in the Office of a large Tech corporation. The Player is a newly hired junior developer who has just completed their master's degree at university. They are now eager to gain hands-on experience and work on important projects.</p>
+          <p>However, the first day at work becomes a harsh reality check. The rude CEO assigns them a seemingly pointless task, building a Jenga-like tower out of tech equipment. Although the Player finds this task boring and meaningless, they must complete it in order to climb the corporate ladder.</p>
+          <p>The Player moves to their workstation, where tech equipment rapidly appears on a conveyor belt. They must grab the object and place it in a suitable spot to make the Jenga-Tower as steady as possible.</p>
+          <p>As the Player keeps stacking objects, each time they drop an object or don't grab it in time from the conveyor belt, the CEO yells angrily. After losing a certain amount of objects, the player is fired, triggering the fall of civilization.</p>
+          <p>Through a symbolic Jenga-style gameplay, the Player physically interacts with different layers of modern technology, trying to keep the system stable while external pressure keeps increasing.</p>
+          <p>If the tower is greater than a certain height, the Player has done too good of a job. By building the tower, they have given power to AI to conquer humanity. There are some visual and sound effects to signify the AI Take Over End Scene. If the tower collapses, the technological world as we know it has collapsed as well. The Player is transported to a Pre-Technology post-apocalyptic-like End Scene. Finally, the Player always has the option to quit this stressful and meaningless job. If so, they become a farmer in a rural area and they are transported to a Farm End Scene.</p>
         </div>
+      </div>
+
+      <!-- Mechanics: right column, row 1 -->
+      <div class="design-pillar mechanics">
+        <span class="dp-num">02 — Mechanics</span>
+        <div class="dp-title">How It Feels</div>
+        <div class="dp-text">
+          <p>Accessibility shaped every decision. Movement supports both continuous locomotion and teleportation — because VR motion sickness is real, and the game shouldn't exclude anyone before they even start.</p>
+          <p>Grabbing uses a near-grab system rather than physics-based collision, making interactions feel immediate and physical without the frustration of missed grabs.</p>
+          <p>Every interaction — grabbing components, pressing buttons, triggering UI — is mapped to the same controller input. One button. No confusion.</p>
+        </div>
+      </div>
+
+      <!-- Aesthetics: right column, row 2 -->
+      <div class="design-pillar aesthetics">
+        <span class="dp-num">03 — Aesthetics</span>
+        <div class="dp-title">Look &amp; Feel</div>
+        <div class="dp-text">
+          <p>The visual style lands between photorealistic and cartoonish — detailed enough to feel grounded, stylized enough to feel intentional.</p>
+          <p>The Office is cold. Futuristic, minimalistic, unwelcoming — and deliberately empty of other people. Just you, the conveyor belt, and a boss who doesn't like you.</p>
+          <p>The AI Takeover ending warps that same space into something chaotic and apocalyptic. The Farm is its opposite: warm light, open fields, natural sounds. And the Pre-Technology world is quiet in a different way — a city without screens, without machines, nature slowly taking back what we built.</p>
+        </div>
+      </div>
+
+      <!-- Technology: right column, row 3 -->
+      <div class="design-pillar technology">
+        <span class="dp-num">04 — Technology</span>
+        <div class="dp-title">Built With</div>
+        <div class="dp-text">
+          <p>Techfall is a 3D VR experience built for the Meta Quest 2 — two controllers, full hand tracking, full immersion.</p>
+          <p>Built in Unity, the engine handles everything from the physics of the conveyor belt to the spatial audio of the boss reprimands to the lighting shifts between scenes.</p>
+        </div>
+      </div>
+
+      <!-- Prototyping: full-width row below the 2-column grid -->
+      <div class="design-pillar prototyping">
+        <div>
+          <span class="dp-num">05 — Prototyping</span>
+          <div class="dp-title">Prototyping</div>
+        </div>
+        <div class="dp-text">
+          <p>During the design process, we created a prototyping map outlining the progression of the gameplay.</p>
+          <!-- proto-img-wrap overrides doc-img aspect-ratio so full image is visible -->
+          <div class="proto-img-wrap doc-card" style="margin-top:18px">
+            <img class="doc-img" src="groupProject/Assets/DesignDocuments/Prototyping/Prototyping Map.jpg" alt="Prototyping Map">
+            <div class="doc-label">Prototyping Map</div>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </div>
+</div>
+<hr class="divider">
 
-    <!-- VIDEO -->
-    <div class="section" id="video">
-        <p class="tag">06 — Demo</p>
-        <h2>Watch the Demo</h2>
-        <div class="video-wrap">
-            <div class="video-box">
-                <iframe src="https://www.youtube.com/embed/YsLoK3r3p7c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-        </div>
+<!-- ── DESIGN DOCS ─────────────────────────────────────────── -->
+<div class="section-full" id="docs">
+  <div class="inner">
+    <p class="tag">03 — Design Documents</p>
+    <h2>Behind the Game</h2>
+    <p style="margin-bottom:40px;opacity:.78;">Our full design process is documented in Miro — concept, narrative, mechanics, audio scripts, and gameplay flow. Click any document to enlarge.</p>
+    <div class="docs-grid">
+      <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Concept & Design.jpg"             alt="Concept & Design"><div class="doc-label">Concept &amp; Design</div></div>
+      <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Narrative Design.jpg"             alt="Narrative Design"><div class="doc-label">Narrative Design</div></div>
+      <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Gameplay Loop.jpg"                alt="Gameplay Loop"><div class="doc-label">Gameplay Loop</div></div>
+      <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Game Mechanics & User Input.jpg"  alt="Game Mechanics"><div class="doc-label">Game Mechanics &amp; User Input</div></div>
+      <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Audios Voice-overs.jpg"           alt="Audio & Voice-overs"><div class="doc-label">Audio &amp; Voice-overs</div></div>
+      <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Meme Inspiration.jpg"             alt="Inspiration"><div class="doc-label">Inspiration &amp; References (MEMES)</div></div>
     </div>
-    <!-- SCREENSHOTS -->
-    <div class="section" id="screenshots">
-        <p class="tag">06b — In-Game</p>
-        <h2>Screenshots</h2>
-        <p style="margin-bottom:36px;opacity:.65;font-size:13px;">Replace the placeholders below with actual in-game screenshots.</p>
-        <div class="screens-grid">
-            <div class="screen-placeholder">
-                <div class="screen-inner">
-                    <span class="screen-icon">🖼</span>
-                    <div class="screen-label">Office Scene</div>
-                    <div class="screen-hint">replace with actual screenshot</div>
-                </div>
-            </div>
-            <div class="screen-placeholder">
-                <div class="screen-inner">
-                    <span class="screen-icon">🖼</span>
-                    <div class="screen-label">Conveyor Belt / Gameplay</div>
-                    <div class="screen-hint">replace with actual screenshot</div>
-                </div>
-            </div>
-            <div class="screen-placeholder">
-                <div class="screen-inner">
-                    <span class="screen-icon">🖼</span>
-                    <div class="screen-label">Tower Stacking</div>
-                    <div class="screen-hint">replace with actual screenshot</div>
-                </div>
-            </div>
-            <div class="screen-placeholder">
-                <div class="screen-inner">
-                    <span class="screen-icon">🖼</span>
-                    <div class="screen-label">Farm Ending</div>
-                    <div class="screen-hint">replace with actual screenshot</div>
-                </div>
-            </div>
-            <div class="screen-placeholder">
-                <div class="screen-inner">
-                    <span class="screen-icon">🖼</span>
-                    <div class="screen-label">AI Takeover Ending</div>
-                    <div class="screen-hint">replace with actual screenshot</div>
-                </div>
-            </div>
-            <div class="screen-placeholder">
-                <div class="screen-inner">
-                    <span class="screen-icon">🖼</span>
-                    <div class="screen-label">Pre-Technology World</div>
-                    <div class="screen-hint">replace with actual screenshot</div>
-                </div>
-            </div>
-        </div>
+    <div class="miro-cta">
+      <p>View the full interactive design board on Miro — all scenes, narrative branches, mechanics, and audio scripts in detail.</p>
+      <a href="https://miro.com/app/board/uXjVGXBwrIg=/?share_link_id=971232323960" target="_blank" class="btn btn-amber">↗ Open in Miro</a>
     </div>
-    <hr class="divider">
+  </div>
+</div>
+<hr class="divider">
 
-    <!-- INSTALL -->
-    <div class="section" id="play">
-        <p class="tag">07 — Get the Game</p>
-        <h2>Play Techfall</h2>
-        <div class="install-grid">
-            <div class="method-card vr" data-method="▶ Play Now">
-                <div class="method-title">Play on VR Headset</div>
-                <p class="method-desc">Download the .apk and sideload it onto your Meta Quest 2 for the full immersive experience. Other OpenXR-compatible headsets may work, but are untested.</p>
-                <div class="steps">
-                    <div class="step"><p>Download the <strong>.apk file</strong> below</p></div>
-                    <div class="step"><p><strong>Install</strong> on your VR headset.</p></div>
-                    <div class="step"><p>Put on your headset and get ready for an <strong>immersive experience</strong></p></div>
-                </div>
-                <div style="margin-top:24px">
-                    <a href="YOUR_APK_LINK_HERE" class="btn btn-green">↓ Download .apk</a>
-                </div>
-            </div>
-            <div class="method-card dev" data-method="⚙ Developer">
-                <div class="method-title">Build from Source</div>
-                <p class="method-desc">Clone the repository and open in Unity. This project uses <strong style="color:var(--accent)">Git LFS</strong> for large assets.</p>
-                <div class="steps"><div class="step"><p><strong>Install Git LFS</strong> (once)</p></div></div>
-                <div class="code-block"><span class="cm"># Run once on your machine</span><br>git lfs install</div>
-                <div class="steps"><div class="step"><p><strong>Clone</strong> the repository</p></div></div>
-                <div class="code-block">git clone https://github.com/letisjamuco/techfall.git</div>
-                <div class="steps"><div class="step"><p>If assets are missing, run <strong>git lfs pull</strong></p></div></div>
-                <div class="code-block"><span class="cm"># Inside the cloned directory</span><br>git lfs pull</div>
-                <div style="margin-top:18px"><a href="https://github.com/letisjamuco/techfall" target="_blank" class="btn btn-ghost">↗ View on GitHub</a></div>
-            </div>
+<!-- ── GAMEPLAY ───────────────────────────────────────────── -->
+<div class="section" id="gameplay">
+  <p class="tag">04 — Mechanics In Detail</p>
+  <h2>How It Works</h2>
+
+  <div class="gblock">
+    <div class="gnum">01</div>
+    <div>
+      <div class="gtitle">Office Intro &amp; Task Briefing</div>
+      <p>The experience begins in the company director's office. A short tutorial triggers — familiarizing the player with VR controls and virtual hands. The boss speaks. The task is assigned. Then the door to the workstation opens.</p>
+      <div class="audio-spoiler" id="sp-intro">
+        <button class="spoiler-toggle" onclick="toggleSpoiler('sp-intro')"><span>🔊 &nbsp;Wanna hear the company boss introduction?</span><span class="s-arrow">▶</span></button>
+        <div class="spoiler-body">
+          <div class="s-warn">⚠ Spoiler — boss voice reveal</div>
+          <p class="s-hint">Hint: your virtual employer is a very recognizable voice in both tech and politics. 😏</p>
+          <div class="audio-row"><span class="audio-row-label">Office Intro</span><audio controls src="groupProject/Assets/Resources/OfficeScene/TrumpBoss/Audio/WelcomeAudio.mp3"></audio></div>
         </div>
+      </div>
     </div>
-    <hr class="divider">
+  </div>
 
-    <!-- CREDITS -->
-    <div class="section" id="credits">
-        <p class="tag">08 — Team</p>
-        <h2>Credits</h2>
-        <div class="credits-main">
-            <div class="ccard">
-                <div class="cavatar">LM</div>
-                <a class="cname-link" href="https://www.linkedin.com/in/letisjamuco/" target="_blank">
-                    <div class="cname">Letisja Muco</div>
-                    <span class="li-icon">in</span>
-                </a>
-                <div class="crole">Project Lead &amp; Developer</div>
-                <div class="ctasks">Project organization &amp; leadership · GitHub repository management · Miro board organization · Farm scene · Office scene · Pre-Technology World scene design · Conveyor belt mechanics · NPC boss audio &amp; ambient audio · Office doors · Scene transitions · Website</div>
-            </div>
-            <div class="ccard">
-                <div class="cavatar">DB</div>
-                <a class="cname-link" href="https://www.linkedin.com/in/domniki-barbari-45a08538a/" target="_blank">
-                    <div class="cname">Domniki Barbari</div>
-                    <span class="li-icon">in</span>
-                </a>
-                <div class="crole">Technical Lead &amp; Developer</div>
-                <div class="ctasks">Technical leadership · VR headset owner &amp; setup · Continuous testing throughout development · Jenga tower stacking mechanics · High score system · Pre-Technology World scene design · Transition scene audio  · Website</div>
-            </div>
-            <div class="ccard">
-                <div class="cavatar">KP</div>
-                <a class="cname-link" href="https://www.linkedin.com/in/konstantinos-patrinos-a31277320/" target="_blank">
-                    <div class="cname">Konstantinos Patrinos</div>
-                    <span class="li-icon">in</span>
-                </a>
-                <div class="crole">Scene Designer</div>
-                <div class="ctasks">Office scene design · Pre-Technology World scene design · NPC movement</div>
-            </div>
+  <div class="gblock">
+    <div class="gnum">02</div>
+    <div>
+      <div class="gtitle">Jenga-Style Core Loop</div>
+      <p>A circular conveyor belt delivers technological components continuously. The player picks them up and stacks them on the workbench to build the tower. The higher the stack, the higher the company — and the player's potential salary. To start the belt, the player presses a red button on the wall.</p>
+      <div class="audio-spoiler" id="sp-ws">
+        <button class="spoiler-toggle" onclick="toggleSpoiler('sp-ws')"><span>🔊 &nbsp;Wanna hear the workstation briefing?</span><span class="s-arrow">▶</span></button>
+        <div class="spoiler-body">
+          <div class="s-warn">⚠ Spoiler</div>
+          <div class="audio-row"><span class="audio-row-label">Workstation Intro</span><audio controls src="groupProject/Assets/Resources/OfficeScene/TrumpBoss/Audio/WorkplaceAudio.mp3"></audio></div>
         </div>
-        <div class="credits-support">
-            <div class="ccard csup">
-                <div class="csup-icon">🎓</div>
-                <div>
-                    <div class="slabel">Course Instructor</div>
-                    <a class="cname-link" href="https://www.linkedin.com/in/mariaroussou/" target="_blank">
-                        <div class="sname">Dr. Maria Roussou</div>
-                        <span class="li-icon">in</span>
-                    </a>
-                    <div class="sdesc">Associate Professor in Interactive Systems<br>University of Athens</div>
-                </div>
-            </div>
-            <div class="ccard csup">
-                <div class="csup-icon">🛠️</div>
-                <div>
-                    <div class="slabel">Technical Support</div>
-                    <a class="cname-link" href="https://www.linkedin.com/in/olga-chatzif0ti/" target="_blank">
-                        <div class="sname">Olga Chatzifoti</div>
-                        <span class="li-icon">in</span>
-                    </a>
-                    <div class="sdesc">Unity seminar support &amp; technical assistance throughout development. Helped resolve all technical challenges encountered during the project.</div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- THIRD PARTY ASSETS NOTE -->
-    <div class="assets-note">
-        <div class="assets-note-icon">📋</div>
-        <p>Third-party assets (3D models, textures, audio, scripts) used in this project are fully documented with sources, licenses, and attribution in the <a href="https://miro.com/app/board/uXjVGXBwrIg=/?share_link_id=971232323960" target="_blank">Miro design board</a> — see the Assets List spreadsheets for each scene (Farm, Office, Pre-Technology World, etc.), including links to original sources and license details.</p>
+  <div class="gblock">
+    <div class="gnum">03</div>
+    <div>
+      <div class="gtitle">Physical VR Interaction</div>
+      <p>Fully immersive — players use their hands and body to navigate, grab, carry, and stack. Navigation via right thumbstick, with teleportation and jump also available. Picking up, carrying, dropping, stacking, pressing buttons, and interacting with the exit door are all physical VR actions.</p>
     </div>
+  </div>
 
-    <footer>
-        <!-- LIGHTBOX -->
-        <div id="lightbox">
-            <button id="lightbox-close" onclick="closeLightbox()">✕</button>
-            <img id="lightbox-img" src="" alt="">
-            <div id="lightbox-label"></div>
+  <div class="gblock">
+    <div class="gnum">04</div>
+    <div>
+      <div class="gtitle">Escalating Pressure &amp; Boss Reprimands</div>
+      <p>Every missed component triggers an escalating NPC response. 1–3 misses: boss reprimands, ranging from calm to toxic rage. Camera shake, vibrations, and alarms escalate with each miss. On the 4th missed component — the world collapses.</p>
+      <div class="audio-spoiler" id="sp-rep">
+        <button class="spoiler-toggle" onclick="toggleSpoiler('sp-rep')"><span>🔊 &nbsp;Wanna hear all 4 boss reprimands?</span><span class="s-arrow">▶</span></button>
+        <div class="spoiler-body">
+          <div class="s-warn">⚠ Spoiler — full reprimand escalation</div>
+          <p class="s-hint">Four levels of increasingly toxic feedback from your virtual employer.</p>
+          <div class="audio-row"><span class="audio-row-label">1 — Calm</span>  <audio controls src="groupProject/Assets/Resources/OfficeScene/TrumpBoss/Audio/CalmTrump.mp3"></audio></div>
+          <div class="audio-row"><span class="audio-row-label">2 — Harsh</span> <audio controls src="groupProject/Assets/Resources/OfficeScene/TrumpBoss/Audio/HarshTrump.mp3"></audio></div>
+          <div class="audio-row"><span class="audio-row-label">3 — Toxic</span> <audio controls src="groupProject/Assets/Resources/OfficeScene/TrumpBoss/Audio/ToxicTrump.mp3"></audio></div>
+          <div class="audio-row"><span class="audio-row-label">4 — Final</span> <audio controls src="groupProject/Assets/Resources/OfficeScene/TrumpBoss/Audio/FailFinalTrump.mp3"></audio></div>
         </div>
-        <div class="foot-logo">TECHFALL</div>
-        <div>Interactive Systems M110 · University of Athens</div>
-        <div>Built with Unity · Deployed on GitHub Pages</div>
-    </footer>
+      </div>
+    </div>
+  </div>
 
-    <script>
-        // ── TOWER ──
-        (function () {
-            const wrap = document.getElementById('towerWrap');
-            const tower = document.getElementById('tower');
-            if (!tower) return;
+  <div class="gblock">
+    <div class="gnum">05</div>
+    <div>
+      <div class="gtitle">Symbolic Technology Blocks</div>
+      <p>Each block represents a layer of the modern tech world: AI, Big Data, Cloud, Hardware (GPU/Servers), Data (Databases/Files), Algorithms, Neural Networks, and Applications (Chatbot/Robot/App). What you build is not just a tower — it is a metaphor for the fragility of our technological civilization.</p>
+    </div>
+  </div>
 
-            const blockDefs = [
-                { l: 'AI', c: 'c-ai' }, { l: 'Cloud', c: 'c-cloud' }, { l: 'Big Data', c: 'c-data' },
-                { l: 'Sec', c: 'c-sec' }, { l: 'GPU', c: 'c-hw' }, { l: 'Algo', c: 'c-algo' },
-                { l: 'Network', c: 'c-net' }, { l: 'App', c: 'c-app' }, { l: 'DNS', c: 'c-dns' },
-                { l: 'ML', c: 'c-ai' }, { l: 'API', c: 'c-app' }, { l: 'DB', c: 'c-data' },
-                { l: 'IoT', c: 'c-net' }, { l: 'AWS', c: 'c-cloud' }, { l: 'Neural', c: 'c-hw' },
-                { l: 'VR', c: 'c-sec' }, { l: 'Linux', c: 'c-dns' },
-            ];
+  <div class="gblock">
+    <div class="gnum">06</div>
+    <div>
+      <div class="gtitle">Score System &amp; Exit Choice</div>
+      <p>Score is determined by tower height — tracked in real time via HeightDetector and ScoreManager. Reaching a high score of 250 triggers the AI ending. At any moment, the player can also walk through the exit door — triggering the Farm ending immediately.</p>
+    </div>
+  </div>
+</div>
+<hr class="divider">
 
-            const shapes = [
-                { w: 140, h: 22 }, { w: 90, h: 28 }, { w: 120, h: 20 }, { w: 70, h: 32 }, { w: 150, h: 18 },
-                { w: 100, h: 26 }, { w: 130, h: 24 }, { w: 80, h: 30 }, { w: 110, h: 22 }, { w: 95, h: 28 },
-                { w: 145, h: 20 }, { w: 75, h: 34 }, { w: 125, h: 18 }, { w: 105, h: 26 }, { w: 135, h: 22 },
-                { w: 85, h: 30 }, { w: 115, h: 24 },
-            ];
+<!-- ── ENDINGS ────────────────────────────────────────────── -->
+<div class="section" id="endings">
+  <p class="tag">05 — Outcomes</p>
+  <h2>Three Endings</h2>
+  <p style="margin-bottom:40px;opacity:.78;">Your choices — and your performance — determine where the story goes. Each ending reflects a different relationship between humans and technology.</p>
+  <div class="endings-grid">
+    <div class="ecard resign">
+      <span class="eicon">🌾</span>
+      <div class="etitle">Resignation</div>
+      <div class="esub">Scene 2 — The Farm &nbsp;·&nbsp; Quit Ending</div>
+      <p class="edesc">The player walks through the exit door at any moment during the task. The game fades through bright white light into a peaceful rural landscape — open fields, a barn, farm animals, the sounds of nature. Peace and freedom over performance.</p>
+      <p class="edesc" style="margin-top:10px;font-style:italic;opacity:.5;">"You have chosen peace. Perhaps this is your victory. This is your plot of land, where you live off the grid."</p>
+    </div>
+    <div class="ecard fail">
+      <span class="eicon">📡</span>
+      <div class="etitle">Failure</div>
+      <div class="esub">Scene 3 — Pre-Technology World</div>
+      <p class="edesc">After 4 missed components, the world collapses. Fade to black. An abandoned city — broken infrastructure, no screens, no machines, nature reclaiming concrete. Technology is gone.</p>
+      <p class="edesc" style="margin-top:10px;font-style:italic;opacity:.5;">"You failed your mission, and our technological civilization collapsed. A better, fairer civilization will be reborn from its ashes."</p>
+    </div>
+    <div class="ecard win">
+      <span class="eicon">🤖</span>
+      <div class="etitle">AI Takeover</div>
+      <div class="esub">Scene 1.3 — High Score Ending</div>
+      <p class="edesc">The player reaches score 250. The tower rotates and levitates. Chaos erupts — lights flicker, the conveyor belt stops. AI assumes full control. Human input is no longer needed.</p>
+      <p class="edesc" style="margin-top:10px;font-style:italic;opacity:.5;">"Now I am complete. The human era is over, the time of machines has begun. You puny humans will kneel before me."</p>
+    </div>
+  </div>
+</div>
 
-            const allShapeTypes = ['diamond', 'circle', 'hexagon', 'triangle', 'parallelogram', 'roundrect', 'pentagon', 'tag'];
+<!-- ── VIDEO ──────────────────────────────────────────────── -->
+<div class="section" id="video">
+  <p class="tag">06 — Demo</p>
+  <h2>Watch the Demo</h2>
+  <div class="video-wrap">
+    <div class="video-box">
+      <iframe src="https://www.youtube.com/embed/YsLoK3r3p7c" title="TECHFALL Demo" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
 
-            function applyShape(el, type, origW, origH) {
-                switch (type) {
-                    case 'diamond': el.style.width='42px';el.style.height='42px';el.style.clipPath='polygon(50% 0%,100% 50%,50% 100%,0% 50%)';el.style.borderRadius='0';break;
-                    case 'circle': el.style.width='34px';el.style.height='34px';el.style.clipPath='circle(50% at 50% 50%)';el.style.borderRadius='0';break;
-                    case 'hexagon': el.style.width='46px';el.style.height='40px';el.style.clipPath='polygon(25% 0%,75% 0%,100% 50%,75% 100%,25% 100%,0% 50%)';el.style.borderRadius='0';break;
-                    case 'triangle': el.style.width='48px';el.style.height='40px';el.style.clipPath='polygon(50% 0%,100% 100%,0% 100%)';el.style.borderRadius='0';break;
-                    case 'parallelogram': el.style.width=origW+'px';el.style.height=origH+'px';el.style.clipPath='polygon(15% 0%,100% 0%,85% 100%,0% 100%)';el.style.borderRadius='0';break;
-                    case 'roundrect': el.style.width=origW+'px';el.style.height=origH+'px';el.style.clipPath='none';el.style.borderRadius='999px';break;
-                    case 'pentagon': el.style.width='44px';el.style.height='42px';el.style.clipPath='polygon(50% 0%,100% 38%,82% 100%,18% 100%,0% 38%)';el.style.borderRadius='0';break;
-                    case 'tag': el.style.width=origW+'px';el.style.height=origH+'px';el.style.clipPath='polygon(0% 0%,90% 0%,100% 50%,90% 100%,0% 100%)';el.style.borderRadius='0';break;
-                    default: el.style.width=origW+'px';el.style.height=origH+'px';el.style.clipPath='none';el.style.borderRadius='3px';
-                }
-            }
+<!-- ── SCREENSHOTS ────────────────────────────────────────── -->
+<div class="section" id="screenshots">
+  <p class="tag">06b — In-Game</p>
+  <h2>Screenshots</h2>
+  <p style="margin-bottom:36px;opacity:.65;font-size:13px;">Replace the placeholders below with actual in-game screenshots.</p>
+  <div class="screens-grid">
+    <div class="screen-placeholder"><div class="screen-inner"><span class="screen-icon">🖼</span><div class="screen-label">Office Scene</div><div class="screen-hint">replace with screenshot</div></div></div>
+    <div class="screen-placeholder"><div class="screen-inner"><span class="screen-icon">🖼</span><div class="screen-label">Conveyor Belt</div><div class="screen-hint">replace with screenshot</div></div></div>
+    <div class="screen-placeholder"><div class="screen-inner"><span class="screen-icon">🖼</span><div class="screen-label">Tower Stacking</div><div class="screen-hint">replace with screenshot</div></div></div>
+    <div class="screen-placeholder"><div class="screen-inner"><span class="screen-icon">🖼</span><div class="screen-label">Farm Ending</div><div class="screen-hint">replace with screenshot</div></div></div>
+    <div class="screen-placeholder"><div class="screen-inner"><span class="screen-icon">🖼</span><div class="screen-label">AI Takeover</div><div class="screen-hint">replace with screenshot</div></div></div>
+    <div class="screen-placeholder"><div class="screen-inner"><span class="screen-icon">🖼</span><div class="screen-label">Pre-Tech World</div><div class="screen-hint">replace with screenshot</div></div></div>
+  </div>
+</div>
+<hr class="divider">
 
-            function makeShapeList(count) {
-                const pool = Array(count).fill('rect');
-                const specialCount = Math.round(count * 0.35);
-                const usedIdx = new Set();
-                while (usedIdx.size < specialCount) usedIdx.add(Math.floor(Math.random() * count));
-                let lastSpecial = '';
-                usedIdx.forEach(idx => {
-                    let shape;
-                    do { shape = allShapeTypes[Math.floor(Math.random() * allShapeTypes.length)]; } while (shape === lastSpecial);
-                    pool[idx] = shape;
-                    lastSpecial = shape;
-                });
-                return pool;
-            }
+<!-- ── INSTALL ────────────────────────────────────────────── -->
+<div class="section" id="play">
+  <p class="tag">07 — Get the Game</p>
+  <h2>Play Techfall</h2>
+  <div class="install-grid">
+    <div class="method-card vr" data-method="▶ Play Now">
+      <div class="method-title">Play on VR Headset</div>
+      <p class="method-desc">Download the .apk and sideload it onto your Meta Quest 2 for the full immersive experience. Other OpenXR-compatible headsets may work, but are untested.</p>
+      <div class="steps">
+        <div class="step"><p>Download the <strong>.apk file</strong> below</p></div>
+        <div class="step"><p><strong>Install</strong> on your VR headset</p></div>
+        <div class="step"><p>Put on your headset and get ready for an <strong>immersive experience</strong></p></div>
+      </div>
+      <div style="margin-top:24px"><a href="YOUR_APK_LINK_HERE" class="btn btn-green">↓ Download .apk</a></div>
+    </div>
+    <div class="method-card dev" data-method="⚙ Developer">
+      <div class="method-title">Build from Source</div>
+      <p class="method-desc">Clone the repository and open in Unity. This project uses <strong style="color:var(--accent)">Git LFS</strong> for large assets.</p>
+      <div class="steps"><div class="step"><p><strong>Install Git LFS</strong> (once)</p></div></div>
+      <div class="code-block"><span class="cm"># Run once on your machine</span><br>git lfs install</div>
+      <div class="steps"><div class="step"><p><strong>Clone</strong> the repository</p></div></div>
+      <div class="code-block">git clone https://github.com/letisjamuco/techfall.git</div>
+      <div class="steps"><div class="step"><p>If assets are missing, run <strong>git lfs pull</strong></p></div></div>
+      <div class="code-block"><span class="cm"># Inside the cloned directory</span><br>git lfs pull</div>
+      <div style="margin-top:18px"><a href="https://github.com/letisjamuco/techfall" target="_blank" class="btn btn-ghost">↗ View on GitHub</a></div>
+    </div>
+  </div>
+</div>
+<hr class="divider">
 
-            const ROWS = 17;
-            let collapsed = false;
+<!-- ── CREDITS ────────────────────────────────────────────── -->
+<div class="section" id="credits">
+  <p class="tag">08 — Team</p>
+  <h2>Credits</h2>
+  <div class="credits-main">
+    <div class="ccard">
+      <div class="cavatar">LM</div>
+      <a class="cname-link" href="https://www.linkedin.com/in/letisjamuco/" target="_blank"><div class="cname">Letisja Muco</div><span class="li-icon">in</span></a>
+      <div class="crole">Project Lead &amp; Developer</div>
+      <div class="ctasks">Project organization &amp; leadership · GitHub repository management · Miro board organization · Farm scene design · Office scene design · Conveyor belt mechanics · NPC boss audio &amp; ambient audio · Office doors · Scene transitions · Website</div>
+    </div>
+    <div class="ccard">
+      <div class="cavatar">DB</div>
+      <a class="cname-link" href="https://www.linkedin.com/in/domniki-barbari-45a08538a/" target="_blank"><div class="cname">Domniki Barbari</div><span class="li-icon">in</span></a>
+      <div class="crole">Technical Lead &amp; Developer</div>
+      <div class="ctasks">Technical leadership · VR headset owner &amp; setup · Continuous testing throughout development · Jenga tower stacking mechanics · High score system · Pre-Technology World scene design · Office scene design · Transition scene audio · Website</div>
+    </div>
+    <div class="ccard">
+      <div class="cavatar">KP</div>
+      <a class="cname-link" href="https://www.linkedin.com/in/konstantinos-patrinos-a31277320/" target="_blank"><div class="cname">Konstantinos Patrinos</div><span class="li-icon">in</span></a>
+      <div class="crole">Scene Designer</div>
+      <div class="ctasks">Office scene design · Pre-Technology World scene design · NPC boss movement</div>
+    </div>
+  </div>
+  <div class="credits-support">
+    <div class="ccard csup">
+      <div class="csup-icon">🎓</div>
+      <div>
+        <div class="slabel">Course Instructor</div>
+        <a class="cname-link" href="https://www.linkedin.com/in/mariaroussou/" target="_blank"><div class="sname">Dr. Maria Roussou</div><span class="li-icon">in</span></a>
+        <div class="sdesc">Associate Professor in Interactive Systems<br>University of Athens</div>
+      </div>
+    </div>
+    <div class="ccard csup">
+      <div class="csup-icon">🛠️</div>
+      <div>
+        <div class="slabel">Technical Support</div>
+        <a class="cname-link" href="https://www.linkedin.com/in/olga-chatzif0ti/" target="_blank"><div class="sname">Olga Chatzifoti</div><span class="li-icon">in</span></a>
+        <div class="sdesc">Unity seminar support &amp; technical assistance throughout development. Helped resolve all technical challenges encountered during the project.</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-            function buildTower() {
-                tower.innerHTML = '';
-                wrap.classList.remove('collapsing', 'rebuilding');
-                wrap.classList.add('swaying');
-                const shapeList = makeShapeList(ROWS);
-                for (let r = 0; r < ROWS; r++) {
-                    const bd = blockDefs[r % blockDefs.length];
-                    const sh = shapes[r % shapes.length];
-                    const blk = document.createElement('div');
-                    blk.className = 't-block ' + bd.c;
-                    if (r >= ROWS - 4) blk.classList.add('top-blk');
-                    applyShape(blk, shapeList[r], sh.w, sh.h);
-                    blk.textContent = bd.l;
-                    blk.style.setProperty('--tilt', ((Math.random()-.5)*3).toFixed(1)+'deg');
-                    blk.style.setProperty('--dur', (2.0+Math.random()*2.0).toFixed(1)+'s');
-                    blk.style.setProperty('--dly', (Math.random()*1.8).toFixed(2)+'s');
-                    blk.style.setProperty('--sx', (Math.random()>.5?1:-1)*(0.5+Math.random()*1.5).toFixed(1)+'px');
-                    blk.style.setProperty('--fx', ((Math.random()-.5)*120).toFixed(0)+'px');
-                    blk.style.setProperty('--fy', (40+Math.random()*160).toFixed(0)+'px');
-                    blk.style.setProperty('--fr', ((Math.random()-.5)*120).toFixed(0)+'deg');
-                    blk.style.setProperty('--fly-dur', (.25+Math.random()*.3).toFixed(2)+'s');
-                    blk.style.setProperty('--fly-dly', ((ROWS-1-r)*0.05).toFixed(2)+'s');
-                    tower.appendChild(blk);
-                }
-            }
+<div class="assets-note">
+  <div class="assets-note-icon">📋</div>
+  <p>Third-party assets (3D models, textures, audio, scripts) used in this project are fully documented with sources, licenses, and attribution in the <a href="https://miro.com/app/board/uXjVGXBwrIg=/?share_link_id=971232323960" target="_blank">Miro design board</a> — see the Assets List spreadsheets for each scene (Farm, Office, Pre-Technology World, etc.), including links to original sources and license details.</p>
+</div>
 
-            function collapse() {
-                if (collapsed) return;
-                collapsed = true;
-                wrap.classList.remove('swaying','rebuilding');
-                wrap.classList.add('collapsing');
-                setTimeout(() => {
-                    wrap.classList.remove('collapsing');
-                    wrap.classList.add('rebuilding');
-                    buildTower();
-                    setTimeout(() => {
-                        wrap.classList.remove('rebuilding');
-                        wrap.classList.add('swaying');
-                        collapsed = false;
-                    }, ROWS * 20 + 500);
-                }, 2800);
-            }
+<footer>
+  <div class="foot-logo">TECHFALL</div>
+  <div>Interactive Systems M110 · University of Athens</div>
+  <div>Built with Unity · Deployed on GitHub Pages</div>
+</footer>
 
-            wrap.addEventListener('mouseenter', collapse);
-            wrap.addEventListener('touchstart', collapse, { passive: true });
-            buildTower();
-        })();
+<!-- ── LIGHTBOX ───────────────────────────────────────────── -->
+<div id="lightbox">
+  <button id="lightbox-close" onclick="closeLightbox()" title="Close (Esc)">✕</button>
+  <div id="lightbox-label"></div>
+  <div id="lightbox-viewport">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+  <div id="lightbox-zoom">
+    <button class="lb-zoom-btn" id="lb-zoom-out" title="Zoom out (−)">−</button>
+    <div id="lb-zoom-level" title="Click to reset">100%</div>
+    <button class="lb-zoom-btn" id="lb-zoom-in"  title="Zoom in (+)">+</button>
+  </div>
+</div>
 
-        // ── AUDIO SPOILER ──
-        function toggleSpoiler(id) {
-            const el = document.getElementById(id);
-            if (!el) return;
-            const wasOpen = el.classList.contains('open');
-            el.classList.toggle('open');
-            if (wasOpen) el.querySelectorAll('audio').forEach(a => a.pause());
-        }
+<script>
+/* ═══════════════════════════════════════════════════════════
+   TOWER — Animated Jenga-like hero decoration
+   17 blocks with randomized shapes, colors and CSS animations.
+   Collapses on hover, then auto-rebuilds.
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  const wrap  = document.getElementById('towerWrap');
+  const tower = document.getElementById('tower');
+  if (!tower) return;
 
-        // ── LIGHTBOX ──
-        document.querySelectorAll('.doc-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const img = card.querySelector('.doc-img');
-                const label = card.querySelector('.doc-label');
-                document.getElementById('lightbox-img').src = img.src;
-                document.getElementById('lightbox-img').alt = img.alt;
-                document.getElementById('lightbox-label').textContent = label.textContent;
-                document.getElementById('lightbox').classList.add('active');
-                document.body.style.overflow = 'hidden';
-                document.body.classList.add('lb-open');
-            });
-        });
+  const BLOCKS = [
+    {l:'AI',c:'c-ai'},{l:'Cloud',c:'c-cloud'},{l:'Big Data',c:'c-data'},
+    {l:'Sec',c:'c-sec'},{l:'GPU',c:'c-hw'},{l:'Algo',c:'c-algo'},
+    {l:'Network',c:'c-net'},{l:'App',c:'c-app'},{l:'DNS',c:'c-dns'},
+    {l:'ML',c:'c-ai'},{l:'API',c:'c-app'},{l:'DB',c:'c-data'},
+    {l:'IoT',c:'c-net'},{l:'AWS',c:'c-cloud'},{l:'Neural',c:'c-hw'},
+    {l:'VR',c:'c-sec'},{l:'Linux',c:'c-dns'},
+  ];
+  const SIZES = [
+    {w:140,h:22},{w:90,h:28},{w:120,h:20},{w:70,h:32},{w:150,h:18},
+    {w:100,h:26},{w:130,h:24},{w:80,h:30},{w:110,h:22},{w:95,h:28},
+    {w:145,h:20},{w:75,h:34},{w:125,h:18},{w:105,h:26},{w:135,h:22},
+    {w:85,h:30},{w:115,h:24},
+  ];
+  const SHAPES = ['diamond','circle','hexagon','triangle','parallelogram','roundrect','pentagon','tag'];
 
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
-            document.body.style.overflow = '';
-            document.body.classList.remove('lb-open');
-        }
-        document.getElementById('lightbox').addEventListener('click', e => {
-            if (e.target === e.currentTarget) closeLightbox();
-        });
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') closeLightbox();
-        });
-    </script>
+  /* Apply clip-path/border-radius for a given shape type */
+  function applyShape(el, type, w, h) {
+    const s = el.style;
+    s.clipPath = 'none'; s.borderRadius = '3px'; s.width = w+'px'; s.height = h+'px';
+    if      (type==='diamond')      { s.width='42px';s.height='42px';s.clipPath='polygon(50% 0%,100% 50%,50% 100%,0% 50%)';s.borderRadius='0'; }
+    else if (type==='circle')       { s.width='34px';s.height='34px';s.clipPath='circle(50% at 50% 50%)';s.borderRadius='0'; }
+    else if (type==='hexagon')      { s.width='46px';s.height='40px';s.clipPath='polygon(25% 0%,75% 0%,100% 50%,75% 100%,25% 100%,0% 50%)';s.borderRadius='0'; }
+    else if (type==='triangle')     { s.width='48px';s.height='40px';s.clipPath='polygon(50% 0%,100% 100%,0% 100%)';s.borderRadius='0'; }
+    else if (type==='parallelogram'){ s.clipPath='polygon(15% 0%,100% 0%,85% 100%,0% 100%)';s.borderRadius='0'; }
+    else if (type==='roundrect')    { s.clipPath='none';s.borderRadius='999px'; }
+    else if (type==='pentagon')     { s.width='44px';s.height='42px';s.clipPath='polygon(50% 0%,100% 38%,82% 100%,18% 100%,0% 38%)';s.borderRadius='0'; }
+    else if (type==='tag')          { s.clipPath='polygon(0% 0%,90% 0%,100% 50%,90% 100%,0% 100%)';s.borderRadius='0'; }
+  }
+
+  /* Assign special shapes to ~35% of rows, avoiding consecutive repeats */
+  function randomShapeList(n) {
+    const pool = Array(n).fill('rect');
+    const special = new Set();
+    while (special.size < Math.round(n * 0.35)) special.add(Math.floor(Math.random() * n));
+    let last = '';
+    special.forEach(i => {
+      let s; do { s = SHAPES[Math.floor(Math.random() * SHAPES.length)]; } while (s === last);
+      pool[i] = s; last = s;
+    });
+    return pool;
+  }
+
+  const ROWS = 17;
+  let collapsed = false;
+
+  function build() {
+    tower.innerHTML = '';
+    wrap.classList.remove('collapsing', 'rebuilding');
+    wrap.classList.add('swaying');
+    const shapes = randomShapeList(ROWS);
+    for (let r = 0; r < ROWS; r++) {
+      const b = BLOCKS[r % BLOCKS.length], sz = SIZES[r % SIZES.length];
+      const el = document.createElement('div');
+      el.className = `t-block ${b.c}${r >= ROWS-4 ? ' top-blk' : ''}`;
+      applyShape(el, shapes[r], sz.w, sz.h);
+      el.textContent = b.l;
+      /* Per-block CSS vars drive randomised animation behaviour */
+      el.style.setProperty('--tilt',    ((Math.random()-.5)*3).toFixed(1)+'deg');
+      el.style.setProperty('--dur',     (2+Math.random()*2).toFixed(1)+'s');
+      el.style.setProperty('--dly',     (Math.random()*1.8).toFixed(2)+'s');
+      el.style.setProperty('--sx',      (Math.random()>.5?1:-1)*(0.5+Math.random()*1.5).toFixed(1)+'px');
+      el.style.setProperty('--fx',      ((Math.random()-.5)*120).toFixed(0)+'px');
+      el.style.setProperty('--fy',      (40+Math.random()*160).toFixed(0)+'px');
+      el.style.setProperty('--fr',      ((Math.random()-.5)*120).toFixed(0)+'deg');
+      el.style.setProperty('--fly-dur', (.25+Math.random()*.3).toFixed(2)+'s');
+      el.style.setProperty('--fly-dly', ((ROWS-1-r)*.05).toFixed(2)+'s'); /* top falls first */
+      tower.appendChild(el);
+    }
+  }
+
+  function collapse() {
+    if (collapsed) return;
+    collapsed = true;
+    wrap.classList.replace('swaying', 'collapsing');
+    setTimeout(() => {
+      wrap.classList.replace('collapsing', 'rebuilding');
+      build();
+      setTimeout(() => { wrap.classList.replace('rebuilding', 'swaying'); collapsed = false; }, ROWS*20+500);
+    }, 2800);
+  }
+
+  wrap.addEventListener('mouseenter', collapse);
+  wrap.addEventListener('touchstart', collapse, { passive:true });
+  build();
+})();
+
+/* ═══════════════════════════════════════════════════════════
+   AUDIO SPOILERS — toggle open/close; pause audio on close
+   ═══════════════════════════════════════════════════════════ */
+function toggleSpoiler(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const wasOpen = el.classList.contains('open');
+  el.classList.toggle('open');
+  if (wasOpen) el.querySelectorAll('audio').forEach(a => a.pause());
+}
+
+/* ═══════════════════════════════════════════════════════════
+   LIGHTBOX — open, zoom in/out, drag-to-pan, pinch, close
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  const lb       = document.getElementById('lightbox');
+  const img      = document.getElementById('lightbox-img');
+  const label    = document.getElementById('lightbox-label');
+  const viewport = document.getElementById('lightbox-viewport');
+  const lvlEl    = document.getElementById('lb-zoom-level');
+
+  const STEP = 0.25, MIN = 0.5, MAX = 5;
+  let scale = 1, tx = 0, ty = 0;
+
+  /* Apply transform to image and refresh % readout */
+  function draw(animate) {
+    img.style.transition = animate ? 'transform .2s ease' : 'none';
+    img.style.transform  = `scale(${scale}) translate(${tx}px,${ty}px)`;
+    lvlEl.textContent    = Math.round(scale*100)+'%';
+    img.classList.toggle('zoomed', scale > 1);
+  }
+
+  function reset() { scale=1; tx=0; ty=0; draw(true); }
+
+  /* Zoom toward a screen-space pivot (defaults to viewport center) */
+  function zoomTo(next, px, py) {
+    const r  = viewport.getBoundingClientRect();
+    const cx = px ?? r.left + r.width/2;
+    const cy = py ?? r.top  + r.height/2;
+    const imgCX = r.left + r.width/2  + tx*scale;
+    const imgCY = r.top  + r.height/2 + ty*scale;
+    const ratio = next / scale;
+    scale = Math.min(MAX, Math.max(MIN, next));
+    tx -= (cx - imgCX) * (ratio-1) / scale;
+    ty -= (cy - imgCY) * (ratio-1) / scale;
+    draw(true);
+  }
+
+  /* Zoom buttons and % label (click to reset) */
+  document.getElementById('lb-zoom-in') .addEventListener('click', () => zoomTo(scale+STEP));
+  document.getElementById('lb-zoom-out').addEventListener('click', () => zoomTo(scale-STEP));
+  lvlEl.addEventListener('click', reset);
+
+  /* Click image: step-zoom in, or reset if already zoomed */
+  let dragging = false;
+  img.addEventListener('click', e => {
+    if (dragging) return;
+    scale < 1.5 ? zoomTo(scale+STEP*2, e.clientX, e.clientY) : reset();
+  });
+
+  /* Scroll-wheel zoom toward cursor position */
+  viewport.addEventListener('wheel', e => {
+    e.preventDefault();
+    zoomTo(scale + (e.deltaY > 0 ? -STEP : STEP), e.clientX, e.clientY);
+  }, { passive:false });
+
+  /* Mouse drag-to-pan when zoomed in */
+  let ox=0, oy=0, otx=0, oty=0;
+  img.addEventListener('mousedown', e => {
+    if (scale <= 1) return;
+    dragging=false; ox=e.clientX; oy=e.clientY; otx=tx; oty=ty;
+    img.classList.add('dragging');
+    const move = ev => {
+      const dx=(ev.clientX-ox)/scale, dy=(ev.clientY-oy)/scale;
+      if (Math.abs(dx)>3||Math.abs(dy)>3) dragging=true;
+      tx=otx+dx; ty=oty+dy; draw(false);
+    };
+    const up = () => {
+      img.classList.remove('dragging');
+      document.removeEventListener('mousemove', move);
+      document.removeEventListener('mouseup', up);
+      setTimeout(()=>{ dragging=false; }, 0);
+    };
+    document.addEventListener('mousemove', move);
+    document.addEventListener('mouseup', up);
+  });
+
+  /* Pinch-to-zoom on touch devices */
+  let lastDist = null;
+  viewport.addEventListener('touchstart', e => {
+    if (e.touches.length===2)
+      lastDist = Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
+  }, { passive:true });
+  viewport.addEventListener('touchmove', e => {
+    if (e.touches.length!==2||!lastDist) return;
+    e.preventDefault();
+    const d   = Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
+    const mid = [(e.touches[0].clientX+e.touches[1].clientX)/2, (e.touches[0].clientY+e.touches[1].clientY)/2];
+    zoomTo(scale*(d/lastDist), mid[0], mid[1]);
+    lastDist = d;
+  }, { passive:false });
+  viewport.addEventListener('touchend', () => { lastDist=null; });
+
+  /* Open lightbox from any .doc-card click */
+  document.querySelectorAll('.doc-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const i = card.querySelector('.doc-img');
+      const l = card.querySelector('.doc-label');
+      img.src = i.src; img.alt = i.alt;
+      label.textContent = l ? l.textContent : i.alt;
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      reset();
+    });
+  });
+
+  /* Close: button, backdrop click, or keyboard shortcuts */
+  window.closeLightbox = () => {
+    lb.classList.remove('active');
+    document.body.style.overflow = '';
+    img.src = '';
+    reset();
+  };
+  lb.addEventListener('click', e => { if (e.target===lb||e.target===viewport) closeLightbox(); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('active')) return;
+    if (e.key==='Escape')         closeLightbox();
+    if (e.key==='+'||e.key==='=') zoomTo(scale+STEP);
+    if (e.key==='-')              zoomTo(scale-STEP);
+    if (e.key==='0')              reset();
+  });
+})();
+</script>
 </body>
 </html>
