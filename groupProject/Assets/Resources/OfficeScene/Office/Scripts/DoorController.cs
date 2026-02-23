@@ -7,6 +7,8 @@ public class DoorController : MonoBehaviour
     [SerializeField] private float openAngle = 80f;
     [SerializeField] private float duration = 0.6f;
 
+    public AudioSource doorAudio;
+
     private bool isOpen;
 
     private Quaternion closedLocalRot;
@@ -45,6 +47,7 @@ public class DoorController : MonoBehaviour
         {
             t += Time.deltaTime / Mathf.Max(0.01f, duration);
             hinge.localRotation = Quaternion.Slerp(start, target, t);
+            doorAudio.Play();
             yield return null;
         }
 

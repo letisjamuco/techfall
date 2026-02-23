@@ -13,6 +13,9 @@ public class NPC_CineMove : MonoBehaviour
 
     public float walkSpeed = 2f;
     public float stopPoint1 = 4f;
+
+    public DoorController doorController;
+
     //public float stopPoint2 = 4f;
     private int Stage = 0;
 
@@ -49,6 +52,10 @@ public class NPC_CineMove : MonoBehaviour
         moving = true;
         cart.m_Speed = walkSpeed;
         anim.SetBool("isWalking", true);
+        if (moving && Stage == 0)
+        {
+            doorController.Open();
+        }
     }
 
     void Update()
