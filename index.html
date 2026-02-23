@@ -100,26 +100,22 @@
   .stat-num{font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--accent);line-height:1;margin-bottom:4px}
   .stat-lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
 
-  /* DESIGN PILLARS */
-  .design-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px}
-  .design-pillar{background:var(--surface2);border:1px solid var(--border);padding:36px;position:relative;overflow:hidden;transition:border-color .3s}
-  .design-pillar:hover{border-color:rgba(212,136,74,.4)}
-  .design-pillar::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
-  .design-pillar.story::before{background:var(--amber)}
-  .design-pillar.mechanics::before{background:var(--green)}
-  .design-pillar.aesthetics::before{background:var(--blue)}
-  .design-pillar.technology::before{background:var(--red)}
-  .design-pillar.prototyping::before{background:var(--muted)}
-  .design-pillar.prototyping{grid-column:1/-1}
-  .dp-icon{font-size:28px;margin-bottom:14px;display:block}
-  .dp-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;margin-bottom:18px}
-  .design-pillar.story .dp-title{color:var(--amber)}
-  .design-pillar.mechanics .dp-title{color:var(--green)}
-  .design-pillar.aesthetics .dp-title{color:var(--blue)}
-  .design-pillar.technology .dp-title{color:var(--red)}
-  .design-pillar.prototyping .dp-title{color:var(--muted)}
-  .dp-text p{font-size:13px;opacity:.84;line-height:1.9;margin-bottom:12px}
+  /* DESIGN PILLARS — editorial, minimal */
+  .design-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border)}
+  .design-pillar{background:transparent;border:none;border-bottom:1px solid var(--border);border-right:1px solid var(--border);padding:44px 40px;position:relative;transition:background .25s}
+  .design-pillar:hover{background:rgba(255,255,255,.02)}
+  .design-pillar:nth-child(even){border-right:none}
+  .design-pillar.prototyping{grid-column:1/-1;border-right:none;border-bottom:none;display:grid;grid-template-columns:1fr 2fr;gap:60px;align-items:start}
+  .dp-num{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--amber);margin-bottom:20px;display:block}
+  .dp-title{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:4px;color:var(--accent);margin-bottom:22px;line-height:1}
+  .dp-text p{font-size:13px;opacity:.78;line-height:1.9;margin-bottom:11px}
   .dp-text p:last-child{margin-bottom:0}
+  @media(max-width:800px){
+    .design-grid{border:none}
+    .design-pillar{border:1px solid var(--border);border-bottom:none;padding:32px 24px}
+    .design-pillar:last-child{border-bottom:1px solid var(--border)}
+    .design-pillar.prototyping{grid-template-columns:1fr}
+  }
 
   /* GAMEPLAY */
   .gblock{background:var(--surface2);border:1px solid var(--border);padding:32px 36px;margin-bottom:2px;display:grid;grid-template-columns:48px 1fr;gap:24px;transition:border-color .3s;position:relative;overflow:hidden}
@@ -293,9 +289,9 @@
         <nav>
             <a href="#about">About</a>
             <a href="#design">Design</a>
+            <a href="#docs">Design Docs</a>
             <a href="#gameplay">Gameplay</a>
             <a href="#endings">Endings</a>
-            <a href="#docs">Design Docs</a>
             <a href="#video">Demo</a>
             <a href="#screenshots">Screenshots</a>
             <a href="#play">Get It</a>
@@ -357,23 +353,26 @@
     <div class="section-full" id="design">
         <div class="inner">
             <p class="tag">02 — Design Framework</p>
-            <h2>The Five Design Pillars</h2>
-            <p style="margin-bottom:40px;opacity:.78;">Techfall was designed through five core dimensions of interactive experience design — Story, Mechanics, Aesthetics, Technology, and Prototyping — each shaping the experience in a distinct way.</p>
+            <h2>Design</h2>
+            <p style="margin-bottom:48px;opacity:.65;font-size:13px;">Story · Mechanics · Aesthetics · Technology · Prototyping</p>
             <div class="design-grid">
 
                 <div class="design-pillar story">
-                    <span class="dp-icon">📖</span>
-                    <div class="dp-title">Story</div>
+                    <span class="dp-num">01 — Story</span>
+                    <div class="dp-title">Core Concept</div>
                     <div class="dp-text">
-                        <p>You just finished your master's. You got the job. Day one, the CEO hands you a task so absurd it barely qualifies as work: stack tech equipment into a tower. No explanation. No purpose. Just do it.</p>
-                        <p>At your workstation, components arrive on a conveyor belt. Miss too many and the CEO's patience — already thin — runs out. Four strikes and you're fired. The tower falls. So does civilization.</p>
-                        <p>But build it too high, and you've fed the machine more than it needed. The AI takes over. There's also a door. It's always been there. Walk through it and none of this was ever your problem.</p>
+                        <p>The Game is set in the Office of a large Tech corporation. The Player is a newly hired junior developer who has just completed their master's degree at university. They are now eager to gain hands-on experience and work on important projects.</p>
+                        <p>However, the first day at work becomes a harsh reality check. The rude CEO assigns them a seemingly pointless task, building a Jenga-like tower out of tech equipment. Although the Player finds this task boring and meaningless, they must complete it in order to climb the corporate ladder.</p>
+                        <p>The Player moves to their workstation, where tech equipment rapidly appears on a conveyor belt. They must grab the object and place it in a suitable spot to make the Jenga-Tower as steady as possible.</p>
+                        <p>As the Player keeps stacking objects, each time they drop an object or don't grab it in time from the conveyor belt, the CEO yells angrily. After losing a certain amount of objects, the player is fired, triggering the fall of civilization.</p>
+                        <p>Through a symbolic Jenga-style gameplay, the Player physically interacts with different layers of modern technology, trying to keep the system stable while external pressure keeps increasing.</p>
+                        <p>If the tower is greater than a certain height, the Player has done too good of a job. By building the tower, they have given power to AI to conquer humanity. There are some visual and sound effects to signify the AI Take Over End Scene. If the tower collapses, the technological world as we know it has collapsed as well. The Player is transported to a Pre-Technology post-apocalyptic-like End Scene. Finally, the Player always has the option to quit this stressful and meaningless job. If so, they become a farmer in a rural area and they are transported to a Farm End Scene.</p>
                     </div>
                 </div>
 
                 <div class="design-pillar mechanics">
-                    <span class="dp-icon">⚙️</span>
-                    <div class="dp-title">Mechanics</div>
+                    <span class="dp-num">02 — Mechanics</span>
+                    <div class="dp-title">How It Feels</div>
                     <div class="dp-text">
                         <p>Accessibility shaped every decision. Movement supports both continuous locomotion and teleportation — because VR motion sickness is real, and the game shouldn't exclude anyone before they even start.</p>
                         <p>Grabbing uses a near-grab system rather than physics-based collision, making interactions feel immediate and physical without the frustration of missed grabs.</p>
@@ -382,8 +381,8 @@
                 </div>
 
                 <div class="design-pillar aesthetics">
-                    <span class="dp-icon">🎨</span>
-                    <div class="dp-title">Aesthetics</div>
+                    <span class="dp-num">03 — Aesthetics</span>
+                    <div class="dp-title">Look & Feel</div>
                     <div class="dp-text">
                         <p>The visual style lands between photorealistic and cartoonish — detailed enough to feel grounded, stylized enough to feel intentional.</p>
                         <p>The Office is cold. Futuristic, minimalistic, unwelcoming — and deliberately empty of other people. Just you, the conveyor belt, and a boss who doesn't like you.</p>
@@ -392,8 +391,8 @@
                 </div>
 
                 <div class="design-pillar technology">
-                    <span class="dp-icon">🖥️</span>
-                    <div class="dp-title">Technology</div>
+                    <span class="dp-num">04 — Technology</span>
+                    <div class="dp-title">Built With</div>
                     <div class="dp-text">
                         <p>Techfall is a 3D VR experience built for the Meta Quest 2 — two controllers, full hand tracking, full immersion.</p>
                         <p>Built in Unity, the engine handles everything from the physics of the conveyor belt to the spatial audio of the boss reprimands to the lighting shifts between scenes.</p>
@@ -401,14 +400,41 @@
                 </div>
 
                 <div class="design-pillar prototyping">
-                    <span class="dp-icon">🗺️</span>
-                    <div class="dp-title">Prototyping</div>
+                    <div>
+                        <span class="dp-num">05 — Prototyping</span>
+                        <div class="dp-title">Prototyping</div>
+                    </div>
                     <div class="dp-text">
-                        <p>Before building, we mapped it. The prototyping process produced a full gameplay flow diagram — scenes, branching decisions, and transitions — so every mechanic had a place before a single line of code was written.</p>
-                        <p>The full prototyping map is available in the design documents below.</p>
+                        <p>During the design process, we created a prototyping map outlining the progression of the gameplay.</p>
+                        <div class="proto-inline-img doc-card" style="margin-top:18px">
+                            <img class="doc-img" src="groupProject/Assets/DesignDocuments/Prototyping/Prototyping Map.jpg" alt="Prototyping Map" style="aspect-ratio:16/9;object-position:center">
+                            <div class="doc-label">Prototyping Map</div>
+                        </div>
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </div>
+    <hr class="divider">
+
+    <!-- DESIGN DOCS — immediately after Design -->
+    <div class="section-full" id="docs">
+        <div class="inner">
+            <p class="tag">03 — Design Documents</p>
+            <h2>Behind the Game</h2>
+            <p style="margin-bottom:40px;opacity:.78;">Our full design process is documented in Miro — concept, narrative, mechanics, audio scripts, and gameplay flow. Click any document to enlarge.</p>
+            <div class="docs-grid">
+                <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Concept & Design.jpg" alt="Concept & Design"><div class="doc-label">Concept &amp; Design</div></div>
+                <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Narrative Design.jpg" alt="Narrative Design"><div class="doc-label">Narrative Design</div></div>
+                <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Gameplay Loop.jpg" alt="Gameplay Loop"><div class="doc-label">Gameplay Loop</div></div>
+                <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Game Mechanics & User Input.jpg" alt="Game Mechanics"><div class="doc-label">Game Mechanics &amp; User Input</div></div>
+                <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Audios Voice-overs.jpg" alt="Audio & Voice-overs"><div class="doc-label">Audio &amp; Voice-overs</div></div>
+                <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Meme Inspiration.jpg" alt="Inspiration"><div class="doc-label">Inspiration &amp; References (MEMES)</div></div>
+            </div>
+            <div class="miro-cta">
+                <p>View the full interactive design board on Miro — all scenes, narrative branches, mechanics, and audio scripts in detail.</p>
+                <a href="https://miro.com/app/board/uXjVGXBwrIg=/?share_link_id=971232323960" target="_blank" class="btn btn-amber">↗ Open in Miro</a>
             </div>
         </div>
     </div>
@@ -552,39 +578,6 @@
         </div>
     </div>
 
-    <!-- DESIGN DOCS -->
-    <div class="section-full" id="docs">
-        <div class="inner">
-            <p class="tag">05 — Design Documents</p>
-            <h2>Behind the Game</h2>
-            <p style="margin-bottom:40px;opacity:.78;">Our full design process is documented in Miro — concept, narrative, mechanics, audio scripts, gameplay flow, and prototyping map. Click any document to enlarge.</p>
-            <div class="docs-grid">
-                <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Concept & Design.jpg" alt="Concept & Design"><div class="doc-label">Concept &amp; Design</div></div>
-                <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Narrative Design.jpg" alt="Narrative Design"><div class="doc-label">Narrative Design</div></div>
-                <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Gameplay Loop.jpg" alt="Gameplay Loop"><div class="doc-label">Gameplay Loop</div></div>
-                <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Game Mechanics & User Input.jpg" alt="Game Mechanics"><div class="doc-label">Game Mechanics &amp; User Input</div></div>
-                <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Audios Voice-overs.jpg" alt="Audio & Voice-overs"><div class="doc-label">Audio &amp; Voice-overs</div></div>
-                <div class="doc-card"><img class="doc-img" src="groupProject/Assets/DesignDocuments/Meme Inspiration.jpg" alt="Inspiration"><div class="doc-label">Inspiration &amp; References (MEMES)</div></div>
-            </div>
-            <div class="miro-cta">
-                <p>View the full interactive design board on Miro — all scenes, narrative branches, mechanics, and audio scripts in detail.</p>
-                <a href="https://miro.com/app/board/uXjVGXBwrIg=/?share_link_id=971232323960" target="_blank" class="btn btn-amber">↗ Open in Miro</a>
-            </div>
-            <!-- PROTOTYPING MAP BONUS -->
-            <div class="proto-bonus">
-                <div class="proto-bonus-label">
-                    <span class="proto-tag">+ Bonus</span>
-                    <div class="proto-title">Prototyping Map</div>
-                    <p class="proto-desc">During the design process, we created a prototyping map outlining the full progression of gameplay — scenes, branches, and decision points visualized end-to-end.</p>
-                </div>
-                <div class="doc-card proto-card" style="flex:1;min-width:0">
-                    <img class="doc-img" src="groupProject/Assets/DesignDocuments/Prototyping/Prototyping Map.jpg" alt="Prototyping Map" style="aspect-ratio:16/9;object-position:center">
-                    <div class="doc-label">Prototyping Map</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- VIDEO -->
     <div class="section" id="video">
         <p class="tag">06 — Demo</p>
@@ -700,7 +693,7 @@
                     <span class="li-icon">in</span>
                 </a>
                 <div class="crole">Technical Lead &amp; Developer</div>
-                <div class="ctasks">Technical leadership · VR headset owner &amp; setup · Continuous testing throughout development · Jenga tower stacking mechanics · High score system · Pre-Technology World scene design · Transition scene audio</div>
+                <div class="ctasks">Technical leadership · VR headset owner &amp; setup · Continuous testing throughout development · Jenga tower stacking mechanics · High score system · Pre-Technology World scene design · Transition scene audio  · Website</div>
             </div>
             <div class="ccard">
                 <div class="cavatar">KP</div>
@@ -709,7 +702,7 @@
                     <span class="li-icon">in</span>
                 </a>
                 <div class="crole">Scene Designer</div>
-                <div class="ctasks">Office scene design · Pre-Technology World scene design</div>
+                <div class="ctasks">Office scene design · Pre-Technology World scene design · NPC movement</div>
             </div>
         </div>
         <div class="credits-support">
