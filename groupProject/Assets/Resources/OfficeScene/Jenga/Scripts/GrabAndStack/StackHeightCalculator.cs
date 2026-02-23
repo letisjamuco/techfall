@@ -1,59 +1,69 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 public class StackHeightCalculator : MonoBehaviour
 {
     public static StackHeightCalculator instance;
 
-    // Set of stacked objects
-    HashSet<GameObject> objectsInStack = new HashSet<GameObject>();
-    // maxHeight of stack
-    public float maxHeight { get; private set; }
+    //set of stacked objects
+    private HashSet<HeightDetector> objectsInStack = new HashSet<HeightDetector>();
 
-    
+    //max height of stack
+    public float maxHeight { get; private set; }
 
     private void Awake()
     {
         instance = this;
     }
 
-    public void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("JengaPiece"))
+        if (!other.CompareTag("JengaPiece")) return;
+
+        // find height detector
+        HeightDetector detector = other.GetComponentInParent<HeightDetector>();
+
+        // add to stack only if object is settled
+        if (detector != null && detector.IsSettled)
         {
-            Rigidbody rigidBody = other.GetComponentInParent<Rigidbody>();
-            if (rigidBody != null)
-            {
-                // add to set only if it stopped moving
-                if (rigidBody.linearVelocity.magnitude < 0.05f)
-                {
-                    objectsInStack.Add(other.gameObject);
-                }
-            }
+            objectsInStack.Add(detector);
+        }
+        else if (detector != null)
+        {
+            // remove if it starts moving or is grabbed
+            objectsInStack.Remove(detector);
         }
     }
 
-
-    public void OnTriggerExit(Collider other)
+    // remove if it exits trigger
+    private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("JengaPiece"))
+        if (!other.CompareTag("JengaPiece")) return;
+
+        HeightDetector detector = other.GetComponentInParent<HeightDetector>();
+        if (detector != null)
         {
-            // Remove points and update score manager
-            objectsInStack.Remove(other.gameObject);
+            objectsInStack.Remove(detector);
         }
     }
 
+    private void Update()
+    {
+        UpdateMaxHeight();
+    }
+
+    //update max height
     public void UpdateMaxHeight()
     {
         maxHeight = 0;
 
-        foreach (GameObject gameObject in objectsInStack)
+        foreach (HeightDetector detector in objectsInStack)
         {
-            if (gameObject.GetComponentInParent<HeightDetector>().height >= maxHeight)
+            if (detector.height > maxHeight)
             {
-                maxHeight = gameObject.GetComponentInParent<HeightDetector>().height;
+                maxHeight = detector.height;
             }
         }
     }
+
 }

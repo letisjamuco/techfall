@@ -29,6 +29,7 @@ public class ScoreManager : MonoBehaviour
 
         if (score >= highScore)
         {
+            scoreText.text = "Score " + highScore.ToString();
             highscoreEvent.Invoke();
         }
     }
