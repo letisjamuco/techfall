@@ -14,7 +14,7 @@ public class NPC_CineMove : MonoBehaviour
     public float walkSpeed = 2f;
     public float stopPoint1 = 4f;
 
-    public DoorController doorController;
+    public DoorController managerDoorController, workstationDoorController;
 
     //public float stopPoint2 = 4f;
     private int Stage = 0;
@@ -39,6 +39,7 @@ public class NPC_CineMove : MonoBehaviour
     {
         audioSource.clip = workplaceClip;
         audioSource.Play();
+        Invoke("OpenWorkStationDoor", audioSource.clip.length);
     }
 
     public void WorkstationMove()
@@ -47,6 +48,11 @@ public class NPC_CineMove : MonoBehaviour
         Invoke("StartMoving", 0f);
     }    
 
+    public void OpenWorkStationDoor()
+    {
+        workstationDoorController.Open();
+    }
+
     void StartMoving()
     {
         moving = true;
@@ -54,7 +60,7 @@ public class NPC_CineMove : MonoBehaviour
         anim.SetBool("isWalking", true);
         if (moving && Stage == 0)
         {
-            doorController.Open();
+            managerDoorController.Open();
         }
     }
 
