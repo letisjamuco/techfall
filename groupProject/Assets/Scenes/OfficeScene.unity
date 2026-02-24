@@ -52087,8 +52087,8 @@ MonoBehaviour:
   cart: {fileID: 8897093225981988873}
   anim: {fileID: 3579238971578316873}
   audioSource: {fileID: 8897093225981988875}
-  welcomeClip: {fileID: 8300000, guid: e9287c6fc3ccd5244a13c357d30c573d, type: 3}
-  workplaceClip: {fileID: 8300000, guid: 0ae3fc8c7fce9484987dd709246abf12, type: 3}
+  welcomeClip: {fileID: 8300000, guid: 031be6b657c509c41bb768d24777fc35, type: 3}
+  workplaceClip: {fileID: 8300000, guid: a48c2acdb1ee43b42a9175b84c452584, type: 3}
   walkSpeed: 2
   stopPoint1: 16.7
   managerDoorController: {fileID: 1480052286}
