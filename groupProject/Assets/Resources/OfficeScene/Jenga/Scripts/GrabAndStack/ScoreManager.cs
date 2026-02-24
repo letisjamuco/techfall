@@ -8,6 +8,8 @@ public class ScoreManager : MonoBehaviour
     public int highScore;
 
     [SerializeField] UnityEvent highscoreEvent;
+    
+
     int score = 0;
     int lastScore = -1;
     // Start is called before the first frame update
@@ -20,6 +22,8 @@ public class ScoreManager : MonoBehaviour
     {
         StackHeightCalculator.instance.UpdateMaxHeight();
         score = (int)(StackHeightCalculator.instance.maxHeight * 100);
+        
+
         // Update only if score changed
         if (score != lastScore)
         {
@@ -33,4 +37,8 @@ public class ScoreManager : MonoBehaviour
             highscoreEvent.Invoke();
         }
     }
+
+    
 }
+
+

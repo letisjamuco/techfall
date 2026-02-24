@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5354379234837958262}
   - component: {fileID: 1845300226136009037}
   - component: {fileID: 6639709189247632536}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8821086351060085527}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: VisualRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4929489237383896400}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ContentRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 5734903528068935392}
   - component: {fileID: -5267031158998357883}
   - component: {fileID: 7006930733318908158}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GPUInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4929489237383896400}
-  - {fileID: 2692887192239062171}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &5904572253021899527
@@ -213,14 +212,14 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!114 &3910180325634214794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,15 +306,15 @@ MonoBehaviour:
   m_MovementType: 0
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
-  m_VelocityScale: 1
+  m_VelocityScale: 1.5
   m_AngularVelocityDamping: 1
   m_AngularVelocityScale: 1
   m_TrackPosition: 1
-  m_SmoothPosition: 0
+  m_SmoothPosition: 1
   m_SmoothPositionAmount: 8
   m_TightenPosition: 0.1
   m_TrackRotation: 1
-  m_SmoothRotation: 0
+  m_SmoothRotation: 1
   m_SmoothRotationAmount: 8
   m_TightenRotation: 0.1
   m_TrackScale: 1
@@ -403,7 +402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3229354048147000611}
   - component: {fileID: 4361368192632973099}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: JengaPiece
   m_Icon: {fileID: 0}
@@ -446,139 +445,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1001 &7138478202580617102
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 7703987391608048560}
-    m_Modifications:
-    - target: {fileID: -7424632068793304158, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -7424632068793304158, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -7424632068793304158, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -7424632068793304158, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -7424632068793304158, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 8893980983988567297}
-    - target: {fileID: -7424632068793304158, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 7006930733318908158}
-    - target: {fileID: -7424632068793304158, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -7424632068793304158, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -7424632068793304158, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnRelease
-      objectReference: {fileID: 0}
-    - target: {fileID: -7424632068793304158, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnGrab
-      objectReference: {fileID: 0}
-    - target: {fileID: -7424632068793304158, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: HeightDetector, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: -7424632068793304158, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: HeightDetector, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: -7424632068793304158, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: -7424632068793304158, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 3166193027062412196, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5066539379643939605, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.16796
-      objectReference: {fileID: 0}
-    - target: {fileID: 5066539379643939605, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.212
-      objectReference: {fileID: 0}
-    - target: {fileID: 5066539379643939605, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.01186
-      objectReference: {fileID: 0}
-    - target: {fileID: 5066539379643939605, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5066539379643939605, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5066539379643939605, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5066539379643939605, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5066539379643939605, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5066539379643939605, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5066539379643939605, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7742699429706212687, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-      propertyPath: m_Name
-      value: GraphicsCardInteractable
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ca059bed347dc8349a509e21a396f803, type: 3}
---- !u!4 &2692887192239062171 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5066539379643939605, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-  m_PrefabInstance: {fileID: 7138478202580617102}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8893980983988567297 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -7458738819889071473, guid: ca059bed347dc8349a509e21a396f803, type: 3}
-  m_PrefabInstance: {fileID: 7138478202580617102}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecb6d4097d6412141b55d4e036cce847, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HeightDetector
 --- !u!1001 &7921840010661838161
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -593,7 +459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3221867569475832344, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4029416092834278471, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Resource
@@ -601,7 +467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5727059444422855254, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6016233748928177912, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_AffordanceThemeDatum.m_Variable

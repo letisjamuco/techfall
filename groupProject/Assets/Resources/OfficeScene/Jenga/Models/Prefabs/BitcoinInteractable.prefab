@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5845035947783238132}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: eed4eea7c5f945348e5683a14e2087b9.fbx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8970803351198257979}
   - component: {fileID: 478815421856883232}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: JengaPiece
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5457453599756838308}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7164340281794610509}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ContentRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5587249933770698611}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: VisualRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 2771387274889703588}
   - component: {fileID: 7757839933382763834}
   - component: {fileID: 356605878470850690}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder002__0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: -6592487413540883307}
   - component: {fileID: -7177792752594984097}
   - component: {fileID: -2077026941937522658}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BitcoinInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,14 +329,14 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!114 &7236006765693613642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,15 +423,15 @@ MonoBehaviour:
   m_MovementType: 0
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
-  m_VelocityScale: 1
+  m_VelocityScale: 1.5
   m_AngularVelocityDamping: 1
   m_AngularVelocityScale: 1
   m_TrackPosition: 1
-  m_SmoothPosition: 0
+  m_SmoothPosition: 1
   m_SmoothPositionAmount: 8
   m_TightenPosition: 0.1
   m_TrackRotation: 1
-  m_SmoothRotation: 0
+  m_SmoothRotation: 1
   m_SmoothRotationAmount: 8
   m_TightenRotation: 0.1
   m_TrackScale: 1
@@ -518,7 +518,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3034711999127168961}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -550,7 +550,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5678901666342274886}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RootNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -587,7 +587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3221867569475832344, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4029416092834278471, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Resource
@@ -595,7 +595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5727059444422855254, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6016233748928177912, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_AffordanceThemeDatum.m_Variable

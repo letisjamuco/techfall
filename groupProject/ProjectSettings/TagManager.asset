@@ -15,11 +15,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - DirectInteractable
+  - Conveyor
   - Water
   - UI
-  - 
-  - 
+  - DirectInteractable
+  - Player
   - 
   - 
   - 

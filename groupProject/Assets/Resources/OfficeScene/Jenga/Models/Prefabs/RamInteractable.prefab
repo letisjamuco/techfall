@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5166829352113593606}
   - component: {fileID: 1002369629045112490}
   - component: {fileID: 977583767907917080}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RAM_Silver_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3504805895910596647}
   - component: {fileID: 7045482492087137125}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: JengaPiece
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6658226674137836173}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: VisualRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 6523526448966895227}
   - component: {fileID: 5433393946515928472}
   - component: {fileID: 5872810138531239841}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RAM_Sticker_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 7947045649982785274}
   - component: {fileID: 3200901683109448013}
   - component: {fileID: 343470566673692829}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RAM_Side_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 4378687134494919714}
   - component: {fileID: 7035268847489661961}
   - component: {fileID: 1469013820329506683}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RAM_Bronze_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -456,7 +456,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2534982736928295451}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RAM.fbx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +488,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1517377895202407552}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RootNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,7 +520,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2121966710304961981}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ContentRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -557,7 +557,7 @@ GameObject:
   - component: {fileID: -5242989999621324319}
   - component: {fileID: 1998032523352884902}
   - component: {fileID: 7541482320803776181}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RamInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -599,14 +599,14 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!114 &-8203944815722551103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -693,15 +693,15 @@ MonoBehaviour:
   m_MovementType: 0
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
-  m_VelocityScale: 1
+  m_VelocityScale: 1.5
   m_AngularVelocityDamping: 1
   m_AngularVelocityScale: 1
   m_TrackPosition: 1
-  m_SmoothPosition: 0
+  m_SmoothPosition: 1
   m_SmoothPositionAmount: 8
   m_TightenPosition: 0.1
   m_TrackRotation: 1
-  m_SmoothRotation: 0
+  m_SmoothRotation: 1
   m_SmoothRotationAmount: 8
   m_TightenRotation: 0.1
   m_TrackScale: 1
@@ -788,7 +788,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 404297426508594089}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RAM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -827,7 +827,7 @@ GameObject:
   - component: {fileID: 4765296715132297575}
   - component: {fileID: 4617183315195818036}
   - component: {fileID: 7680293084615734578}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RAM_Storage_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -917,7 +917,7 @@ GameObject:
   - component: {fileID: 7843675657329000357}
   - component: {fileID: 2087316605326331074}
   - component: {fileID: 292636345361900551}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RAM_Front_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1005,7 +1005,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2752655555922742131}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1040,9 +1040,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioInteractionAffordance
       objectReference: {fileID: 0}
+    - target: {fileID: 3221867569475832344, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4029416092834278471, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Resource
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5727059444422855254, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6016233748928177912, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_AffordanceThemeDatum.m_Variable

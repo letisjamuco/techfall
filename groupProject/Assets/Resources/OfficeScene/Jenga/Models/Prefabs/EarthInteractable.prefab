@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5745118407304278939}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ContentRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8547567270465057583}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: VisualRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 324573484876554156}
   - component: {fileID: -6419917589871003398}
   - component: {fileID: -910944852469674957}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EarthInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,14 +122,14 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!114 &-5284261344691899297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,15 +216,15 @@ MonoBehaviour:
   m_MovementType: 0
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
-  m_VelocityScale: 1
+  m_VelocityScale: 1.5
   m_AngularVelocityDamping: 1
   m_AngularVelocityScale: 1
   m_TrackPosition: 1
-  m_SmoothPosition: 0
+  m_SmoothPosition: 1
   m_SmoothPositionAmount: 8
   m_TightenPosition: 0.1
   m_TrackRotation: 1
-  m_SmoothRotation: 0
+  m_SmoothRotation: 1
   m_SmoothRotationAmount: 8
   m_TightenRotation: 0.1
   m_TrackScale: 1
@@ -312,7 +312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6159193897185791215}
   - component: {fileID: 5911586576504880873}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: JengaPiece
   m_Icon: {fileID: 0}
@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 2273690842079499902}
   - component: {fileID: 4096832254373368749}
   - component: {fileID: 5448179996580293436}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3221867569475832344, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4029416092834278471, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Resource
@@ -467,7 +467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5727059444422855254, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6016233748928177912, guid: 24217099b78033f45ae670f3a487f6ad, type: 3}
       propertyPath: m_AffordanceThemeDatum.m_Variable
