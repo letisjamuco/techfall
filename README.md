@@ -48,7 +48,7 @@ Efficiency wins - but at a cost.
 
 Each ending reflects a different relationship between humans and technology.
 
-![Project Concept](groupProject/Assets/DesignDocuments/Concept%20&%20Design.jpg)
+![Project Concept](Implementation/Assets/DesignDocuments/Concept%20&%20Design.jpg)
 
 ## Who Is This Game For?
 
