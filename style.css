@@ -133,9 +133,9 @@ h1::after {
   background:radial-gradient(ellipse,rgba(0,0,0,.55) 0%,transparent 70%);
   animation:shadow-pulse 5s ease-in-out infinite;
 }
-/* "touch to collapse" hint on hover */
+/* "hover to collapse" hint on hover */
 .tower-wrap::after {
-  content:'touch to collapse'; position:absolute; bottom:-22px; left:50%;
+  content:'hover to collapse'; position:absolute; bottom:-22px; left:50%;
   transform:translateX(-50%);
   font-size:8px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted);
   opacity:0; transition:opacity .3s; white-space:nowrap;
