@@ -300,47 +300,50 @@
 <div class="section alt" id="screenshots">
   <p class="tag">07 — In-Game</p>
   <h2>Screenshots &amp; Clips</h2>
+  <p style="margin-bottom:36px;opacity:.65;font-size:13px;">Click a scene to browse all screenshots.</p>
   <div class="screens-grid">
 
-    <!-- VIDEO 1 -->
-    <div class="screen-item">
-      <video autoplay muted loop playsinline>
-        <source src="Media/TechfallDemo.mp4" type="video/mp4">
-      </video>
-      <div class="screen-label">Techfall Demo</div>
-    </div>
-
-    <!-- PHOTO 1 -->
-    <div class="screen-item">
-      <img src="Media/OfficeBoss.jpg" alt="Office Boss">
+    <!-- SCENE CARD: Office -->
+    <div class="scene-card" data-scene="office" data-images='["Media/Office1.jpg","Media/Office2.jpg","Media/Office3.jpg"]' data-label="Office Scene">
+      <div class="scene-card-img">
+        <img src="Media/Office1.jpg" alt="Office Scene">
+        <div class="scene-card-overlay"><span class="scene-browse-hint">🖼 Browse Scene</span></div>
+      </div>
       <div class="screen-label">Office Scene</div>
     </div>
 
-    <!-- PHOTO 2 -->
-    <div class="screen-item">
-      <img src="Media/ConveyorBelt.jpg" alt="Conveyor Belt">
-      <div class="screen-label">Conveyor Belt</div>
-    </div>
-
-    <!-- PHOTO 3 -->
-    <div class="screen-item">
-      <img src="Media/OfficeTutorial.jpg" alt="Tutorial">
-      <div class="screen-label">Tower Stacking</div>
-    </div>
-
-    <!-- PHOTO 4 -->
-    <div class="screen-item">
-      <img src="Media/Farm.jpg" alt="Farm Ending">
+    <!-- SCENE CARD: Farm -->
+    <div class="scene-card" data-scene="farm" data-images='["Media/FarmScene/Farm1.jpg","Media/FarmScene/Farm2.jpg","Media/FarmScene/Farm3.jpg","Media/FarmScene/Farm4.jpg","Media/FarmScene/Farm5.jpg","Media/FarmScene/Farm6.jpg","Media/FarmScene/Farm7.jpg","Media/FarmScene/Farm8.jpg"]' data-label="Farm Ending">
+      <div class="scene-card-img">
+        <img src="Media/Farm1.jpg" alt="Farm Ending">
+        <div class="scene-card-overlay"><span class="scene-browse-hint">🖼 Browse Scene</span></div>
+      </div>
       <div class="screen-label">Farm Ending</div>
     </div>
 
-    <!-- PHOTO 5 -->
-    <div class="screen-item">
-      <img src="Media/PreTech.jpg" alt="Pre-Tech World">
-      <div class="screen-label">Pre-Tech World</div>
+    <!-- SCENE CARD: Pre-Technology World -->
+    <div class="scene-card" data-scene="pretech" data-images='["Media/PreTechnologyWorld1.jpg","Media/PreTechnologyWorld2.jpg","Media/PreTechnologyWorld3.jpg"]' data-label="Pre-Technology World">
+      <div class="scene-card-img">
+        <img src="Media/PreTechnologyWorld1.jpg" alt="Pre-Technology World">
+        <div class="scene-card-overlay"><span class="scene-browse-hint">🖼 Browse Scene</span></div>
+      </div>
+      <div class="screen-label">Pre-Technology World</div>
     </div>
 
   </div>
+</div>
+
+<!-- ── CAROUSEL LIGHTBOX ──────────────────────────────────── -->
+<div id="carousel-lightbox">
+  <button id="clb-close" onclick="closeCarousel()" title="Close (Esc)">✕</button>
+  <div id="clb-label"></div>
+  <div id="clb-counter"></div>
+  <div id="clb-viewport">
+    <img id="clb-img" src="" alt="">
+  </div>
+  <button id="clb-prev" title="Previous">&#8592;</button>
+  <button id="clb-next" title="Next">&#8594;</button>
+  <div id="clb-dots"></div>
 </div>
 <hr class="divider">
 

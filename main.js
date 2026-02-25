@@ -227,3 +227,92 @@ function toggleSpoiler(id) {
     if (e.key==='0')              reset();
   });
 })();
+
+/* ═══════════════════════════════════════════════════════════
+   SCENE CAROUSEL LIGHTBOX
+   Click a scene card → opens lightbox with prev/next arrows
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  const lb      = document.getElementById('carousel-lightbox');
+  const img     = document.getElementById('clb-img');
+  const label   = document.getElementById('clb-label');
+  const counter = document.getElementById('clb-counter');
+  const dots    = document.getElementById('clb-dots');
+  const btnPrev = document.getElementById('clb-prev');
+  const btnNext = document.getElementById('clb-next');
+
+  let images = [], index = 0;
+
+  function renderDots() {
+    dots.innerHTML = '';
+    images.forEach((_, i) => {
+      const d = document.createElement('span');
+      d.className = 'clb-dot' + (i === index ? ' active' : '');
+      d.addEventListener('click', () => goTo(i));
+      dots.appendChild(d);
+    });
+  }
+
+  function goTo(i) {
+    index = (i + images.length) % images.length;
+    img.style.opacity = '0';
+    setTimeout(() => {
+      img.src = images[index];
+      img.style.opacity = '1';
+    }, 150);
+    counter.textContent = (index + 1) + ' / ' + images.length;
+    renderDots();
+    btnPrev.style.display = images.length > 1 ? '' : 'none';
+    btnNext.style.display = images.length > 1 ? '' : 'none';
+  }
+
+  function open(imgs, lbl) {
+    images = imgs; index = 0;
+    label.textContent = lbl;
+    img.style.opacity = '1';
+    img.src = images[0];
+    counter.textContent = '1 / ' + images.length;
+    renderDots();
+    btnPrev.style.display = images.length > 1 ? '' : 'none';
+    btnNext.style.display = images.length > 1 ? '' : 'none';
+    lb.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  window.closeCarousel = () => {
+    lb.classList.remove('active');
+    document.body.style.overflow = '';
+    img.src = '';
+  };
+
+  btnPrev.addEventListener('click', () => goTo(index - 1));
+  btnNext.addEventListener('click', () => goTo(index + 1));
+
+  lb.addEventListener('click', e => { if (e.target === lb) closeCarousel(); });
+
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('active')) return;
+    if (e.key === 'Escape')      closeCarousel();
+    if (e.key === 'ArrowLeft')   goTo(index - 1);
+    if (e.key === 'ArrowRight')  goTo(index + 1);
+  });
+
+  /* Swipe support for mobile */
+  let touchX = null;
+  lb.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend',   e => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 40) dx < 0 ? goTo(index + 1) : goTo(index - 1);
+    touchX = null;
+  });
+
+  /* Attach click to each scene card */
+  document.querySelectorAll('.scene-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const imgs  = JSON.parse(card.dataset.images);
+      const lbl   = card.dataset.label;
+      open(imgs, lbl);
+    });
+  });
+})();
