@@ -283,18 +283,24 @@ h2 { font-family:'Bebas Neue', sans-serif; font-size:clamp(34px,4.5vw,52px); let
 .miro-cta p { opacity:.8; max-width:540px; font-size:13px; }
 
 /* ─── SCREENSHOTS ────────────────────────────────────── */
-.screens-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
-.screen-placeholder {
-  aspect-ratio:16/9; background:var(--surface2); border:1px dashed var(--border);
-  display:flex; align-items:center; justify-content:center;
-  position:relative; overflow:hidden; transition:border-color .3s, background .3s;
+.screen-item {
+  aspect-ratio:16/9; background:var(--surface2); border:1px solid var(--border);
+  overflow:hidden; position:relative; transition:border-color .3s;
 }
-.screen-placeholder:hover { border-color:rgba(212,136,74,.4); background:rgba(212,136,74,.03); }
-.screen-placeholder::before { content:''; position:absolute; inset:0; background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(255,255,255,.015) 8px,rgba(255,255,255,.015) 9px); }
-.screen-inner { text-align:center; z-index:1; }
-.screen-icon  { font-size:28px; display:block; margin-bottom:10px; opacity:.25; }
-.screen-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--accent); opacity:.5; margin-bottom:4px; }
-.screen-hint  { font-size:9px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); opacity:.5; }
+.screen-item:hover { border-color:rgba(212,136,74,.4); }
+.screen-item img,
+.screen-item video {
+  width:100%; height:100%; object-fit:cover; display:block;
+  opacity:.85; transition:opacity .3s;
+}
+.screen-item:hover img,
+.screen-item:hover video { opacity:1; }
+.screen-item .screen-label {
+  position:absolute; bottom:0; left:0; right:0;
+  background:rgba(17,16,16,.75); padding:7px 12px;
+  font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted);
+  border-top:1px solid var(--border);
+}
 
 /* ─── INSTALL ────────────────────────────────────────── */
 .install-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
